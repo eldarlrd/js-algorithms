@@ -4,15 +4,14 @@ const isPrime = num => {
   while (i >= 2) {
     if (num % i === 0) {
       return false;
-    } i--;
+    } else i--;
   } return true;
 }
 // Summarizing the Prime Numbers
 const sumPrimes = num => {
-  let j = num;
   let sum = 0;
-  while (j >= 2) {
-    isPrime(j) ? sum += j : false;
-    j--;
+  while (num >= 2) {
+    isPrime(num) ? sum += num : false;
+    num--;
   } return sum;
 }

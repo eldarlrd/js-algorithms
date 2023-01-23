@@ -11,7 +11,7 @@ const isPrime = num => {
 const sumPrimes = num => {
   let j = num;
   let sum = 0;
-  while ( j >= 2 ) {
+  while (j >= 2) {
     isPrime(j) ? sum += j : false;
     j--;
   } return sum;

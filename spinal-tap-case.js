@@ -1,7 +1,9 @@
 const spinalCase = str => {
-  return str
-    .replace(/([a-z])([A-Z])/g, "$1 $2")
-    .split(/(?:_|\s)/)
-    .join("-")
-    .toLowerCase();
+  return typeof str === 'string'
+    ? str
+      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      .split(/(?:_|\s)/)
+      .join('-')
+      .toLowerCase()
+    : 'ERROR: Input must be a string.';
 }

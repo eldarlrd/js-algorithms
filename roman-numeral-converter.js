@@ -1,5 +1,5 @@
 const convertToRoman = num => {
-  return typeof num === 'number'
+  return typeof num === 'number' && num > 0 && num % 1 === 0
     ? 'I'
       .repeat(num)
       .replace(/I{5}/g, 'V')
@@ -14,5 +14,5 @@ const convertToRoman = num => {
       .replace(/X{4}/g, 'XL')
       .replace(/VI{4}/g, 'IX')
       .replace(/I{4}/g, 'IV')
-    : 'ERROR: Input must be a number.';
+    : 'ERROR: Input must be a natural number.';
 }

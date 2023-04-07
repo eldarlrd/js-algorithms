@@ -1,8 +1,13 @@
 const checkCashRegister = (price, cash, cid) => {
   // Type Checking
-  if (typeof price === 'number' &&
-      typeof cash === 'number' &&
-      Array.isArray(cid[0])) {
+  const error =
+    'ERROR: Inputs must be (number, number, array[9 × [string, number]]).';
+  if (typeof price === 'number' && typeof cash === 'number' &&
+      cid.length === 9) {
+        for (let i of cid) {
+          if (typeof i[0] !== 'string' || typeof i[1] !== 'number')
+            return error;
+        }
     // Declaring the Default Currencies
     const currArr = [
       {name: 'ONE HUNDRED', val: 100},
@@ -17,6 +22,8 @@ const checkCashRegister = (price, cash, cid) => {
     ];
     // Declaring the Change
     let change = cash - price;
+    if (change < 0)
+      return `The customer owes you $${-change.toFixed(2)}.`;
     // Transforming the Drawer Array into an Object
     const drawer = cid.reduce((drwObj, curr) => {
       drwObj[curr[0]] = curr[1];
@@ -24,18 +31,19 @@ const checkCashRegister = (price, cash, cid) => {
       return drwObj;
     }, {total: 0});
     // Checking for the Exact Change
-    if (drawer.total === change) {
+    if (drawer.total === change)
       return {status: 'CLOSED', change: cid};
-    }
     // Declaring the Change Array
     const changeArr = currArr.reduce((drwObj, curr) => {
       let tmpVal = 0;
-      while (drawer[curr.name] !== 0 && change >= curr.val) {
+      while (drawer[curr.name] > 0 && change >= curr.val) {
         drawer[curr.name] -= curr.val;
         tmpVal += curr.val;
         change -= curr.val;
-        change = change.toFixed(2); // Rounding the Change
-      } if (tmpVal !== 0) {
+        // Rounding the Change
+        tmpVal = +tmpVal.toFixed(2);
+        change = change.toFixed(2);
+      } if (tmpVal > 0) {
         drwObj.push([curr.name, tmpVal]);
       } return drwObj;
     }, []);
@@ -43,5 +51,5 @@ const checkCashRegister = (price, cash, cid) => {
     return change <= 0
       ? {status: 'OPEN', change: changeArr}
       : {status: 'INSUFFICIENT_FUNDS', change: []};
-  } return 'ERROR: Inputs must be (number, number, array[array]).';
+  } return error;
 }

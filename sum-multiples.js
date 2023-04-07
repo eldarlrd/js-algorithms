@@ -1,5 +1,5 @@
 const multiplesOf3and5 = number => {
-  if (typeof number === 'number') {
+  if (typeof number === 'number' && number > 0 && number % 1 === 0) {
     let arr = [];
     let sum = 0;
     for (let i = 1; i < number; i++) {
@@ -7,5 +7,5 @@ const multiplesOf3and5 = number => {
         arr.push(i);
     } for (let i of arr) sum += i;
     return sum;
-  } return 'ERROR: Input must be a number.';
+  } return 'ERROR: Input must be a natural number.';
 }

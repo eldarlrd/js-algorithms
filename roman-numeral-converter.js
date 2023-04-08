@@ -1,5 +1,6 @@
 const convertToRoman = num => {
-  return typeof num === 'number' && num > 0 && num % 1 === 0
+  return typeof num === 'number' &&
+         num > 0 && num % 1 === 0
     ? 'I'
       .repeat(num)
       .replace(/I{5}/g, 'V')

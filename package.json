@@ -14,6 +14,8 @@
     "@chakra-ui/react": "^2.6.1",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/ubuntu": "^4.5.11",
+    "@fontsource/ubuntu-mono": "^4.5.11",
     "framer-motion": "^10.12.10",
     "gh-pages": "^5.0.0",
     "preact": "^10.13.1"

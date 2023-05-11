@@ -2,7 +2,7 @@ import {
   Box,
   Heading,
   Highlight
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 export const Header = () => {
   return (

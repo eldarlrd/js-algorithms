@@ -1,11 +1,13 @@
 import {
-  Box
+  VStack
 } from '@chakra-ui/react';
+import { CodeCard } from './codeCard';
 
 export const InputNumber = () => {
   return (
-    <Box>
-
-    </Box>
+    <VStack spacing='8'>
+      <CodeCard />
+      <CodeCard />
+    </VStack>
   );
 }

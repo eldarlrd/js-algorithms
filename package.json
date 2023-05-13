@@ -16,11 +16,16 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/ubuntu": "^4.5.11",
     "@fontsource/ubuntu-mono": "^4.5.11",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "react-syntax-highlighter": "^15.5.0",
     "framer-motion": "^10.12.10",
     "gh-pages": "^5.0.0",
     "preact": "^10.13.1"
   },
   "devDependencies": {
+    "@types/react-syntax-highlighter": "^15.5.6",
     "@preact/preset-vite": "^2.5.0",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"

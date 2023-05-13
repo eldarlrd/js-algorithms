@@ -1,4 +1,4 @@
-const palindrome = str => {
+export const palindrome = str => {
   if (typeof str !== 'string')
     return 'ERROR: Input must be a string.';
   const fwd = str.replace(/[\W_]/g, '').toLowerCase();

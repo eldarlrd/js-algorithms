@@ -1,4 +1,4 @@
-const fizzBuzz = num => {
+export const fizzBuzz = num => {
   if (typeof num !== 'number' || num < 1 ||
       num % 1 !== 0)
     return 'ERROR: Input must be a natural number.';

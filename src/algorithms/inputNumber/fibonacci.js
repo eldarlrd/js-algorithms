@@ -1,4 +1,4 @@
-const fibonacci = n => {
+export const fibonacci = n => {
   if (typeof n !== 'number' || n < 1 || n % 1 !== 0)
     return 'ERROR: Input must be a natural number.';
   n = Math.floor(n);

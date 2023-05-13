@@ -1,4 +1,4 @@
-const checkCashRegister = (price, cash, cid) => {
+export const checkCashRegister = (price, cash, cid) => {
   // Type Checking
   const error =
 'ERROR: Inputs must be (number, number, array[9 × [string, number]]).';

@@ -1,4 +1,4 @@
-const spinalCase = str => {
+export const spinalCase = str => {
   return typeof str === 'string'
     ? str
       .replace(/([a-z])([A-Z])/g, '$1 $2')

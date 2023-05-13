@@ -9,7 +9,7 @@ export const Header = () => {
     <Box bg='yellow.100' py='8' px='8'>
       <Heading
         textAlign={['center', 'center', 'left']}
-        fontFamily='Ubuntu'
+        fontFamily='main'
         as='h1'>
         <Highlight
           query='JavaScript'

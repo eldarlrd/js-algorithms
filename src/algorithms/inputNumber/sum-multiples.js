@@ -1,4 +1,4 @@
-const multiplesOf3and5 = number => {
+export const multiplesOf3and5 = number => {
   if (typeof number !== 'number' ||
       number <= 0 || number % 1 !== 0)
     return 'ERROR: Input must be a natural number.';

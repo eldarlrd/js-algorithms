@@ -1,4 +1,4 @@
-const gcd = (a, b) => {
+export const gcd = (a, b) => {
   if (typeof a !== 'number' ||
       typeof b !== 'number')
     return 'ERROR: Inputs must be (number, number).';

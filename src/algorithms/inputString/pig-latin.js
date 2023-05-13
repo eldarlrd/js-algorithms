@@ -1,4 +1,4 @@
-const translatePigLatin = str => {
+export const translatePigLatin = str => {
   return typeof str === 'string'
     ? str
       .replace(/^[aeiou]\w*/i, '$&way')

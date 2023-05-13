@@ -1,5 +1,5 @@
 // Checking for Prime Numbers
-const isPrime = num => {
+export const isPrime = num => {
   if (typeof num !== 'number' || num <= 0 || num % 1 !== 0)
     return 'ERROR: Input must be a natural number.';
   let i = Math.floor(Math.sqrt(num));
@@ -10,7 +10,7 @@ const isPrime = num => {
   } return true;
 }
 // Summarizing the Prime Numbers
-const sumPrimes = num => {
+export const sumPrimes = num => {
   if (typeof num !== 'number' || num <= 0 || num % 1 !== 0)
     return 'ERROR: Input must be a natural number.';
   let sum = 0;

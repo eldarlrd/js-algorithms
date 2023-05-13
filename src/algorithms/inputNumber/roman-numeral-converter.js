@@ -1,4 +1,4 @@
-const convertToRoman = num => {
+export const convertToRoman = num => {
   return typeof num === 'number' &&
          num > 0 && num % 1 === 0
     ? 'I'

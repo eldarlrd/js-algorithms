@@ -6,7 +6,7 @@ import {
 
 export const Header = () => {
   return (
-    <Box bg='yellow.100' py='8' px='8'>
+    <Box bg='yellow.100' py='8' px='8' mb='8'>
       <Heading
         textAlign={['center', 'center', 'left']}
         fontFamily='main'
@@ -16,7 +16,7 @@ export const Header = () => {
           styles={{
             px: 2,
             py: 1,
-            rounded: 4,
+            rounded: 6,
             bg: 'yellow.300'
           }}> Interactive JavaScript Algorithms
         </Highlight>

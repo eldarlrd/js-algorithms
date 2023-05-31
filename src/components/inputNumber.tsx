@@ -5,7 +5,11 @@ import { CodeCard } from './codeCard';
 
 export const InputNumber = () => {
   return (
-    <VStack spacing='8'>
+    <VStack
+      w={['initial', 'fit-content']}
+      mx={[2, 4, 8]}
+      align='flex-start'
+      spacing='8'>
       <CodeCard />
       <CodeCard />
     </VStack>

@@ -1,21 +1,40 @@
 import {
+  Heading,
   VStack
 } from '@chakra-ui/react';
 import { CodeCard } from './codeCard';
-
+// Number Functions
+import { convertCtoFObj } from '../algorithms/inputNumber/celsius-to-fahrenheit';
+import { convertFtoCObj } from '../algorithms/inputNumber/fahrenheit-to-celsius';
 import { diceRollObj } from '../algorithms/inputNumber/dice-roll';
 import { factorializeObj } from '../algorithms/inputNumber/factorialize-numbers';
+import { fibonacciObj } from '../algorithms/inputNumber/fibonacci';
+import { fizzBuzzObj } from '../algorithms/inputNumber/fizzBuzz';
+import { gcdObj } from '../algorithms/inputNumber/greatest-common-divisor';
+import { convertToRomanObj } from '../algorithms/inputNumber/roman-numeral-converter';
+import { sumPrimesObj } from '../algorithms/inputNumber/sum-all-primes';
+import { multiplesOf3and5Obj } from '../algorithms/inputNumber/sum-multiples';
 
 export const InputNumber = () => {
   const numFuncArr = [
+    convertCtoFObj,
+    convertFtoCObj,
     diceRollObj,
     factorializeObj,
+    fibonacciObj,
+    fizzBuzzObj,
+    gcdObj,
+    convertToRomanObj,
+    sumPrimesObj,
+    multiplesOf3and5Obj,
   ];
+
   const numberCards: Array<JSX.Element> = [];
   {numFuncArr.forEach(e => {
     numberCards.push(
       <CodeCard
         name={e.name}
+        placeholder={e.placeholder}
         code={e.myFunc}
         raw={e.raw}
       />
@@ -23,6 +42,15 @@ export const InputNumber = () => {
   })}
 
   return (
+    <>
+    <Heading
+      fontFamily='main'
+      textDecoration='3px underline'
+      textDecorationColor='yellow.400'
+      mx={[2, 4, 8]}
+      my='8'>
+      Inputs with Numeric Arguments
+    </Heading>
     <VStack
       w={['initial', 'fit-content']}
       mx={[2, 4, 8]}
@@ -30,5 +58,6 @@ export const InputNumber = () => {
       spacing='8'>
       {numberCards}
     </VStack>
+    </>
   );
 }

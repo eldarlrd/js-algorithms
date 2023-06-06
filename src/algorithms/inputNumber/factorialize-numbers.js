@@ -1,16 +1,18 @@
 export const factorializeObj = {
-  name: 'Factorialize',
+  name: 'Factorial',
+  placeholder: 'Number',
   myFunc(num) {
     num = +num;
-    if (typeof num !== 'number')
-      return 'ERROR: Input must be a number.';
+    if (num % 1 !== 0)
+      return 'ERROR: Input must be an integer';
     num = Math.abs(num.toFixed(0));
     return num !== 0 ? num * factorializeObj.myFunc(num - 1) : 1;
   },
   raw:
 `const factorialize = num => {
-  if (typeof num !== 'number')
-    return 'ERROR: Input must be a number.';
+  num = +num;
+  if (num % 1 !== 0)
+    return 'ERROR: Input must be an integer';
   num = Math.abs(num.toFixed(0));
   return num !== 0 ? num * factorialize(num - 1) : 1;
 }`

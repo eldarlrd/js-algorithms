@@ -118,6 +118,7 @@ export const CodeCard = (props: any) => {
               focusBorderColor='yellow.300'
               errorBorderColor='red.300'
               value={argument}
+              placeholder={props.placeholder}
               onInput={(e: JSX.TargetedEvent<HTMLInputElement>) =>
                 setArgument((e.target as HTMLInputElement).value)}
               bg='gray.100' />

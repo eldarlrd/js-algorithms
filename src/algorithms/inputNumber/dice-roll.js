@@ -1,11 +1,10 @@
 export const diceRollObj = {
   name: 'Dice Roller',
+  placeholder: 'Rolls, Sides',
   myFunc(inputArr) {
     const rolls = +inputArr[0];
     const sides = +inputArr[1];
     if (inputArr.length !== 2 ||
-        typeof rolls !== 'number' ||
-        typeof sides !== 'number' ||
         !rolls || !sides)
       return 'ERROR: Inputs must be (number, number)';
     const textArr = [];
@@ -34,9 +33,7 @@ export const diceRollObj = {
   const rolls = +inputArr[0];
   const sides = +inputArr[1];
   if (inputArr.length !== 2 ||
-    typeof rolls !== 'number' ||
-    typeof sides !== 'number' ||
-    !rolls || !sides)
+      !rolls || !sides)
     return 'ERROR: Inputs must be (number, number)';
   const textArr = [];
   const arr = [];

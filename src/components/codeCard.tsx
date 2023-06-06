@@ -19,7 +19,7 @@ import {
   faEyeSlash,
   faPlay,
   faHandHolding,
-  faExclamation
+  faCircleExclamation
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -33,12 +33,14 @@ import { diceRoll, diceRollRaw } from '../algorithms/inputNumber/dice-roll';
 
 export const CodeCard = (props: string) => {
   const [ visible, setVisible ] = useBoolean();
-  const { onCopy, value, setValue } = useClipboard('');
+  const { value, setValue, onCopy } = useClipboard('');
   const [ argument, setArgument ] = useState<String>();
   const [ result, setResult ] = useState<String>();
+  const [ error, setError ] = useState(false);
   // props.code
   const runCode = () => {
-    setResult(diceRoll(2, 4));
+    if (argument)
+      setResult(diceRoll(argument.split(',')));
   };
 
   const copyToClipboard = () => {
@@ -46,10 +48,19 @@ export const CodeCard = (props: string) => {
   };
 
   useEffect(() => {
-    if (value === '') {
+    if (value === '')
       return;
-    } onCopy();
+    onCopy();
   }, [value]);
+
+  useEffect(() => {
+    if (result) {
+      const errorStr = result.split(' ');
+      if (errorStr[0] === 'ERROR:')
+        setError(true);
+      else setError(false);
+    }
+  }, [result]);
 
   return (
     <Card
@@ -123,23 +134,23 @@ export const CodeCard = (props: string) => {
           
           {result ?
             <Tooltip
-              isDisabled={visible ? true : false}
+              isDisabled={error ? true : false}
               hasArrow
               borderRadius='6'
               label='Copy to Clipboard'>
               <Button
-                onClick={visible ? null : copyToClipboard}
+                onClick={error ? null : copyToClipboard}
                 mt='2'
                 py='2.5'
                 h='full'
                 whiteSpace='normal'
-                colorScheme={visible ? 'red' : 'green'}>
+                colorScheme={error ? 'red' : 'green'}>
                 <Text
                   display='flex'
                   gap='2'>
                   <FontAwesomeIcon
-                    icon={visible ? faExclamation : faHandHolding} />
-                  {result}
+                    icon={error ? faCircleExclamation : faHandHolding} />
+                  {result.replace('ERROR:', '')}
                 </Text>
               </Button>
             </Tooltip>

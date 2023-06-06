@@ -1,7 +1,11 @@
-export const diceRoll = (rolls, sides) => {
-  if (typeof rolls !== 'number' ||
-      typeof sides !== 'number')
-    return 'ERROR: Inputs must be (number, number).';
+export const diceRoll = inputArr => {
+  const rolls = +inputArr[0];
+  const sides = +inputArr[1];
+  if (inputArr.length !== 2 ||
+      typeof rolls !== 'number' ||
+      typeof sides !== 'number' ||
+      !rolls || !sides)
+    return 'ERROR: Inputs must be (number, number)';
   const textArr = [];
   const arr = [];
   let total = 0;
@@ -14,7 +18,7 @@ export const diceRoll = (rolls, sides) => {
       arr.push(roll);
       total += roll;
       i++;
-    } else return 'ERROR: Input values too low.';
+    } else return 'ERROR: Input values too low';
   // Bonus Roll
   const uniqArr = [...new Set(arr)];
   if (uniqArr.length === 1) {
@@ -25,10 +29,14 @@ export const diceRoll = (rolls, sides) => {
 }
 
 export const diceRollRaw =
-`const diceRoll = (rolls, sides) => {
-  if (typeof rolls !== 'number' ||
-      typeof sides !== 'number')
-    return 'ERROR: Inputs must be (number, number).';
+`const diceRoll = inputArr => {
+  const rolls = +inputArr[0];
+  const sides = +inputArr[1];
+  if (inputArr.length !== 2 ||
+    typeof rolls !== 'number' ||
+    typeof sides !== 'number' ||
+    !rolls || !sides)
+    return 'ERROR: Inputs must be (number, number)';
   const textArr = [];
   const arr = [];
   let total = 0;
@@ -41,7 +49,7 @@ export const diceRollRaw =
       arr.push(roll);
       total += roll;
       i++;
-    } else return 'ERROR: Input values too low.';
+    } else return 'ERROR: Input values too low';
   // Bonus Roll
   const uniqArr = [...new Set(arr)];
   if (uniqArr.length === 1) {

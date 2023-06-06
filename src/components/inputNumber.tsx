@@ -11,7 +11,6 @@ export const InputNumber = () => {
       align='flex-start'
       spacing='8'>
       <CodeCard />
-      <CodeCard />
     </VStack>
   );
 }

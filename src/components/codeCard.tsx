@@ -27,22 +27,29 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import { JSX } from 'preact/jsx-runtime';
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 
 import { diceRoll, diceRollRaw } from '../algorithms/inputNumber/dice-roll';
 
 export const CodeCard = (props: string) => {
   const [ visible, setVisible ] = useBoolean();
-  const { onCopy, hasCopied } = useClipboard('');
+  const { onCopy, value, setValue } = useClipboard('');
   const [ argument, setArgument ] = useState<String>();
+  const [ result, setResult ] = useState<String>();
   // props.code
   const runCode = () => {
-    console.log('ran');
+    setResult(diceRoll(2, 4));
   };
 
   const copyToClipboard = () => {
-    alert('copied');
+    setValue(result);
   };
+
+  useEffect(() => {
+    if (value === '') {
+      return;
+    } onCopy();
+  }, [value]);
 
   return (
     <Card
@@ -114,27 +121,29 @@ export const CodeCard = (props: string) => {
             </Tooltip>
           </Flex>
           
-          <Tooltip
-            isDisabled={visible ? true : false}
-            hasArrow
-            borderRadius='6'
-            label='Copy to Clipboard'>
-            <Button
-              onClick={visible ? null : onCopy}
-              mt='2'
-              py='2.5'
-              h='full'
-              whiteSpace='normal'
-              colorScheme={visible ? 'red' : 'green'}>
-              <Text
-                display='flex'
-                gap='2'>
-                <FontAwesomeIcon
-                  icon={visible ? faExclamation : faHandHolding} />
-                Success
-              </Text>
-            </Button>
-          </Tooltip>
+          {result ?
+            <Tooltip
+              isDisabled={visible ? true : false}
+              hasArrow
+              borderRadius='6'
+              label='Copy to Clipboard'>
+              <Button
+                onClick={visible ? null : copyToClipboard}
+                mt='2'
+                py='2.5'
+                h='full'
+                whiteSpace='normal'
+                colorScheme={visible ? 'red' : 'green'}>
+                <Text
+                  display='flex'
+                  gap='2'>
+                  <FontAwesomeIcon
+                    icon={visible ? faExclamation : faHandHolding} />
+                  {result}
+                </Text>
+              </Button>
+            </Tooltip>
+          : null}
         </Flex>
       </CardFooter>
     </Card>

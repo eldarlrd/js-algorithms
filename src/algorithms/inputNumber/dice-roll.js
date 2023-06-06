@@ -2,6 +2,7 @@ export const diceRoll = (rolls, sides) => {
   if (typeof rolls !== 'number' ||
       typeof sides !== 'number')
     return 'ERROR: Inputs must be (number, number).';
+  const textArr = [];
   const arr = [];
   let total = 0;
   let i = 1;
@@ -9,7 +10,7 @@ export const diceRoll = (rolls, sides) => {
   if (rolls > 0 && sides >= 2)
     while (i <= rolls) {
       const roll = Math.floor(Math.random() * sides) + 1;
-      console.log(`Roll ${i}: ${roll}`);
+      textArr.push(` Roll ${i}: ${roll}`);
       arr.push(roll);
       total += roll;
       i++;
@@ -18,9 +19,9 @@ export const diceRoll = (rolls, sides) => {
   const uniqArr = [...new Set(arr)];
   if (uniqArr.length === 1) {
     const bonus = Math.floor(Math.random() * sides) + 1;
-    console.log(`Bonus Roll: ${bonus}`);
+    textArr.push(` Bonus Roll: ${bonus}`);
     total += bonus;
-  } return `Total: ${total}`;
+  } return `${textArr} = Total: ${total}`;
 }
 
 export const diceRollRaw =
@@ -28,6 +29,7 @@ export const diceRollRaw =
   if (typeof rolls !== 'number' ||
       typeof sides !== 'number')
     return 'ERROR: Inputs must be (number, number).';
+  const textArr = [];
   const arr = [];
   let total = 0;
   let i = 1;
@@ -35,7 +37,7 @@ export const diceRollRaw =
   if (rolls > 0 && sides >= 2)
     while (i <= rolls) {
       const roll = Math.floor(Math.random() * sides) + 1;
-      console.log(\`Roll \${i}: \${roll}\`)
+      textArr.push(\` Roll \${i}: \${roll}\`);
       arr.push(roll);
       total += roll;
       i++;
@@ -44,7 +46,7 @@ export const diceRollRaw =
   const uniqArr = [...new Set(arr)];
   if (uniqArr.length === 1) {
     const bonus = Math.floor(Math.random() * sides) + 1;
-    console.log(\`Bonus Roll: \${bonus}\`);
+    textArr.push(\` Bonus Roll: \${bonus}\`);
     total += bonus;
-  } return \`Total: \${total}\`;
+  } return \`\${textArr} = Total: \${total}\`;
 }`

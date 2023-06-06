@@ -56,7 +56,7 @@ export const CodeCard = (props: any) => {
 
   useEffect(() => {
     if (result) {
-      const errorStr = result.split(' ');
+      const errorStr = result.toString().split(' ');
       if (errorStr[0] === 'ERROR:')
         setError(true);
       else setError(false);
@@ -148,7 +148,7 @@ export const CodeCard = (props: any) => {
                   gap='2'>
                   <FontAwesomeIcon
                     icon={error ? faCircleExclamation : faHandHolding} />
-                  {result?.replace('ERROR:', '')}
+                  {result?.toString().replace('ERROR:', '')}
                 </Text>
               </Button>
             </Tooltip>

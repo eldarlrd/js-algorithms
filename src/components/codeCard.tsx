@@ -74,7 +74,9 @@ export const CodeCard = (props: any) => {
         </Heading>
       </CardHeader>
 
-      <CardBody fontSize={[9.4, 12.8, 16]}>
+      <CardBody
+        fontSize={[9.4, 12.8, 16]}
+        my='-6'>
         <Flex
           direction='column'
           align='flex-start'

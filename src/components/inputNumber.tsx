@@ -3,6 +3,8 @@ import {
 } from '@chakra-ui/react';
 import { CodeCard } from './codeCard';
 
+import { diceRoll, diceRollName, diceRollRaw } from '../algorithms/inputNumber/dice-roll';
+
 export const InputNumber = () => {
   return (
     <VStack
@@ -10,7 +12,7 @@ export const InputNumber = () => {
       mx={[2, 4, 8]}
       align='flex-start'
       spacing='8'>
-      <CodeCard />
+      <CodeCard name={diceRollName} code={diceRoll} raw={diceRollRaw} />
     </VStack>
   );
 }

@@ -1,5 +1,6 @@
 import {
   useBoolean,
+  useDisclosure,
   useClipboard,
   Card,
   CardHeader,
@@ -29,18 +30,18 @@ import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { JSX } from 'preact/jsx-runtime';
 import { useState, useEffect } from 'preact/hooks';
 
-import { diceRoll, diceRollRaw } from '../algorithms/inputNumber/dice-roll';
-
-export const CodeCard = (props: string) => {
+export const CodeCard = (props: any) => {
   const [ visible, setVisible ] = useBoolean();
+  const { isOpen, onOpen } = useDisclosure();
   const { value, setValue, onCopy } = useClipboard('');
   const [ argument, setArgument ] = useState<String>();
   const [ result, setResult ] = useState<String>();
-  const [ error, setError ] = useState(false);
-  // props.code
+  const [ error, setError ] = useState<Boolean>();
+
   const runCode = () => {
     if (argument)
-      setResult(diceRoll(argument.split(',')));
+      onOpen();
+      setResult(props.code(argument?.split(',')));
   };
 
   const copyToClipboard = () => {
@@ -69,8 +70,7 @@ export const CodeCard = (props: string) => {
       borderColor='gray.300'>
       <CardHeader>
         <Heading fontFamily='main' size='lg'>
-          {/* props.name */}
-          JavaScript Function Name
+          {props.name}
         </Heading>
       </CardHeader>
 
@@ -100,8 +100,7 @@ export const CodeCard = (props: string) => {
               language='javascript'
               showLineNumbers={true}
               style={gml}>
-              {/* props.raw */}
-              {diceRollRaw}
+              {props.raw}
             </SyntaxHighlighter>
           </Collapse>
         </Flex>
@@ -113,7 +112,7 @@ export const CodeCard = (props: string) => {
           align='flex-start'
           w='full'
           gap='2'>
-          <Flex w='full' gap='2'>
+          <Flex w='full' mb='2' gap='2'>
             <Input
               fontFamily='main'
               focusBorderColor='yellow.300'
@@ -131,8 +130,8 @@ export const CodeCard = (props: string) => {
               </Button>
             </Tooltip>
           </Flex>
-          
-          {result ?
+
+          <Collapse in={isOpen}>
             <Tooltip
               isDisabled={error ? true : false}
               hasArrow
@@ -140,7 +139,6 @@ export const CodeCard = (props: string) => {
               label='Copy to Clipboard'>
               <Button
                 onClick={error ? null : copyToClipboard}
-                mt='2'
                 py='2.5'
                 h='full'
                 whiteSpace='normal'
@@ -150,11 +148,11 @@ export const CodeCard = (props: string) => {
                   gap='2'>
                   <FontAwesomeIcon
                     icon={error ? faCircleExclamation : faHandHolding} />
-                  {result.replace('ERROR:', '')}
+                  {result?.replace('ERROR:', '')}
                 </Text>
               </Button>
             </Tooltip>
-          : null}
+          </Collapse>
         </Flex>
       </CardFooter>
     </Card>

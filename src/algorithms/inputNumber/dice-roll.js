@@ -28,6 +28,7 @@ export const diceRoll = inputArr => {
   } return `${textArr} = Total: ${total}`;
 }
 
+export const diceRollName = 'Dice Roller';
 export const diceRollRaw =
 `const diceRoll = inputArr => {
   const rolls = +inputArr[0];
@@ -57,4 +58,4 @@ export const diceRollRaw =
     textArr.push(\` Bonus Roll: \${bonus}\`);
     total += bonus;
   } return \`\${textArr} = Total: \${total}\`;
-}`
+}`;

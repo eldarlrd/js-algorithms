@@ -3,6 +3,7 @@ import {
   Stack,
   Flex,
   Text,
+  Tooltip,
   Link,
   Image
 } from '@chakra-ui/react';
@@ -10,7 +11,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import logo from '../../public/favicon.png';
+import logo from '../assets/logo.png';
 
 export const Footer = () => {
   return (
@@ -46,12 +47,17 @@ export const Footer = () => {
           color='gray.100'>
           Developed by
         </Text>
-        <Link
-          href='https://github.com/eldarlrd'
-          color='yellow.300'
-          isExternal>
-          eldarlrd <FontAwesomeIcon icon={faGithub} />
+        <Tooltip
+          hasArrow
+          borderRadius='6'
+          label='Go to GitHub'>
+          <Link
+            href='https://github.com/eldarlrd'
+            color='yellow.300'
+            isExternal>
+            eldarlrd <FontAwesomeIcon icon={faGithub} />
         </Link>
+        </Tooltip>
       </Flex>
     </Container>
   );

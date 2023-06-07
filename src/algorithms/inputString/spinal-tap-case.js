@@ -17,6 +17,6 @@ export const spinalCaseObj = {
       .split(/(?:_|\\s)/)
       .join('-')
       .toLowerCase()
-    : 'ERROR: Input must be a string.';
+    : 'ERROR: Input must be a string';
 }`
 }

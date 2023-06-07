@@ -60,7 +60,7 @@ export const checkCashRegisterObj = {
       } return drwObj;
     }, []);
     // Checking for the Due Change
-    if (changeArr.length === 0)return 'status: OPEN';
+    if (changeArr.length === 0) return 'status: OPEN';
     return change <= 0
       ? `status: OPEN => change: ${changeArr.join(' | ')}`
       : 'status: INSUFFICIENT_FUNDS';

@@ -19,11 +19,10 @@ export const gcdObj = {
     } return max;
   },
   raw:
-`const gcd = inputArr => {
-  const a = +inputArr[0];
-  const b = +inputArr[1];
-  if (inputArr.length !== 2 ||
-      !a || !b)
+`const gcd = (a, b) => {
+  a = +a;
+  b = +b;
+  if (!a || !b)
     return 'ERROR: Inputs must be (number, number)';
   if (a < 0 || b < 0 || a % 1 !== 0 || b % 1 !== 0)
     return 'ERROR: Inputs must be natural numbers';

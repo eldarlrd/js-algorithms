@@ -69,7 +69,7 @@ export const CodeCard = (props: any) => {
       borderWidth={1}
       borderColor='gray.300'>
       <CardHeader>
-        <Heading fontFamily='main' size='lg'>
+        <Heading fontFamily='main' size='lg' as='h3'>
           {props.name}
         </Heading>
       </CardHeader>
@@ -84,6 +84,7 @@ export const CodeCard = (props: any) => {
           <Button
             onClick={setVisible.toggle}
             colorScheme='yellow'
+            fontFamily='main'
             fontSize={[12, 16]}>
             <Text
               display='flex'
@@ -142,10 +143,11 @@ export const CodeCard = (props: any) => {
               label='Copy to Clipboard'>
               <Button
                 onClick={error ? null : copyToClipboard}
-                py='2.5'
-                h='full'
+                colorScheme={error ? 'red' : 'green'}
                 whiteSpace='normal'
-                colorScheme={error ? 'red' : 'green'}>
+                fontFamily='main'
+                h='full'
+                py='2.5'>
                 <Text
                   display='flex'
                   gap='2'>

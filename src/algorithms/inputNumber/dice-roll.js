@@ -5,7 +5,9 @@ export const diceRollObj = {
     const rolls = +inputArr[0];
     const sides = +inputArr[1];
     if (inputArr.length !== 2 ||
-        !rolls || !sides)
+        !rolls || !sides ||
+        rolls % 1 !== 0 ||
+        sides % 1 !== 0)
       return 'ERROR: Inputs must be (number, number)';
     const textArr = [];
     const arr = [];
@@ -29,11 +31,12 @@ export const diceRollObj = {
     } return `${textArr} = Total: ${total}`;
   },
   raw:
-`const diceRoll = inputArr => {
-  const rolls = +inputArr[0];
-  const sides = +inputArr[1];
-  if (inputArr.length !== 2 ||
-      !rolls || !sides)
+`const diceRoll = (rolls, sides) => {
+  rolls = +rolls;
+  sides = +sides;
+  if (!rolls || !sides ||
+      rolls % 1 !== 0 ||
+      sides % 1 !== 0)
     return 'ERROR: Inputs must be (number, number)';
   const textArr = [];
   const arr = [];

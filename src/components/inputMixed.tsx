@@ -4,11 +4,11 @@ import {
 } from '@chakra-ui/react';
 import { CodeCard } from './codeCard';
 // Mixed Functions
-
+import { checkCashRegisterObj } from '../algorithms/inputMixed/cash-register';
 
 export const InputMixed = () => {
   const mixFuncArr = [
-    
+    checkCashRegisterObj,
   ];
 
   const mixedCards: Array<JSX.Element> = [];

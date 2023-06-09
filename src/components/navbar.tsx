@@ -7,120 +7,55 @@ import {
   CloseButton,
   IconButton,
   Image,
-  Icon,
   Link,
   Drawer,
   DrawerContent,
-  Text,
+  Text
 } from '@chakra-ui/react';
 
 import {
-  faBars
+  faBars,
+  faInfinity,
+  faComment,
+  faBlender
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import logo from '../assets/logo.png';
 
 const LinkItems = [
-  { name: 'Home',},
-  { name: 'Trending',}
+  {
+    name: 'Inputs with Numeric Arguments',
+    id: '#input-number',
+    icon: faInfinity,
+    size: '1x'
+  },
+  {
+    name: 'Inputs with String Arguments',
+    id: '#input-string',
+    icon: faComment,
+    size: 'lg'
+  },
+  {
+    name: 'Inputs with Mixed Arguments',
+    id: '#input-mixed',
+    icon: faBlender,
+    size: 'lg'
+  }
 ];
-
-export const Navbar = ({ children }: any) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  return (
-    <Box mb='-8' bg={'transparent'}>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full">
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ms={{ base: 0, md: 60 }} p="4">
-        {children}
-      </Box>
-    </Box>
-  );
-}
-
-const SidebarContent = ({ onClose, ...rest }: BoxProps) => {
-  return (
-    <Box
-      bg={'white'}
-      borderRight="1px"
-      borderRightColor={'gray.200'}
-      w={{ base: 'full', md: 60 }}
-      pos="fixed"
-      h="full"
-      {...rest}>
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
-      </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name}>
-          {link.name}
-        </NavItem>
-      ))}
-    </Box>
-  );
-};
-
-const NavItem = ({ icon, children, ...rest }: any) => {
-  return (
-    <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: 'cyan.400',
-          color: 'white',
-        }}
-        {...rest}>
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: 'white',
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Link>
-  );
-};
 
 const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
   return (
     <Flex
-      ms={[0, 0, 60]}
-      px={[4, 4, 24]}
-      height='20'
+      ms={[0, 0, 0, 60]}
+      px={[4, 4, 4, 24]}
+      w='full'
+      h='20'
+      bg='white'
       borderBottomWidth={1}
       borderBottomColor='gray.200'
-      justifyContent='flex-start'
-      alignItems='center'
+      justify='flex-start'
+      align='center'
       {...rest}>
       <IconButton
         onClick={onOpen}
@@ -131,7 +66,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
       <Flex
         ms='4'
         gap='2'
-        color='gray.900'>
+        align='center'>
         <Image
           src={logo}
           boxSize='6'
@@ -139,10 +74,119 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
         />
         <Text
           fontFamily='main'
-          fontWeight='bold'>
+          fontWeight='bold'
+          cursor='default'
+          color='gray.900'>
           Find Specific
         </Text>
       </Flex>
     </Flex>
+  );
+}
+
+const Sidebar = ({ onClose, ...rest }: BoxProps) => {
+  return (
+    <Box
+      bg='white'
+      pos='fixed'
+      borderRight={1}
+      borderStyle='solid'
+      borderRightColor='gray.200'
+      w={{ base: 'full', lg: '21em' }}
+      h='full'
+      {...rest}>
+      <Flex
+        mx='8'
+        h='20'
+        align='center'
+        justify='space-between'>
+        <Flex
+          gap='4'
+          align='center'>
+          <Image
+            src={logo}
+            boxSize='8'
+            alt='Algorithm Logo'
+          />
+          <Text
+            fontFamily='main'
+            fontWeight='bold'
+            cursor='default'
+            color='gray.900'>
+            Find Specific
+          </Text>
+        </Flex>
+        <CloseButton
+          onClick={onClose}
+          display={{ base: 'flex', lg: 'none' }}
+        />
+      </Flex>
+      {LinkItems.map((link) => (
+        <NavItem
+          key={link.name}
+          icon={link.icon}
+          size={link.size}
+          id={link.id}>
+          {link.name}
+        </NavItem>
+      ))}
+    </Box>
+  );
+}
+
+const NavItem = ({ id, icon, size, children, ...rest }: FlexProps) => {
+  return (
+    <Link
+      href={id}
+      style={{ textDecoration: 'none' }}
+      _focus={{ boxShadow: 'none' }}>
+      <Flex
+        p='4'
+        mx='4'
+        gap='2'
+        align='center'
+        borderRadius='6'
+        role='group'
+        cursor='pointer'
+        fontFamily='main'
+        fontWeight='bold'
+        color='gray.900'
+        _hover={{
+          bg: 'yellow.400',
+          color: 'gray.900'
+        }}
+        {...rest}>
+        <FontAwesomeIcon icon={icon} size={size} />
+        {children}
+      </Flex>
+    </Link>
+  );
+}
+
+export const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  return (
+    <>
+    <MobileNav
+      onOpen={onOpen}
+      display={{ base: 'flex', lg: 'none' }}
+    />
+    <Drawer
+      isOpen={isOpen}
+      autoFocus={false}
+      returnFocusOnClose={false}
+      onClose={onClose}
+      onOverlayClick={onClose}
+      placement='left'
+      size='full'>
+      <DrawerContent>
+        <Sidebar onClose={onClose} />
+      </DrawerContent>
+    </Drawer>
+    <Sidebar
+      onClose={onClose}
+      hideBelow='lg'
+    />
+    </>
   );
 }

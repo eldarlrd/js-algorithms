@@ -34,6 +34,7 @@ export const InputString = () => {
   return (
     <>
     <Heading
+      id='input-string'
       fontFamily='main'
       textDecoration='3px underline'
       textDecorationColor='yellow.400'

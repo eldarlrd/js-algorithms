@@ -26,6 +26,7 @@ export const InputMixed = () => {
   return (
     <>
     <Heading
+      id='input-mixed'
       fontFamily='main'
       textDecoration='3px underline'
       textDecorationColor='yellow.400'

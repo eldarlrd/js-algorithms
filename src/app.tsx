@@ -1,6 +1,6 @@
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu-mono/400.css';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, Box } from '@chakra-ui/react';
 import theme from './theme';
 
 import { Navbar } from './components/navbar';
@@ -14,11 +14,13 @@ export const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Navbar />
-      <Header />
-      <InputNumber />
-      <InputString />
-      <InputMixed />
-      <Footer />
+      <Box ms={[0, 0, 0, '21em']}>
+        <Header />
+        <InputNumber />
+        <InputString />
+        <InputMixed />
+        <Footer />
+      </Box>
     </ChakraProvider>
   );
 }

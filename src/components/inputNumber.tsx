@@ -44,6 +44,7 @@ export const InputNumber = () => {
   return (
     <>
     <Heading
+      id='input-number'
       fontFamily='main'
       textDecoration='3px underline'
       textDecorationColor='yellow.400'

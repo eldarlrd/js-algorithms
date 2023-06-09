@@ -31,11 +31,9 @@ export const Footer = () => {
         mx='4'
         my='2'
         p='1'
-        borderWidth={1}
-        borderRadius='6'
-        borderStyle='solid'
-        borderColor='gray.100'
+        bg='white'
         boxSize='12'
+        borderRadius='12'
         alt='Algorithm Logo'
       />
       <Flex

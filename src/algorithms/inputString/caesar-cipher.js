@@ -3,16 +3,16 @@ export const rot13Obj = {
   placeholder: 'String',
   myFunc(str) {
     return (
-      str.join().replace(/[A-Z]/g, rotStr =>
+      str.join().toUpperCase().replace(/[A-Z]/g, rotStr =>
         String.fromCharCode(rotStr.charCodeAt(0) % 26 + 65)
-      ).toUpperCase()
+      )
     );
   },
   raw:
 `const rot13 = str => {
   return typeof str === 'string' ?
-    str.replace(/[A-Z]/g, rotStr =>
+    str.toUpperCase().replace(/[A-Z]/g, rotStr =>
       String.fromCharCode(rotStr.charCodeAt(0) % 26 + 65)
-    ).toUpperCase() : 'ERROR: Input must be a string';
+    ) : 'ERROR: Input must be a string';
 }`
 }

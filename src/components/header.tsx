@@ -21,7 +21,8 @@ export const Header = () => {
             px: 2,
             py: 1,
             rounded: 6,
-            bg: 'yellow.300'
+            bg: 'yellow.300',
+            color: 'gray.900'
           }}> Interactive JavaScript Algorithms
         </Highlight>
       </Heading>

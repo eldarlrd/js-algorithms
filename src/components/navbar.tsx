@@ -1,18 +1,17 @@
 import {
-  IconButton,
+  useDisclosure,
   Box,
-  CloseButton,
+  BoxProps,
   Flex,
-  Icon,
+  FlexProps,
+  CloseButton,
+  IconButton,
   Image,
-  useColorModeValue,
+  Icon,
   Link,
   Drawer,
   DrawerContent,
   Text,
-  useDisclosure,
-  BoxProps,
-  FlexProps,
 } from '@chakra-ui/react';
 
 import {
@@ -49,23 +48,19 @@ export const Navbar = ({ children }: any) => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box ms={{ base: 0, md: 60 }} p="4">
         {children}
       </Box>
     </Box>
   );
 }
 
-interface SidebarProps extends BoxProps {
-  onClose: () => void;
-}
-
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, ...rest }: BoxProps) => {
   return (
     <Box
-      bg={useColorModeValue('white', 'gray.900')}
+      bg={'white'}
       borderRight="1px"
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
+      borderRightColor={'gray.200'}
       w={{ base: 'full', md: 60 }}
       pos="fixed"
       h="full"
@@ -116,36 +111,38 @@ const NavItem = ({ icon, children, ...rest }: any) => {
   );
 };
 
-interface MobileProps extends FlexProps {
-  onOpen: () => void;
-}
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
   return (
     <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 24 }}
-      height="20"
-      alignItems="center"
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent="flex-start"
+      ms={[0, 0, 60]}
+      px={[4, 4, 24]}
+      height='20'
+      borderBottomWidth={1}
+      borderBottomColor='gray.200'
+      justifyContent='flex-start'
+      alignItems='center'
       {...rest}>
       <IconButton
-        variant="outline"
         onClick={onOpen}
-        aria-label="open menu"
+        variant='outline'
+        aria-label='Open Menu'
         icon={<FontAwesomeIcon icon={faBars} />}
       />
-
-
-        <Image
-        src={logo}
+      <Flex
         ms='4'
-        boxSize='10'
-        alt='Algorithm Logo'
+        gap='2'
+        color='gray.900'>
+        <Image
+          src={logo}
+          boxSize='6'
+          alt='Algorithm Logo'
         />
-
-<Text>Find</Text>
+        <Text
+          fontFamily='main'
+          fontWeight='bold'>
+          Find Specific
+        </Text>
+      </Flex>
     </Flex>
   );
-};
+}

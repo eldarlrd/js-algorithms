@@ -89,8 +89,7 @@ const Sidebar = ({ onClose, ...rest }: BoxProps) => {
     <Box
       bg='white'
       pos='fixed'
-      borderRight={1}
-      borderStyle='solid'
+      borderRightWidth={1}
       borderRightColor='gray.200'
       w={{ base: 'full', lg: '21em' }}
       h='full'
@@ -123,6 +122,7 @@ const Sidebar = ({ onClose, ...rest }: BoxProps) => {
       </Flex>
       {LinkItems.map((link) => (
         <NavItem
+          onClose={onClose}
           key={link.name}
           icon={link.icon}
           size={link.size}
@@ -134,9 +134,10 @@ const Sidebar = ({ onClose, ...rest }: BoxProps) => {
   );
 }
 
-const NavItem = ({ id, icon, size, children, ...rest }: FlexProps) => {
+const NavItem = ({ onClose, id, icon, size, children, ...rest }: FlexProps) => {
   return (
     <Link
+      onClick={onClose}
       href={id}
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}>

@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <Box
       bg='yellow.100'
-      px={['8', '4', '8']}
+      px={[4, 4, 8]}
       py='8' mb='8'>
       <Heading
         textAlign={['center', 'left']}

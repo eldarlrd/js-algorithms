@@ -17,7 +17,7 @@ export const Footer = () => {
   return (
     <Container
       as={Stack}
-      direction={['column', 'row' ]}
+      direction={['column', 'row']}
       justify={['center', 'flex-start']}
       align={['center', 'center']}
       bg='gray.900'
@@ -41,22 +41,16 @@ export const Footer = () => {
         direction={['column', 'row']}
         align='center'
         gap='1'>
-        <Text
-          color='gray.100'>
-          Developed by
-        </Text>
-        <Tooltip
-          hasArrow
-          borderRadius='6'
-          label='Go to GitHub'>
+        <Text color='gray.100'>Developed by</Text>
+        <Tooltip hasArrow borderRadius='6' label='Go to GitHub'>
           <Link
             href='https://github.com/eldarlrd'
             color='yellow.300'
             isExternal>
             eldarlrd <FontAwesomeIcon icon={faGithub} />
-        </Link>
+          </Link>
         </Tooltip>
       </Flex>
     </Container>
   );
-}
+};

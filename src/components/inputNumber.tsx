@@ -1,7 +1,4 @@
-import {
-  Heading,
-  VStack
-} from '@chakra-ui/react';
+import { Heading, VStack } from '@chakra-ui/react';
 import { CodeCard } from './codeCard';
 // Number Functions
 import { convertCtoFObj } from '../algorithms/inputNumber/celsius-to-fahrenheit';
@@ -26,39 +23,41 @@ export const InputNumber = () => {
     gcdObj,
     convertToRomanObj,
     sumPrimesObj,
-    multiplesOf3and5Obj,
+    multiplesOf3and5Obj
   ];
 
   const numberCards: Array<JSX.Element> = [];
-  {numFuncArr.forEach(e => {
-    numberCards.push(
-      <CodeCard
-        name={e.name}
-        placeholder={e.placeholder}
-        code={e.myFunc}
-        raw={e.raw}
-      />
-    );
-  })}
+  {
+    numFuncArr.forEach(e => {
+      numberCards.push(
+        <CodeCard
+          name={e.name}
+          placeholder={e.placeholder}
+          code={e.myFunc}
+          raw={e.raw}
+        />
+      );
+    });
+  }
 
   return (
     <>
-    <Heading
-      id='input-number'
-      fontFamily='main'
-      textDecoration='3px underline'
-      textDecorationColor='yellow.400'
-      mx={[2, 4, 8]}
-      my='8'>
-      Inputs with Numeric Arguments
-    </Heading>
-    <VStack
-      w={['initial', 'fit-content']}
-      mx={[2, 4, 8]}
-      align='flex-start'
-      spacing='8'>
-      {numberCards}
-    </VStack>
+      <Heading
+        id='input-number'
+        fontFamily='main'
+        textDecoration='3px underline'
+        textDecorationColor='yellow.400'
+        mx={[2, 4, 8]}
+        my='8'>
+        Inputs with Numeric Arguments
+      </Heading>
+      <VStack
+        w={['initial', 'fit-content']}
+        mx={[2, 4, 8]}
+        align='flex-start'
+        spacing='8'>
+        {numberCards}
+      </VStack>
     </>
   );
-}
+};

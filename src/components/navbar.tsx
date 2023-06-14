@@ -63,15 +63,8 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
         aria-label='Open Menu'
         icon={<FontAwesomeIcon icon={faBars} />}
       />
-      <Flex
-        ms='4'
-        gap='2'
-        align='center'>
-        <Image
-          src={logo}
-          boxSize='6'
-          alt='Algorithm Logo'
-        />
+      <Flex ms='4' gap='2' align='center'>
+        <Image src={logo} boxSize='6' alt='Algorithm Logo' />
         <Text
           fontFamily='main'
           fontWeight='bold'
@@ -82,7 +75,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
       </Flex>
     </Flex>
   );
-}
+};
 
 const Sidebar = ({ onClose, ...rest }: BoxProps) => {
   return (
@@ -94,19 +87,9 @@ const Sidebar = ({ onClose, ...rest }: BoxProps) => {
       w={{ base: 'full', lg: '21em' }}
       h='full'
       {...rest}>
-      <Flex
-        mx='8'
-        h='20'
-        align='center'
-        justify='space-between'>
-        <Flex
-          gap='4'
-          align='center'>
-          <Image
-            src={logo}
-            boxSize='8'
-            alt='Algorithm Logo'
-          />
+      <Flex mx='8' h='20' align='center' justify='space-between'>
+        <Flex gap='4' align='center'>
+          <Image src={logo} boxSize='8' alt='Algorithm Logo' />
           <Text
             fontFamily='main'
             fontWeight='bold'
@@ -115,12 +98,9 @@ const Sidebar = ({ onClose, ...rest }: BoxProps) => {
             Find Specific
           </Text>
         </Flex>
-        <CloseButton
-          onClick={onClose}
-          display={{ base: 'flex', lg: 'none' }}
-        />
+        <CloseButton onClick={onClose} display={{ base: 'flex', lg: 'none' }} />
       </Flex>
-      {LinkItems.map((link) => (
+      {LinkItems.map(link => (
         <NavItem
           onClose={onClose}
           key={link.name}
@@ -132,7 +112,7 @@ const Sidebar = ({ onClose, ...rest }: BoxProps) => {
       ))}
     </Box>
   );
-}
+};
 
 const NavItem = ({ onClose, id, icon, size, children, ...rest }: FlexProps) => {
   return (
@@ -162,32 +142,26 @@ const NavItem = ({ onClose, id, icon, size, children, ...rest }: FlexProps) => {
       </Flex>
     </Link>
   );
-}
+};
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-    <MobileNav
-      onOpen={onOpen}
-      display={{ base: 'flex', lg: 'none' }}
-    />
-    <Drawer
-      isOpen={isOpen}
-      autoFocus={false}
-      returnFocusOnClose={false}
-      onClose={onClose}
-      onOverlayClick={onClose}
-      placement='left'
-      size='full'>
-      <DrawerContent>
-        <Sidebar onClose={onClose} />
-      </DrawerContent>
-    </Drawer>
-    <Sidebar
-      onClose={onClose}
-      hideBelow='lg'
-    />
+      <MobileNav onOpen={onOpen} display={{ base: 'flex', lg: 'none' }} />
+      <Drawer
+        isOpen={isOpen}
+        autoFocus={false}
+        returnFocusOnClose={false}
+        onClose={onClose}
+        onOverlayClick={onClose}
+        placement='left'
+        size='full'>
+        <DrawerContent>
+          <Sidebar onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
+      <Sidebar onClose={onClose} hideBelow='lg' />
     </>
   );
-}
+};

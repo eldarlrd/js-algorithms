@@ -22,8 +22,6 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    console.log(scrollPosition);
-    console.log(prevScrollPosition.current);
     scrollPosition < prevScrollPosition.current
       ? setIsScrollingUp(true)
       : setIsScrollingUp(false);

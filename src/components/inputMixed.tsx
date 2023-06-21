@@ -7,18 +7,16 @@ export const InputMixed = () => {
   const mixFuncArr = [checkCashRegisterObj];
 
   const mixedCards: Array<JSX.Element> = [];
-  {
-    mixFuncArr.forEach(e => {
-      mixedCards.push(
-        <CodeCard
-          name={e.name}
-          placeholder={e.placeholder}
-          code={e.myFunc}
-          raw={e.raw}
-        />
-      );
-    });
-  }
+  mixFuncArr.forEach(e => {
+    mixedCards.push(
+      <CodeCard
+        name={e.name}
+        placeholder={e.placeholder}
+        code={e.myFunc}
+        raw={e.raw}
+      />
+    );
+  });
 
   return (
     <>

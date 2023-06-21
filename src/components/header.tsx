@@ -5,7 +5,7 @@ import { faCode } from '@fortawesome/free-solid-svg-icons';
 
 export const Header = () => {
   return (
-    <Box bg='yellow.100' px={[4, 4, 8]} py='8' mb='8'>
+    <Box as='header' bg='yellow.100' px={[4, 4, 8]} py='8' mb='8'>
       <Heading textAlign={['center', 'left']} fontFamily='main' as='h1'>
         <FontAwesomeIcon icon={faCode} />
         <Highlight

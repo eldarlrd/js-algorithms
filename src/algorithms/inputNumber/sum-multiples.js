@@ -1,5 +1,5 @@
 export const multiplesOf3and5Obj = {
-  name: 'Sum All Multiples of 3 and 5 up to N',
+  name: 'Sum All Multiples of 3 and 5',
   placeholder: 'Number',
   myFunc(number) {
     if (number <= 0 || number % 1 !== 0)

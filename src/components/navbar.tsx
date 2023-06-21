@@ -147,7 +147,7 @@ const NavItem = ({ onClose, id, icon, size, children, ...rest }: FlexProps) => {
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <>
+    <Box as='nav'>
       <MobileNav onOpen={onOpen} display={{ base: 'flex', lg: 'none' }} />
       <Drawer
         isOpen={isOpen}
@@ -162,6 +162,6 @@ export const Navbar = () => {
         </DrawerContent>
       </Drawer>
       <Sidebar onClose={onClose} hideBelow='lg' />
-    </>
+    </Box>
   );
 };

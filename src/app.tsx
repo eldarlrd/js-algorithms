@@ -4,6 +4,7 @@ import { ChakraProvider, Box } from '@chakra-ui/react';
 import theme from './theme';
 
 import { Navbar } from './components/navbar';
+import { ScrollToTop } from './components/scrollToTop';
 import { Header } from './components/header';
 import { InputNumber } from './components/inputNumber';
 import { InputString } from './components/inputString';
@@ -14,7 +15,8 @@ export const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Navbar />
-      <Box ms={[0, 0, 0, '21em']}>
+      <ScrollToTop />
+      <Box as='main' ms={[0, 0, 0, '21em']}>
         <Header />
         <InputNumber />
         <InputString />
@@ -23,4 +25,4 @@ export const App = () => {
       </Box>
     </ChakraProvider>
   );
-}
+};

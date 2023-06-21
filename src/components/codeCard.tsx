@@ -69,16 +69,17 @@ export const CodeCard = (props: CodeProps) => {
 
   return (
     <Card
+      as='section'
       w={['fit-content', 'md', 'xl']}
       borderWidth={1}
       borderColor='gray.300'>
-      <CardHeader>
+      <CardHeader as='header'>
         <Heading fontFamily='main' size='lg' as='h3'>
           {props.name}
         </Heading>
       </CardHeader>
 
-      <CardBody fontSize={[9.4, 12.8, 16]} my='-6'>
+      <CardBody as='main' fontSize={[9.4, 12.8, 16]} my='-6'>
         <Flex direction='column' align='flex-start' gap='2'>
           <Button
             onClick={setVisible.toggle}
@@ -106,7 +107,7 @@ export const CodeCard = (props: CodeProps) => {
         </Flex>
       </CardBody>
 
-      <CardFooter>
+      <CardFooter as='footer'>
         <Flex direction='column' align='flex-start' w='full' gap='2'>
           <Flex w='full' mb='2' gap='2'>
             <Input

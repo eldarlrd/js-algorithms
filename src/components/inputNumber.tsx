@@ -6,6 +6,7 @@ import { convertFtoCObj } from '../algorithms/inputNumber/fahrenheit-to-celsius'
 import { diceRollObj } from '../algorithms/inputNumber/dice-roll';
 import { factorializeObj } from '../algorithms/inputNumber/factorialize-numbers';
 import { fibonacciObj } from '../algorithms/inputNumber/fibonacci';
+import { fiboEvenSumObj } from '../algorithms/inputNumber/evenFibonacci';
 import { fizzBuzzObj } from '../algorithms/inputNumber/fizzBuzz';
 import { gcdObj } from '../algorithms/inputNumber/greatest-common-divisor';
 import { convertToRomanObj } from '../algorithms/inputNumber/roman-numeral-converter';
@@ -19,6 +20,7 @@ export const InputNumber = () => {
     diceRollObj,
     factorializeObj,
     fibonacciObj,
+    fiboEvenSumObj,
     fizzBuzzObj,
     gcdObj,
     convertToRomanObj,
@@ -27,18 +29,16 @@ export const InputNumber = () => {
   ];
 
   const numberCards: Array<JSX.Element> = [];
-  {
-    numFuncArr.forEach(e => {
-      numberCards.push(
-        <CodeCard
-          name={e.name}
-          placeholder={e.placeholder}
-          code={e.myFunc}
-          raw={e.raw}
-        />
-      );
-    });
-  }
+  numFuncArr.forEach(e => {
+    numberCards.push(
+      <CodeCard
+        name={e.name}
+        placeholder={e.placeholder}
+        code={e.myFunc}
+        raw={e.raw}
+      />
+    );
+  });
 
   return (
     <>

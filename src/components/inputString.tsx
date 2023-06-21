@@ -4,6 +4,7 @@ import { CodeCard } from './codeCard';
 import { rot13Obj } from '../algorithms/inputString/caesar-cipher';
 import { palindromeObj } from '../algorithms/inputString/palindrome-checker';
 import { telephoneCheckObj } from '../algorithms/inputString/phone-number-validator';
+import { passwordVerifyObj } from '../algorithms/inputString/password-verifier';
 import { translatePigLatinObj } from '../algorithms/inputString/pig-latin';
 import { spinalCaseObj } from '../algorithms/inputString/spinal-tap-case';
 
@@ -12,23 +13,22 @@ export const InputString = () => {
     rot13Obj,
     palindromeObj,
     telephoneCheckObj,
+    passwordVerifyObj,
     translatePigLatinObj,
     spinalCaseObj
   ];
 
   const stringCards: Array<JSX.Element> = [];
-  {
-    strFuncArr.forEach(e => {
-      stringCards.push(
-        <CodeCard
-          name={e.name}
-          placeholder={e.placeholder}
-          code={e.myFunc}
-          raw={e.raw}
-        />
-      );
-    });
-  }
+  strFuncArr.forEach(e => {
+    stringCards.push(
+      <CodeCard
+        name={e.name}
+        placeholder={e.placeholder}
+        code={e.myFunc}
+        raw={e.raw}
+      />
+    );
+  });
 
   return (
     <>

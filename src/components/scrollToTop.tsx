@@ -14,7 +14,7 @@ export const ScrollToTop = () => {
   const handleScroll = useCallback(() => {
     prevScrollPosition.current - scrollPosition > 50
       ? setIsScrollingUp(true)
-      : prevScrollPosition.current < scrollPosition
+      : scrollPosition - prevScrollPosition.current > 50
       ? setIsScrollingUp(false)
       : null;
     setScrollPosition(window.scrollY);

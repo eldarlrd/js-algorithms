@@ -12,8 +12,13 @@ export const ScrollToTop = () => {
   const prevScrollPosition = useRef(0);
 
   const handleScroll = useCallback(() => {
-    prevScrollPosition.current = scrollPosition;
+    prevScrollPosition.current - scrollPosition > 50
+      ? setIsScrollingUp(true)
+      : prevScrollPosition.current < scrollPosition
+      ? setIsScrollingUp(false)
+      : null;
     setScrollPosition(window.scrollY);
+    prevScrollPosition.current = scrollPosition;
   }, [scrollPosition]);
 
   const instantTop = () => {
@@ -22,11 +27,8 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    scrollPosition < prevScrollPosition.current
-      ? setIsScrollingUp(true)
-      : setIsScrollingUp(false);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrollPosition]);
+  }, [window.scrollY]);
 
   useEffect(() => {
     if (scrollPosition > 250 && isScrollingUp) setVisible(true);

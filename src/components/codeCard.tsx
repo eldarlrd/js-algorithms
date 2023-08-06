@@ -10,6 +10,7 @@ import {
   Button,
   Flex,
   Collapse,
+  ScaleFade,
   Input,
   Text,
   Tooltip
@@ -44,10 +45,17 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
   const [argument, setArgument] = useState<string>();
   const [result, setResult] = useState<string>();
   const [error, setError] = useState<boolean>();
+  const [spinner, setSpinner] = useState<boolean>();
 
   const runCode = (): void => {
-    if (argument) onOpen();
-    setResult(props.code(argument?.split(',')));
+    if (argument) {
+      onOpen();
+      setSpinner(true);
+      setTimeout(() => {
+        setSpinner(false);
+      }, 200);
+      setResult(props.code(argument.split(',')));
+    }
   };
 
   const copyToClipboard = (): void => {
@@ -99,7 +107,8 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
                 style: { fontFamily: 'Ubuntu Mono' }
               }}
               language='javascript'
-              showLineNumbers={true}
+              showLineNumbers
+              showInlineLineNumbers
               style={gml}>
               {props.raw}
             </SyntaxHighlighter>
@@ -121,34 +130,43 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               }}
               bg='gray.100'
             />
-            <Tooltip hasArrow borderRadius='6' label='Run Code'>
-              <Button onClick={runCode} colorScheme='yellow'>
+            <Tooltip
+              isDisabled={spinner}
+              hasArrow
+              borderRadius='6'
+              label='Run Code'>
+              <Button
+                onClick={runCode}
+                isLoading={spinner}
+                colorScheme='yellow'>
                 <FontAwesomeIcon icon={faPlay} />
               </Button>
             </Tooltip>
           </Flex>
 
           <Collapse in={isOpen}>
-            <Tooltip
-              isDisabled={error}
-              hasArrow
-              borderRadius='6'
-              label='Copy to Clipboard'>
-              <Button
-                onClick={error ? null : copyToClipboard}
-                colorScheme={error ? 'red' : 'green'}
-                whiteSpace='normal'
-                fontFamily='main'
-                h='full'
-                py='2.5'>
-                <Text display='flex' gap='2'>
-                  <FontAwesomeIcon
-                    icon={error ? faCircleExclamation : faHandHolding}
-                  />
-                  {result?.toString().replace('ERROR:', '')}
-                </Text>
-              </Button>
-            </Tooltip>
+            <ScaleFade in={!spinner}>
+              <Tooltip
+                isDisabled={error}
+                hasArrow
+                borderRadius='6'
+                label='Copy to Clipboard'>
+                <Button
+                  onClick={error ? null : copyToClipboard}
+                  colorScheme={error ? 'red' : 'green'}
+                  whiteSpace='normal'
+                  fontFamily='main'
+                  h='full'
+                  py='2.5'>
+                  <Text display='flex' gap='2' overflowWrap='anywhere'>
+                    <FontAwesomeIcon
+                      icon={error ? faCircleExclamation : faHandHolding}
+                    />
+                    {result?.toString().replace('ERROR:', '')}
+                  </Text>
+                </Button>
+              </Tooltip>
+            </ScaleFade>
           </Collapse>
         </Flex>
       </CardFooter>

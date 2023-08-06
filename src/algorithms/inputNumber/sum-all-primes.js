@@ -5,6 +5,8 @@ export const sumPrimesObj = {
     num = +num;
     if (num <= 0 || num % 1 !== 0)
       return 'ERROR: Input must be a natural number';
+    else if (num > 1000)
+      return 'ERROR: Input value too high';
     let sum = 0;
     while (num >= 2) {
       sumPrimesObj.isPrime(num) ? sum += num : false;
@@ -34,6 +36,8 @@ const sumPrimes = num => {
   num = +num;
   if (num <= 0 || num % 1 !== 0)
     return 'ERROR: Input must be a natural number';
+  else if (num > 1000)
+    return 'ERROR: Input value too high';
   let sum = 0;
   while (num >= 2) {
     isPrime(num) ? sum += num : false;

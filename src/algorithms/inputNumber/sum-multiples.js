@@ -4,6 +4,8 @@ export const multiplesOf3and5Obj = {
   myFunc(number) {
     if (number <= 0 || number % 1 !== 0)
       return 'ERROR: Input must be a natural number';
+    else if (number > 1000000)
+      return 'ERROR: Input value too high';
     let sum = 0;
     let arr = [];
     for (let i = 1; i < number; i++) {
@@ -16,6 +18,8 @@ export const multiplesOf3and5Obj = {
 `const multiplesOf3and5 = number => {
   if (number <= 0 || number % 1 !== 0)
     return 'ERROR: Input must be a natural number';
+  else if (number > 1000000)
+    return 'ERROR: Input value too high';
   let sum = 0;
   let arr = [];
   for (let i = 1; i < number; i++) {

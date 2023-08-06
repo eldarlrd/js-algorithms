@@ -7,7 +7,7 @@ export const passwordVerifyObj = {
        '(?=.*[!@#$%&?|^*_=+-]).{8,32}$']
       .join('')
     );
-    return check.test(str.join());
+    return check.test(str.join()) ? 'True' : 'False';
   },
   raw:
 `const passwordVerify = str => {

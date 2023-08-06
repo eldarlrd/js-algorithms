@@ -6,6 +6,8 @@ export const fizzBuzzObj = {
     const arr = [];
     if (num < 1 || num % 1 !== 0)
       return 'ERROR: Input must be a natural number';
+    else if (num > 1000)
+      return 'ERROR: Input value too high';
     for (let i = 1; i <= num; i++) {
       arr.push(
         i % 15 === 0 ? ' FizzBuzz' :
@@ -20,6 +22,8 @@ export const fizzBuzzObj = {
   const arr = [];
   if (num < 1 || num % 1 !== 0)
     return 'ERROR: Input must be a natural number';
+  else if (num > 1000)
+    return 'ERROR: Input value too high';
   for (let i = 1; i <= num; i++) {
     arr.push(
       i % 15 === 0 ? ' FizzBuzz' :

@@ -9,6 +9,8 @@ export const diceRollObj = {
         rolls % 1 !== 0 ||
         sides % 1 !== 0)
       return 'ERROR: Inputs must be (number, number)';
+    else if (rolls > 1000 || sides > 1000)
+      return 'ERROR: Input values too high';
     const textArr = [];
     const arr = [];
     let total = 0;
@@ -38,6 +40,8 @@ export const diceRollObj = {
       rolls % 1 !== 0 ||
       sides % 1 !== 0)
     return 'ERROR: Inputs must be (number, number)';
+  else if (rolls > 1000 || sides > 1000)
+    return 'ERROR: Input values too high';
   const textArr = [];
   const arr = [];
   let total = 0;

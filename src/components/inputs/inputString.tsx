@@ -1,14 +1,15 @@
+import { type JSX } from 'preact/jsx-runtime';
 import { Heading, VStack } from '@chakra-ui/react';
-import { CodeCard } from './codeCard';
+import { CodeCard } from '@/components/codeCard.tsx';
 // String Functions
-import { rot13Obj } from '../algorithms/inputString/caesar-cipher';
-import { palindromeObj } from '../algorithms/inputString/palindrome-checker';
-import { telephoneCheckObj } from '../algorithms/inputString/phone-number-validator';
-import { passwordVerifyObj } from '../algorithms/inputString/password-verifier';
-import { translatePigLatinObj } from '../algorithms/inputString/pig-latin';
-import { spinalCaseObj } from '../algorithms/inputString/spinal-tap-case';
+import { rot13Obj } from '@/algorithms/inputString/caesar-cipher.js';
+import { palindromeObj } from '@/algorithms/inputString/palindrome-checker.js';
+import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
+import { passwordVerifyObj } from '@/algorithms/inputString/password-verifier.js';
+import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
+import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
 
-export const InputString = () => {
+export const InputString = (): JSX.Element => {
   const strFuncArr = [
     rot13Obj,
     palindromeObj,
@@ -18,7 +19,7 @@ export const InputString = () => {
     spinalCaseObj
   ];
 
-  const stringCards: Array<JSX.Element> = [];
+  const stringCards: JSX.Element[] = [];
   strFuncArr.forEach(e => {
     stringCards.push(
       <CodeCard

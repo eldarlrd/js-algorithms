@@ -27,37 +27,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-import { JSX } from 'preact/jsx-runtime';
+import { type JSX } from 'preact/jsx-runtime';
 import { useState, useEffect } from 'preact/hooks';
 
 interface CodeProps {
   name: string;
   placeholder: string;
-  code: Function;
+  code: (argument: string[] | undefined) => string;
   raw: string;
 }
 
-export const CodeCard = (props: CodeProps) => {
+export const CodeCard = (props: CodeProps): JSX.Element => {
   const [visible, setVisible] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
   const { value, setValue, onCopy } = useClipboard('');
-  const [argument, setArgument] = useState<String>();
-  const [result, setResult] = useState<String>();
-  const [error, setError] = useState<Boolean>();
+  const [argument, setArgument] = useState<string>();
+  const [result, setResult] = useState<string>();
+  const [error, setError] = useState<boolean>();
 
-  const runCode = () => {
+  const runCode = (): void => {
     if (argument) onOpen();
     setResult(props.code(argument?.split(',')));
   };
 
-  const copyToClipboard = () => {
+  const copyToClipboard = (): void => {
     setValue(result);
   };
 
   useEffect(() => {
     if (value === '') return;
     onCopy();
-  }, [value]);
+  }, [value, onCopy]);
 
   useEffect(() => {
     if (result) {
@@ -70,7 +70,7 @@ export const CodeCard = (props: CodeProps) => {
   return (
     <Card
       as='section'
-      w={['fit-content', 'md', 'xl']}
+      w={['21.5rem', 'md', 'xl']}
       borderWidth={1}
       borderColor='gray.300'>
       <CardHeader as='header'>
@@ -116,9 +116,9 @@ export const CodeCard = (props: CodeProps) => {
               errorBorderColor='red.300'
               value={argument}
               placeholder={props.placeholder}
-              onInput={(e: JSX.TargetedEvent<HTMLInputElement>) =>
-                setArgument((e.target as HTMLInputElement).value)
-              }
+              onInput={(e: JSX.TargetedEvent<HTMLInputElement>): void => {
+                setArgument((e.target as HTMLInputElement).value);
+              }}
               bg='gray.100'
             />
             <Tooltip hasArrow borderRadius='6' label='Run Code'>
@@ -130,7 +130,7 @@ export const CodeCard = (props: CodeProps) => {
 
           <Collapse in={isOpen}>
             <Tooltip
-              isDisabled={error ? true : false}
+              isDisabled={error}
               hasArrow
               borderRadius='6'
               label='Copy to Clipboard'>

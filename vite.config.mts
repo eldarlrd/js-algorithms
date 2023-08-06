@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [preact()],
   'resolve': {
     'alias': {
+      '@': '/src',
       'react': 'preact/compat',
       'react-dom/test-utils': 'preact/test-utils',
       'react-dom': 'preact/compat',

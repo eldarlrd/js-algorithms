@@ -1,3 +1,4 @@
+import { type JSX } from 'preact/jsx-runtime';
 import {
   Box,
   Container,
@@ -12,9 +13,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import logo from '../assets/logo.png';
+import logo from '@/assets/logo.png';
 
-export const Footer = () => {
+export const Footer = (): JSX.Element => {
   return (
     <Box as='footer'>
       <Container

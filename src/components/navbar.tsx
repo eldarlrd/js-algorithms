@@ -1,9 +1,10 @@
+import { type JSX } from 'preact/jsx-runtime';
 import {
+  type BoxProps,
+  type FlexProps,
   useDisclosure,
   Box,
-  BoxProps,
   Flex,
-  FlexProps,
   CloseButton,
   IconButton,
   Image,
@@ -21,7 +22,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import logo from '../assets/logo.png';
+import logo from '@/assets/logo.png';
 
 const LinkItems = [
   {
@@ -44,7 +45,7 @@ const LinkItems = [
   }
 ];
 
-const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
+const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
   return (
     <Flex
       ms={[0, 0, 0, 60]}
@@ -77,7 +78,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps) => {
   );
 };
 
-const Sidebar = ({ onClose, ...rest }: BoxProps) => {
+const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
   return (
     <Box
       bg='white'
@@ -114,7 +115,14 @@ const Sidebar = ({ onClose, ...rest }: BoxProps) => {
   );
 };
 
-const NavItem = ({ onClose, id, icon, size, children, ...rest }: FlexProps) => {
+const NavItem = ({
+  onClose,
+  id,
+  icon,
+  size,
+  children,
+  ...rest
+}: FlexProps): JSX.Element => {
   return (
     <Link
       onClick={onClose}
@@ -144,14 +152,13 @@ const NavItem = ({ onClose, id, icon, size, children, ...rest }: FlexProps) => {
   );
 };
 
-export const Navbar = () => {
+export const Navbar = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box as='nav'>
       <MobileNav onOpen={onOpen} display={{ base: 'flex', lg: 'none' }} />
       <Drawer
         isOpen={isOpen}
-        autoFocus={false}
         returnFocusOnClose={false}
         onClose={onClose}
         onOverlayClick={onClose}

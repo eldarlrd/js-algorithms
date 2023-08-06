@@ -1,3 +1,4 @@
+import { type JSX } from 'preact/jsx-runtime';
 import { Button } from '@chakra-ui/react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -5,7 +6,7 @@ import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 
 import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
 
-export const ScrollToTop = () => {
+export const ScrollToTop = (): JSX.Element => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -21,19 +22,21 @@ export const ScrollToTop = () => {
     prevScrollPosition.current = scrollPosition;
   }, [scrollPosition]);
 
-  const instantTop = () => {
+  const instantTop = (): void => {
     window.scrollTo({ top: 0 });
   };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [window.scrollY]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
 
   useEffect(() => {
     if (scrollPosition > 250 && isScrollingUp) setVisible(true);
     else setVisible(false);
-  }, [scrollPosition]);
+  }, [scrollPosition, isScrollingUp]);
 
   return visible ? (
     <Button
@@ -49,5 +52,7 @@ export const ScrollToTop = () => {
       zIndex='1'>
       <FontAwesomeIcon icon={faAnglesUp} size='xs' />
     </Button>
-  ) : null;
+  ) : (
+    <></>
+  );
 };

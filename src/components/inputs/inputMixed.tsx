@@ -1,12 +1,13 @@
+import { type JSX } from 'preact/jsx-runtime';
 import { Heading, VStack } from '@chakra-ui/react';
-import { CodeCard } from './codeCard';
+import { CodeCard } from '@/components/codeCard.tsx';
 // Mixed Functions
-import { checkCashRegisterObj } from '../algorithms/inputMixed/cash-register';
+import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
 
-export const InputMixed = () => {
+export const InputMixed = (): JSX.Element => {
   const mixFuncArr = [checkCashRegisterObj];
 
-  const mixedCards: Array<JSX.Element> = [];
+  const mixedCards: JSX.Element[] = [];
   mixFuncArr.forEach(e => {
     mixedCards.push(
       <CodeCard

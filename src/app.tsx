@@ -1,17 +1,18 @@
+import { type JSX } from 'preact/jsx-runtime';
+import { ChakraProvider, Box } from '@chakra-ui/react';
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu-mono/400.css';
-import { ChakraProvider, Box } from '@chakra-ui/react';
-import theme from './theme';
+import theme from '../chakra.config.mts';
 
-import { Navbar } from './components/navbar';
-import { ScrollToTop } from './components/scrollToTop';
-import { Header } from './components/header';
-import { InputNumber } from './components/inputNumber';
-import { InputString } from './components/inputString';
-import { InputMixed } from './components/inputMixed';
-import { Footer } from './components/footer';
+import { Navbar } from '@/components/navbar.tsx';
+import { ScrollToTop } from '@/components/scrollToTop.tsx';
+import { Header } from '@/components/header.tsx';
+import { InputNumber } from '@/components/inputs/inputNumber.tsx';
+import { InputString } from '@/components/inputs/inputString.tsx';
+import { InputMixed } from '@/components/inputs/inputMixed.tsx';
+import { Footer } from '@/components/footer.tsx';
 
-export const App = () => {
+export const App = (): JSX.Element => {
   return (
     <ChakraProvider theme={theme}>
       <Navbar />
@@ -26,3 +27,6 @@ export const App = () => {
     </ChakraProvider>
   );
 };
+
+// Easter Egg
+console.log('PNEGUNTB QRYRAQN RFG');

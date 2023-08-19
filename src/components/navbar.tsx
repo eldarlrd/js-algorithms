@@ -65,7 +65,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
         icon={<FontAwesomeIcon icon={faBars} />}
       />
       <Flex ms='4' gap='2' align='center'>
-        <Image src={logo} boxSize='6' alt='Algorithm Logo' />
+        <Image src={logo} align='center' fontSize='2xs' fontFamily='main' boxSize='6' alt='Logo' />
         <Text
           fontFamily='main'
           fontWeight='bold'
@@ -90,7 +90,7 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
       {...rest}>
       <Flex mx='8' h='20' align='center' justify='space-between'>
         <Flex gap='4' align='center'>
-          <Image src={logo} boxSize='8' alt='Algorithm Logo' />
+          <Image src={logo} align='center' fontSize='sm' fontFamily='main' boxSize='8' alt='Logo' />
           <Text
             fontFamily='main'
             fontWeight='bold'

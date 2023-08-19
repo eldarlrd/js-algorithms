@@ -6,11 +6,11 @@ import theme from '../chakra.config.mts';
 
 import { Navbar } from '@/components/navbar.tsx';
 import { ScrollToTop } from '@/components/scrollToTop.tsx';
-import { Header } from '@/components/header.tsx';
+import { Header } from '@/components/banners/header.tsx';
 import { InputNumber } from '@/components/inputs/inputNumber.tsx';
 import { InputString } from '@/components/inputs/inputString.tsx';
 import { InputMixed } from '@/components/inputs/inputMixed.tsx';
-import { Footer } from '@/components/footer.tsx';
+import { Footer } from '@/components/banners/footer';
 
 export const App = (): JSX.Element => {
   return (
@@ -30,3 +30,5 @@ export const App = (): JSX.Element => {
 
 // Easter Egg
 console.log('PNEGUNTB QRYRAQN RFG');
+// Source Link
+console.log('Source https://github.com/eldarlrd/js-algorithms');

@@ -35,16 +35,19 @@ export const Footer = (): JSX.Element => {
           my='2'
           p='1'
           bg='white'
+          align='center'
+          fontFamily='main'
+          fontSize='2xs'
           boxSize='12'
           borderRadius='12'
-          alt='Algorithm Logo'
+          alt='Logo by Eucalyp'
         />
         <Flex
           fontFamily='main'
           direction={['column', 'row']}
           align='center'
           gap='1'>
-          <Text color='gray.100'>Developed by</Text>
+          <Text color='gray.100'>© 2022 - 2023</Text>
           <Tooltip hasArrow borderRadius='6' label='Go to GitHub'>
             <Link
               href='https://github.com/eldarlrd'

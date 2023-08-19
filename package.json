@@ -1,16 +1,25 @@
 {
   "name": "js-algorithms",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "type": "module",
+  "keywords": [
+    "algorithms",
+    "javascript"
+  ],
+  "description": "Interactive JavaScript Algorithms",
+  "repository": "github:eldarlrd/js-algorithms",
+  "homepage": "https://eldarlrd.github.io/js-algorithms",
+  "author": "Eldar Pashazade <eldarlrd@pm.me> (https://eldarlrd.github.io)",
+  "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "pretty": "prettier 'src/**/*.{ts,tsx}' --write",
-    "lint": "eslint src/ --ext .ts,.tsx --report-unused-disable-directives",
-    "format": "yarn pretty && yarn lint --fix",
+    "preview": "vite preview",
     "deploy": "yarn build && gh-pages -m 'build: Deployment' -d dist",
-    "preview": "vite preview"
+    "lint": "eslint src/ --ext .ts,.tsx --report-unused-disable-directives",
+    "pretty": "prettier 'src/**/*.{ts,tsx}' --write",
+    "format": "yarn lint --fix && yarn pretty"
   },
   "prettier": {
     "singleQuote": true,
@@ -19,9 +28,7 @@
     "trailingComma": "none",
     "arrowParens": "avoid"
   },
-  "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/plugin-transform-react-jsx": "^7.22.5",
+  "dependencies": {
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -31,6 +38,15 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "framer-motion": "^10.15.0",
+    "preact": "^10.16.0",
+    "react": "npm:@preact/compat",
+    "react-dom": "npm:@preact/compat",
+    "react-syntax-highlighter": "^15.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/plugin-transform-react-jsx": "^7.22.5",
     "@preact/preset-vite": "^2.5.0",
     "@types/react-syntax-highlighter": "^15.5.7",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
@@ -42,12 +58,10 @@
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-no-relative-import-paths": "^1.5.2",
     "eslint-plugin-promise": "^6.1.1",
-    "framer-motion": "^10.15.0",
-    "gh-pages": "^5.0.0",
-    "preact": "^10.16.0",
+    "gh-pages": "^6.0.0",
     "prettier": "^3.0.1",
-    "react-syntax-highlighter": "^15.5.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.8"
   }

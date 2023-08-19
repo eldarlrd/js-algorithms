@@ -1,0 +1,22 @@
+{
+  "name": "JavaScript Algorithms",
+  "short_name": "Algorithms",
+  "dir": "ltr",
+  "lang": "en",
+  "categories": [
+    "education",
+    "utilities"
+  ],
+  "orientation": "natural",
+  "theme_color": "#f6e05e",
+  "background_color": "#fff",
+  "description": "Interactive JavaScript Algorithms",
+  "start_url": "https://eldarlrd.github.io/js-algorithms",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

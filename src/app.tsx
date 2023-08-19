@@ -10,7 +10,7 @@ import { Header } from '@/components/banners/header.tsx';
 import { InputNumber } from '@/components/inputs/inputNumber.tsx';
 import { InputString } from '@/components/inputs/inputString.tsx';
 import { InputMixed } from '@/components/inputs/inputMixed.tsx';
-import { Footer } from '@/components/banners/footer';
+import { Footer } from '@/components/banners/footer.tsx';
 
 export const App = (): JSX.Element => {
   return (

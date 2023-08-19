@@ -2,6 +2,7 @@ import { type JSX } from 'preact/jsx-runtime';
 import { Heading, VStack } from '@chakra-ui/react';
 import { CodeCard } from '@/components/codeCard.tsx';
 // Number Functions
+import { BMICalculatorObj } from '@/algorithms/inputNumber/bmi-calculator.js';
 import { convertCtoFObj } from '@/algorithms/inputNumber/celsius-to-fahrenheit.js';
 import { convertFtoCObj } from '@/algorithms/inputNumber/fahrenheit-to-celsius.js';
 import { diceRollObj } from '@/algorithms/inputNumber/dice-roll.js';
@@ -17,6 +18,7 @@ import { multiplesOf3and5Obj } from '@/algorithms/inputNumber/sum-multiples.js';
 
 export const InputNumber = (): JSX.Element => {
   const numFuncArr = [
+    BMICalculatorObj,
     convertCtoFObj,
     convertFtoCObj,
     diceRollObj,

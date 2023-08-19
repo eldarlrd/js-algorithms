@@ -34,6 +34,8 @@
   "plugins": ["@typescript-eslint", "no-relative-import-paths", "import", "n"],
   "rules": {
     "@typescript-eslint/no-unused-vars": 2,
+    "@typescript-eslint/unbound-method": 0,
+    "@typescript-eslint/no-unsafe-assignment": 0,
     "@typescript-eslint/explicit-function-return-type": 2,
     "@typescript-eslint/consistent-type-imports": [2, { "fixStyle": "inline-type-imports" }],
     "no-relative-import-paths/no-relative-import-paths": [2, { "rootDir": "src", "prefix": "@" }],

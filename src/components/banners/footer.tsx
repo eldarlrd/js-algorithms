@@ -20,6 +20,7 @@ export const Footer = (): JSX.Element => {
     <Box as='footer'>
       <Container
         as={Stack}
+        userSelect='none'
         direction={['column', 'row']}
         justify={['center', 'flex-start']}
         align={['center', 'center']}

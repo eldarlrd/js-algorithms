@@ -48,6 +48,7 @@ const LinkItems = [
 const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
   return (
     <Flex
+      userSelect='none'
       ms={[0, 0, 0, 60]}
       px={[4, 4, 4, 24]}
       w='full'
@@ -65,7 +66,14 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
         icon={<FontAwesomeIcon icon={faBars} />}
       />
       <Flex ms='4' gap='2' align='center'>
-        <Image src={logo} align='center' fontSize='2xs' fontFamily='main' boxSize='6' alt='Logo' />
+        <Image
+          src={logo}
+          align='center'
+          fontSize='2xs'
+          fontFamily='main'
+          boxSize='6'
+          alt='Logo'
+        />
         <Text
           fontFamily='main'
           fontWeight='bold'
@@ -83,6 +91,7 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
     <Box
       bg='white'
       pos='fixed'
+      userSelect='none'
       borderRightWidth={1}
       borderRightColor='gray.200'
       w={{ base: 'full', lg: '21em' }}
@@ -90,7 +99,14 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
       {...rest}>
       <Flex mx='8' h='20' align='center' justify='space-between'>
         <Flex gap='4' align='center'>
-          <Image src={logo} align='center' fontSize='sm' fontFamily='main' boxSize='8' alt='Logo' />
+          <Image
+            src={logo}
+            align='center'
+            fontSize='sm'
+            fontFamily='main'
+            boxSize='8'
+            alt='Logo'
+          />
           <Text
             fontFamily='main'
             fontWeight='bold'

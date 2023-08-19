@@ -7,7 +7,11 @@ import { faCode } from '@fortawesome/free-solid-svg-icons';
 export const Header = (): JSX.Element => {
   return (
     <Box as='header' bg='yellow.100' px={[4, 4, 8]} py='8' mb='8'>
-      <Heading textAlign={['center', 'left']} fontFamily='main' as='h1'>
+      <Heading
+        userSelect='none'
+        textAlign={['center', 'left']}
+        fontFamily='main'
+        as='h1'>
         <FontAwesomeIcon style={{ 'margin-right': 8 }} icon={faCode} />
         <Highlight
           query='JavaScript'

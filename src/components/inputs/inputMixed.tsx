@@ -26,6 +26,7 @@ export const InputMixed = (): JSX.Element => {
         fontFamily='main'
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
+        _selection={{ bg: 'yellow.300' }}
         mx={[2, 4, 8]}
         my='8'>
         Inputs with Mixed Arguments

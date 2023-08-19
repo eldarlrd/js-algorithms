@@ -82,7 +82,11 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
       borderWidth={1}
       borderColor='gray.300'>
       <CardHeader as='header'>
-        <Heading fontFamily='main' size='lg' as='h3'>
+        <Heading
+          fontFamily='main'
+          size='lg'
+          as='h3'
+          _selection={{ bg: 'yellow.300' }}>
           {props.name}
         </Heading>
       </CardHeader>
@@ -90,6 +94,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
       <CardBody as='main' fontSize={[9.4, 12.8, 16]} my='-6'>
         <Flex direction='column' align='flex-start' gap='2'>
           <Button
+            _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
             onClick={setVisible.toggle}
             colorScheme='yellow'
             fontFamily='main'
@@ -123,7 +128,9 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               fontFamily='main'
               focusBorderColor='yellow.300'
               errorBorderColor='red.300'
+              aria-label={argument}
               value={argument}
+              _selection={{ bg: 'yellow.300' }}
               placeholder={props.placeholder}
               onInput={(e: JSX.TargetedEvent<HTMLInputElement>): void => {
                 setArgument((e.target as HTMLInputElement).value);
@@ -136,6 +143,8 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               borderRadius='6'
               label='Run Code'>
               <Button
+                aria-label='Run Code'
+                _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
                 onClick={runCode}
                 isLoading={spinner}
                 colorScheme='yellow'>

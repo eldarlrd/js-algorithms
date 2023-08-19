@@ -51,6 +51,7 @@ export const Footer = (): JSX.Element => {
           <Text color='gray.100'>© 2022 - 2023</Text>
           <Tooltip hasArrow borderRadius='6' label='Go to GitHub'>
             <Link
+              _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
               href='https://github.com/eldarlrd'
               color='yellow.300'
               isExternal>

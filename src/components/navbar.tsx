@@ -63,6 +63,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
         onClick={onOpen}
         variant='outline'
         aria-label='Open Menu'
+        _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
         icon={<FontAwesomeIcon icon={faBars} />}
       />
       <Flex ms='4' gap='2' align='center'>
@@ -115,7 +116,11 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
             Find Specific
           </Text>
         </Flex>
-        <CloseButton onClick={onClose} display={{ base: 'flex', lg: 'none' }} />
+        <CloseButton
+          onClick={onClose}
+          display={{ base: 'flex', lg: 'none' }}
+          _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+        />
       </Flex>
       {LinkItems.map(link => (
         <NavItem
@@ -144,7 +149,7 @@ const NavItem = ({
       onClick={onClose}
       href={id}
       style={{ textDecoration: 'none' }}
-      _focus={{ boxShadow: 'none' }}>
+      _focusVisible={{ boxShadow: 'none' }}>
       <Flex
         p='4'
         mx='4'

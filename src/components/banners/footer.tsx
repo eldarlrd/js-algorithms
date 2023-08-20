@@ -54,6 +54,7 @@ export const Footer = (): JSX.Element => {
               _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
               href='https://github.com/eldarlrd'
               color='yellow.300'
+              borderRadius='6'
               isExternal>
               eldarlrd <FontAwesomeIcon icon={faGithub} />
             </Link>

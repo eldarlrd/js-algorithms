@@ -97,8 +97,9 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
             onClick={setVisible.toggle}
             colorScheme='yellow'
+            minW={[32, 36]}
             fontFamily='main'
-            fontSize={[12, 16]}>
+            fontSize={[14, 16]}>
             <Text display='flex' gap='2'>
               <FontAwesomeIcon icon={visible ? faEyeSlash : faEye} />
               {visible ? 'Hide Code' : 'Show Code'}

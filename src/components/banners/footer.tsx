@@ -1,4 +1,3 @@
-import { type JSX } from 'preact/jsx-runtime';
 import {
   Box,
   Container,
@@ -9,11 +8,11 @@ import {
   Link,
   Image
 } from '@chakra-ui/react';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { type JSX } from 'preact/jsx-runtime';
 
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.webp';
 
 export const Footer = (): JSX.Element => {
   return (
@@ -49,10 +48,10 @@ export const Footer = (): JSX.Element => {
           align='center'
           gap='1'>
           <Text color='gray.100'>© 2022 - 2023</Text>
-          <Tooltip hasArrow borderRadius='6' label='Go to GitHub'>
+          <Tooltip hasArrow borderRadius='6' label='Go to the Source'>
             <Link
               _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-              href='https://github.com/eldarlrd'
+              href='https://github.com/eldarlrd/js-algorithms'
               color='yellow.300'
               borderRadius='6'
               isExternal>

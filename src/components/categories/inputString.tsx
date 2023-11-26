@@ -1,13 +1,14 @@
-import { type JSX } from 'preact/jsx-runtime';
 import { Heading, VStack } from '@chakra-ui/react';
-import { CodeCard } from '@/components/codeCard.tsx';
+import { type JSX } from 'preact/jsx-runtime';
+
 // String Functions
 import { rot13Obj } from '@/algorithms/inputString/caesar-cipher.js';
 import { palindromeObj } from '@/algorithms/inputString/palindrome-checker.js';
-import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
 import { passwordVerifyObj } from '@/algorithms/inputString/password-verifier.js';
+import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
 import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
 import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
+import { CodeCard } from '@/components/codeCard.tsx';
 
 export const InputString = (): JSX.Element => {
   const strFuncArr = [

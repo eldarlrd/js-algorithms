@@ -15,7 +15,6 @@ import {
   Text,
   Tooltip
 } from '@chakra-ui/react';
-
 import {
   faEye,
   faEyeSlash,
@@ -24,12 +23,10 @@ import {
   faCircleExclamation
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { useState, useEffect, type StateUpdater } from 'preact/hooks';
+import { type JSX } from 'preact/jsx-runtime';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-import { type JSX } from 'preact/jsx-runtime';
-import { useState, useEffect } from 'preact/hooks';
 
 interface CodeProps {
   name: string;
@@ -39,27 +36,27 @@ interface CodeProps {
 }
 
 export const CodeCard = (props: CodeProps): JSX.Element => {
-  const [visible, setVisible] = useBoolean();
+  const [isVisible, setIsVisible] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
   const { value, setValue, onCopy } = useClipboard('');
   const [argument, setArgument] = useState<string>();
   const [result, setResult] = useState<string>();
-  const [error, setError] = useState<boolean>();
-  const [spinner, setSpinner] = useState<boolean>();
+  const [isError, setIsError] = useState<boolean>();
+  const [isSpinner, setIsSpinner] = useState<boolean>();
 
   const runCode = (): void => {
     if (argument) {
       onOpen();
-      setSpinner(true);
+      setIsSpinner(true);
       setTimeout(() => {
-        setSpinner(false);
+        setIsSpinner(false);
       }, 200);
       setResult(props.code(argument.split(',')));
     }
   };
 
   const copyToClipboard = (): void => {
-    setValue(result);
+    if (result) setValue(result as unknown as StateUpdater<string>);
   };
 
   useEffect(() => {
@@ -69,9 +66,9 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
 
   useEffect(() => {
     if (result) {
-      const errorStr = result.toString().split(' ');
-      if (errorStr[0] === 'ERROR:') setError(true);
-      else setError(false);
+      const isErrorStr = result.toString().split(' ');
+      if (isErrorStr[0] === 'ERROR:') setIsError(true);
+      else setIsError(false);
     }
   }, [result]);
 
@@ -95,18 +92,18 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
         <Flex direction='column' align='flex-start' gap='2'>
           <Button
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-            onClick={setVisible.toggle}
+            onClick={setIsVisible.toggle}
             colorScheme='yellow'
             minW={[32, 36]}
             fontFamily='main'
             fontSize={[14, 16]}>
             <Text display='flex' gap='2'>
-              <FontAwesomeIcon icon={visible ? faEyeSlash : faEye} />
-              {visible ? 'Hide Code' : 'Show Code'}
+              <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
+              {isVisible ? 'Hide Code' : 'Show Code'}
             </Text>
           </Button>
 
-          <Collapse in={visible}>
+          <Collapse in={isVisible}>
             <SyntaxHighlighter
               customStyle={{ borderRadius: 6 }}
               codeTagProps={{
@@ -139,7 +136,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               bg='gray.100'
             />
             <Tooltip
-              isDisabled={spinner}
+              isDisabled={isSpinner}
               hasArrow
               borderRadius='6'
               label='Run Code'>
@@ -147,7 +144,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
                 aria-label='Run Code'
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
                 onClick={runCode}
-                isLoading={spinner}
+                isLoading={isSpinner}
                 colorScheme='yellow'>
                 <FontAwesomeIcon icon={faPlay} />
               </Button>
@@ -155,22 +152,22 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
           </Flex>
 
           <Collapse in={isOpen}>
-            <ScaleFade in={!spinner}>
+            <ScaleFade in={!isSpinner}>
               <Tooltip
-                isDisabled={error}
+                isDisabled={isError}
                 hasArrow
                 borderRadius='6'
                 label='Copy to Clipboard'>
                 <Button
-                  onClick={error ? null : copyToClipboard}
-                  colorScheme={error ? 'red' : 'green'}
+                  onClick={isError ? null : copyToClipboard}
+                  colorScheme={isError ? 'red' : 'green'}
                   whiteSpace='normal'
                   fontFamily='main'
                   h='full'
                   py='2.5'>
                   <Text display='flex' gap='2' overflowWrap='anywhere'>
                     <FontAwesomeIcon
-                      icon={error ? faCircleExclamation : faHandHolding}
+                      icon={isError ? faCircleExclamation : faHandHolding}
                     />
                     {result?.toString().replace('ERROR:', '')}
                   </Text>

@@ -1,16 +1,17 @@
-import { type JSX } from 'preact/jsx-runtime';
 import { ChakraProvider, Box } from '@chakra-ui/react';
+import { type JSX } from 'preact/jsx-runtime';
+
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu-mono/400.css';
 import theme from '../chakra.config.mts';
 
+import { Footer } from '@/components/banners/footer.tsx';
+import { Header } from '@/components/banners/header.tsx';
+import { InputMixed } from '@/components/categories/inputMixed.tsx';
+import { InputNumber } from '@/components/categories/inputNumber.tsx';
+import { InputString } from '@/components/categories/inputString.tsx';
 import { Navbar } from '@/components/navbar.tsx';
 import { ScrollToTop } from '@/components/scrollToTop.tsx';
-import { Header } from '@/components/banners/header.tsx';
-import { InputNumber } from '@/components/inputs/inputNumber.tsx';
-import { InputString } from '@/components/inputs/inputString.tsx';
-import { InputMixed } from '@/components/inputs/inputMixed.tsx';
-import { Footer } from '@/components/banners/footer.tsx';
 
 export const App = (): JSX.Element => {
   return (
@@ -30,5 +31,3 @@ export const App = (): JSX.Element => {
 
 // Easter Egg
 console.log('PNEGUNTB QRYRAQN RFG');
-// Source Link
-console.log('Source https://github.com/eldarlrd/js-algorithms');

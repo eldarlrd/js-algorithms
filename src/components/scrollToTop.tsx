@@ -1,23 +1,21 @@
-import { type JSX } from 'preact/jsx-runtime';
 import { Button } from '@chakra-ui/react';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
+import { type JSX } from 'preact/jsx-runtime';
 
 export const ScrollToTop = (): JSX.Element => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [isScrollingUp, setIsScrollingUp] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const prevScrollPosition = useRef(0);
+  const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const [isScrollingUp, setIsScrollingUp] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const prevScrollPosition = useRef<number>(0);
 
   const handleScroll = useCallback(() => {
     prevScrollPosition.current - scrollPosition > 50
       ? setIsScrollingUp(true)
       : scrollPosition - prevScrollPosition.current > 50
-      ? setIsScrollingUp(false)
-      : null;
+        ? setIsScrollingUp(false)
+        : null;
     setScrollPosition(window.scrollY);
     prevScrollPosition.current = scrollPosition;
   }, [scrollPosition]);
@@ -34,11 +32,11 @@ export const ScrollToTop = (): JSX.Element => {
   }, [handleScroll]);
 
   useEffect(() => {
-    if (scrollPosition > 250 && isScrollingUp) setVisible(true);
-    else setVisible(false);
+    if (scrollPosition > 250 && isScrollingUp) setIsVisible(true);
+    else setIsVisible(false);
   }, [scrollPosition, isScrollingUp]);
 
-  return visible ? (
+  return isVisible ? (
     <Button
       onClick={instantTop}
       colorScheme='yellow'

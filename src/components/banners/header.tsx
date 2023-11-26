@@ -1,8 +1,7 @@
-import { type JSX } from 'preact/jsx-runtime';
 import { Box, Heading, Highlight } from '@chakra-ui/react';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { type JSX } from 'preact/jsx-runtime';
 
 export const Header = (): JSX.Element => {
   return (

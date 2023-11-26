@@ -27,5 +27,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite.config.mts", "chakra.config.mts"],
+  "include": ["src", "*.config.mts", "__{tests,mocks,snapshots}__"]
 }

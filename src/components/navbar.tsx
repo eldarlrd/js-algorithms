@@ -1,4 +1,3 @@
-import { type JSX } from 'preact/jsx-runtime';
 import {
   type BoxProps,
   type FlexProps,
@@ -13,7 +12,6 @@ import {
   DrawerContent,
   Text
 } from '@chakra-ui/react';
-
 import {
   faBars,
   faInfinity,
@@ -21,10 +19,12 @@ import {
   faBlender
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect } from 'preact/hooks';
+import { type JSX } from 'preact/jsx-runtime';
 
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.webp';
 
-const LinkItems = [
+const LINK_ITEMS = [
   {
     name: 'Inputs with Numeric Arguments',
     id: '#input-number',
@@ -122,7 +122,7 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
         />
       </Flex>
-      {LinkItems.map(link => (
+      {LINK_ITEMS.map(link => (
         <NavItem
           onClose={onClose}
           key={link.name}
@@ -175,6 +175,14 @@ const NavItem = ({
 
 export const Navbar = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // Close mobile drawer on resize
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 992) onClose();
+    });
+  }, [onClose]);
+
   return (
     <Box as='nav'>
       <MobileNav onOpen={onOpen} display={{ base: 'flex', lg: 'none' }} />

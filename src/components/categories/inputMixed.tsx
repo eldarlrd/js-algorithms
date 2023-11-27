@@ -1,9 +1,9 @@
 import { Heading, VStack } from '@chakra-ui/react';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
-import { CodeCard } from '@/components/codeCard.tsx';
 // Mixed Functions
+import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
+import { CodeCard } from '@/components/ui/codeCard.tsx';
 
 export const InputMixed = (): JSX.Element => {
   const mixFuncArr = [checkCashRegisterObj];

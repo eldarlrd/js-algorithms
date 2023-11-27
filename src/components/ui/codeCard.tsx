@@ -133,6 +133,11 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               onInput={(e: JSX.TargetedEvent<HTMLInputElement>): void => {
                 setArgument((e.target as HTMLInputElement).value);
               }}
+              onKeyDown={(
+                e: JSX.TargetedKeyboardEvent<HTMLInputElement>
+              ): void => {
+                if (e.key === 'Enter') runCode();
+              }}
               bg='gray.100'
             />
             <Tooltip

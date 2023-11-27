@@ -11,11 +11,15 @@ import { convertFtoCObj } from '@/algorithms/inputNumber/fahrenheit-to-celsius.j
 import { fibonacciObj } from '@/algorithms/inputNumber/fibonacci.js';
 import { fizzBuzzObj } from '@/algorithms/inputNumber/fizz-buzz.js';
 import { gcdObj } from '@/algorithms/inputNumber/greatest-common-divisor.js';
+import { largestPalindromeProductObj } from '@/algorithms/inputNumber/largest-palindrome.js';
+import { largestPrimeFactorObj } from '@/algorithms/inputNumber/largest-prime-factor.js';
 import { isLeapYearObj } from '@/algorithms/inputNumber/leap-year.js';
+import { mergeSortObj } from '@/algorithms/inputNumber/merge-sort.js';
 import { convertToRomanObj } from '@/algorithms/inputNumber/roman-numeral-converter.js';
+import { smallestMultObj } from '@/algorithms/inputNumber/smallest-multiple.js';
 import { sumPrimesObj } from '@/algorithms/inputNumber/sum-all-primes.js';
 import { multiplesOf3and5Obj } from '@/algorithms/inputNumber/sum-multiples.js';
-import { CodeCard } from '@/components/codeCard.tsx';
+import { CodeCard } from '@/components/ui/codeCard.tsx';
 
 export const InputNumber = (): JSX.Element => {
   const numFuncArr = [
@@ -31,6 +35,10 @@ export const InputNumber = (): JSX.Element => {
     isLeapYearObj,
     convertToRomanObj,
     sumPrimesObj,
+    largestPrimeFactorObj,
+    largestPalindromeProductObj,
+    smallestMultObj,
+    mergeSortObj,
     multiplesOf3and5Obj
   ];
 

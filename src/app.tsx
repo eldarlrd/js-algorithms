@@ -10,8 +10,8 @@ import { Header } from '@/components/banners/header.tsx';
 import { InputMixed } from '@/components/categories/inputMixed.tsx';
 import { InputNumber } from '@/components/categories/inputNumber.tsx';
 import { InputString } from '@/components/categories/inputString.tsx';
-import { Navbar } from '@/components/navbar.tsx';
-import { ScrollToTop } from '@/components/scrollToTop.tsx';
+import { Navbar } from '@/components/ui/navbar.tsx';
+import { ScrollToTop } from '@/components/ui/scrollToTop.tsx';
 
 export const App = (): JSX.Element => {
   return (

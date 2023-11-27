@@ -8,7 +8,7 @@ import { passwordVerifyObj } from '@/algorithms/inputString/password-verifier.js
 import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
 import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
 import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
-import { CodeCard } from '@/components/codeCard.tsx';
+import { CodeCard } from '@/components/ui/codeCard.tsx';
 
 export const InputString = (): JSX.Element => {
   const strFuncArr = [

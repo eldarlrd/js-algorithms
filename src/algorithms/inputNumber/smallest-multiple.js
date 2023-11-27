@@ -3,7 +3,7 @@ export const smallestMultObj = {
   placeholder: 'Number',
   myFunc(n) {
     n = +n;
-    if (n < 0 || n % 1 !== 0)
+    if (n < 1 || n % 1 !== 0)
       return 'ERROR: Input must be a natural number';
     else if (n > 100)
       return 'ERROR: Input value too high';
@@ -46,7 +46,7 @@ const lcm = (a, b) => {
 
 const smallestMult = n => {
   n = +n;
-  if (n < 0 || n % 1 !== 0)
+  if (n < 1 || n % 1 !== 0)
     return 'ERROR: Input must be a natural number';
   else if (n > 100)
     return 'ERROR: Input value too high';

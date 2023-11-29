@@ -13,7 +13,8 @@ import {
   ScaleFade,
   Input,
   Text,
-  Tooltip
+  Tooltip,
+  Link
 } from '@chakra-ui/react';
 import {
   faEye,
@@ -43,6 +44,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
   const [result, setResult] = useState<string>();
   const [isError, setIsError] = useState<boolean>();
   const [isSpinner, setIsSpinner] = useState<boolean>();
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const runCode = (): void => {
     if (argument) {
@@ -75,6 +77,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
   return (
     <Card
       as='section'
+      id={props.name.toLowerCase().replaceAll(' ', '-')}
       w={['21.5rem', 'md', 'xl']}
       borderWidth={1}
       borderColor='gray.300'>
@@ -83,8 +86,23 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
           fontFamily='main'
           size='lg'
           as='h3'
+          onMouseEnter={() => {
+            setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+          }}
           _selection={{ bg: 'yellow.300' }}>
-          {props.name}
+          {`${props.name} `}
+          {isHovered && (
+            <Link
+              _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+              href={`#${props.name.toLowerCase().replaceAll(' ', '-')}`}
+              color='yellow.400'
+              borderRadius='6'>
+              #
+            </Link>
+          )}
         </Heading>
       </CardHeader>
 

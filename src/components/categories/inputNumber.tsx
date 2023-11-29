@@ -3,6 +3,7 @@ import { type JSX } from 'preact/jsx-runtime';
 
 // Number Functions
 import { BMICalculatorObj } from '@/algorithms/inputNumber/bmi-calculator.js';
+import { bubbleSortObj } from '@/algorithms/inputNumber/bubble-sort.js';
 import { convertCtoFObj } from '@/algorithms/inputNumber/celsius-to-fahrenheit.js';
 import { diceRollObj } from '@/algorithms/inputNumber/dice-roll.js';
 import { fiboEvenSumObj } from '@/algorithms/inputNumber/even-fibonacci.js';
@@ -38,6 +39,7 @@ export const InputNumber = (): JSX.Element => {
     largestPrimeFactorObj,
     largestPalindromeProductObj,
     smallestMultObj,
+    bubbleSortObj,
     mergeSortObj,
     multiplesOf3and5Obj
   ];

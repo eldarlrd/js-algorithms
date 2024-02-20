@@ -6,6 +6,7 @@
 > - **[Preact](https://preactjs.com)**
 > - **[TypeScript](https://typescriptlang.org)**
 > - **[Syntax Highlighter](https://react-syntax-highlighter.github.io/react-syntax-highlighter)**
+> - **[Intersection Observer](https://react-intersection-observer.vercel.app)**
 > - **[Chakra UI](https://chakra-ui.com)**
 > - **[Fontsource](https://fontsource.org)**
 > - **[Font Awesome](https://fontawesome.com)**

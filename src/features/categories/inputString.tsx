@@ -1,16 +1,21 @@
 import { Heading, VStack } from '@chakra-ui/react';
+import { useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
+import { useInView } from 'react-intersection-observer';
 
-// String Functions
 import { rot13Obj } from '@/algorithms/inputString/caesar-cipher.js';
 import { palindromeObj } from '@/algorithms/inputString/palindrome-checker.js';
 import { passwordVerifyObj } from '@/algorithms/inputString/password-verifier.js';
 import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
 import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
 import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
-import { CodeCard } from '@/components/ui/codeCard.tsx';
+import { type ViewCategoryOrder } from '@/app.tsx';
+import { CodeCard } from '@/components/cards/codeCard.tsx';
+import { LINK_ITEMS } from '@/features/navbar.tsx';
 
-export const InputString = (): JSX.Element => {
+export const InputString = ({
+  setInViewCategory
+}: ViewCategoryOrder): JSX.Element => {
   const strFuncArr = [
     rot13Obj,
     palindromeObj,
@@ -32,8 +37,17 @@ export const InputString = (): JSX.Element => {
     );
   });
 
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView && setInViewCategory) {
+      window.history.replaceState({}, '', LINK_ITEMS[1].id);
+      setInViewCategory(1);
+    }
+  }, [inView, setInViewCategory]);
+
   return (
-    <>
+    <div ref={ref}>
       <Heading
         id='input-string'
         fontFamily='main'
@@ -51,6 +65,6 @@ export const InputString = (): JSX.Element => {
         spacing='8'>
         {stringCards}
       </VStack>
-    </>
+    </div>
   );
 };

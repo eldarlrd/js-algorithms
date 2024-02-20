@@ -12,7 +12,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type JSX } from 'preact/jsx-runtime';
 
-import logo from '@/assets/logo.webp';
+import logo from '@/assets/images/logo.webp';
 
 export const Footer = (): JSX.Element => {
   return (
@@ -47,7 +47,7 @@ export const Footer = (): JSX.Element => {
           direction={['column', 'row']}
           align='center'
           gap='1'>
-          <Text color='gray.100'>© 2022 - 2023</Text>
+          <Text color='gray.100'>© 2022 - 2024</Text>
           <Tooltip hasArrow borderRadius='6' label='Go to the Source'>
             <Link
               _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}

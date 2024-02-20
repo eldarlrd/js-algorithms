@@ -2,7 +2,6 @@
   "root": true,
   "env": {
     "browser": true,
-    "commonjs": true,
     "es2022": true
   },
   "extends": [
@@ -36,7 +35,7 @@
   "rules": {
     "@typescript-eslint/no-unused-vars": 2,
     "@typescript-eslint/unbound-method": 0,
-    "@typescript-eslint/no-unsafe-assignment": 0,
+    "@typescript-eslint/explicit-member-accessibility": 2,
     "@typescript-eslint/explicit-function-return-type": 2,
     "@typescript-eslint/consistent-type-imports": [2, { "fixStyle": "inline-type-imports" }],
     "no-relative-import-paths/no-relative-import-paths": [2, { "rootDir": "src", "prefix": "@" }],
@@ -49,6 +48,7 @@
     "jest/no-deprecated-functions": 0,
     "n/no-missing-import": 0,
     "no-unused-vars": 0,
+    "prefer-const": 2,
     "eqeqeq": 2
   }
 }

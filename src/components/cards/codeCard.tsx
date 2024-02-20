@@ -21,7 +21,9 @@ import {
   faEyeSlash,
   faPlay,
   faHandHolding,
-  faCircleExclamation
+  faCircleExclamation,
+  faClipboard,
+  faClipboardCheck
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, type StateUpdater } from 'preact/hooks';
@@ -39,12 +41,15 @@ interface CodeProps {
 export const CodeCard = (props: CodeProps): JSX.Element => {
   const [isVisible, setIsVisible] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
-  const { value, setValue, onCopy } = useClipboard('');
+  const [result, setResult] = useState('');
   const [argument, setArgument] = useState<string>();
-  const [result, setResult] = useState<string>();
   const [isError, setIsError] = useState<boolean>();
   const [isSpinner, setIsSpinner] = useState<boolean>();
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [clipboardIcon, setClipboardIcon] = useState(faClipboard);
+
+  const codeClipboard = useClipboard(props.raw);
+  const resultClipboard = useClipboard(result);
 
   const runCode = (): void => {
     if (argument) {
@@ -57,14 +62,15 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
     }
   };
 
-  const copyToClipboard = (): void => {
-    if (result) setValue(result as unknown as StateUpdater<string>);
+  const copyCodeToClipboard = (text: string): void => {
+    codeClipboard.setValue(text as unknown as StateUpdater<string>);
+    codeClipboard.onCopy();
   };
 
-  useEffect(() => {
-    if (value === '') return;
-    onCopy();
-  }, [value, onCopy]);
+  const copyResultToClipboard = (text: string): void => {
+    resultClipboard.setValue(text as unknown as StateUpdater<string>);
+    resultClipboard.onCopy();
+  };
 
   useEffect(() => {
     if (result) {
@@ -98,6 +104,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
             <Link
               _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
               href={`#${props.name.toLowerCase().replaceAll(' ', '-')}`}
+              _selection={{ bg: 'gray.900' }}
               color='yellow.400'
               borderRadius='6'>
               #
@@ -108,18 +115,39 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
 
       <CardBody as='main' fontSize={[9.4, 12.8, 16]} my='-6'>
         <Flex direction='column' align='flex-start' gap='2'>
-          <Button
-            _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-            onClick={setIsVisible.toggle}
-            colorScheme='yellow'
-            minW={[32, 36]}
-            fontFamily='main'
-            fontSize={[14, 16]}>
-            <Text display='flex' gap='2'>
-              <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
-              {isVisible ? 'Hide Code' : 'Show Code'}
-            </Text>
-          </Button>
+          <Flex gap='2'>
+            <Button
+              _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+              onClick={setIsVisible.toggle}
+              colorScheme='yellow'
+              minW={[32, 36]}
+              fontFamily='main'
+              fontSize={[14, 16]}>
+              <Text display='flex' gap='2'>
+                <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
+                {isVisible ? 'Hide Code' : 'Show Code'}
+              </Text>
+            </Button>
+            <Tooltip
+              hasArrow
+              placement='right'
+              borderRadius='6'
+              label='Copy Code'>
+              <Button
+                aria-label='Run Code'
+                _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+                onClick={(): void => {
+                  copyCodeToClipboard(props.raw);
+                  setClipboardIcon(faClipboardCheck);
+                  setTimeout(() => {
+                    setClipboardIcon(faClipboard);
+                  }, 1000);
+                }}
+                colorScheme='yellow'>
+                <FontAwesomeIcon icon={clipboardIcon} />
+              </Button>
+            </Tooltip>
+          </Flex>
 
           <Collapse in={isVisible}>
             <SyntaxHighlighter
@@ -182,7 +210,9 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
                 borderRadius='6'
                 label='Copy to Clipboard'>
                 <Button
-                  onClick={isError ? null : copyToClipboard}
+                  onClick={(): void => {
+                    if (!isError && result) copyResultToClipboard(result);
+                  }}
                   colorScheme={isError ? 'red' : 'green'}
                   whiteSpace='normal'
                   fontFamily='main'
@@ -192,7 +222,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
                     <FontAwesomeIcon
                       icon={isError ? faCircleExclamation : faHandHolding}
                     />
-                    {result?.toString().replace('ERROR:', '')}
+                    {result.toString().replace('ERROR:', '')}
                   </Text>
                 </Button>
               </Tooltip>

@@ -1,7 +1,8 @@
 import { Heading, VStack } from '@chakra-ui/react';
+import { useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
+import { useInView } from 'react-intersection-observer';
 
-// Number Functions
 import { BMICalculatorObj } from '@/algorithms/inputNumber/bmi-calculator.js';
 import { bubbleSortObj } from '@/algorithms/inputNumber/bubble-sort.js';
 import { convertCtoFObj } from '@/algorithms/inputNumber/celsius-to-fahrenheit.js';
@@ -20,9 +21,13 @@ import { convertToRomanObj } from '@/algorithms/inputNumber/roman-numeral-conver
 import { smallestMultObj } from '@/algorithms/inputNumber/smallest-multiple.js';
 import { sumPrimesObj } from '@/algorithms/inputNumber/sum-all-primes.js';
 import { multiplesOf3and5Obj } from '@/algorithms/inputNumber/sum-multiples.js';
-import { CodeCard } from '@/components/ui/codeCard.tsx';
+import { type ViewCategoryOrder } from '@/app.tsx';
+import { CodeCard } from '@/components/cards/codeCard.tsx';
+import { LINK_ITEMS } from '@/features/navbar.tsx';
 
-export const InputNumber = (): JSX.Element => {
+export const InputNumber = ({
+  setInViewCategory
+}: ViewCategoryOrder): JSX.Element => {
   const numFuncArr = [
     BMICalculatorObj,
     convertCtoFObj,
@@ -56,8 +61,17 @@ export const InputNumber = (): JSX.Element => {
     );
   });
 
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView && setInViewCategory) {
+      window.history.replaceState({}, '', LINK_ITEMS[0].id);
+      setInViewCategory(0);
+    }
+  }, [inView, setInViewCategory]);
+
   return (
-    <>
+    <div ref={ref}>
       <Heading
         id='input-number'
         fontFamily='main'
@@ -75,6 +89,6 @@ export const InputNumber = (): JSX.Element => {
         spacing='8'>
         {numberCards}
       </VStack>
-    </>
+    </div>
   );
 };

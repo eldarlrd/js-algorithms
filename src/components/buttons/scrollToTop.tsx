@@ -4,11 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-export const ScrollToTop = (): JSX.Element => {
-  const [scrollPosition, setScrollPosition] = useState<number>(0);
-  const [isScrollingUp, setIsScrollingUp] = useState<boolean>(false);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-  const prevScrollPosition = useRef<number>(0);
+import { type ViewCategoryOrder } from '@/app.tsx';
+
+export const ScrollToTop = ({
+  setInViewCategory
+}: ViewCategoryOrder): JSX.Element => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isScrollingUp, setIsScrollingUp] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const prevScrollPosition = useRef(0);
 
   const handleScroll = useCallback(() => {
     prevScrollPosition.current - scrollPosition > 50
@@ -38,7 +42,10 @@ export const ScrollToTop = (): JSX.Element => {
 
   return isVisible ? (
     <Button
-      onClick={instantTop}
+      onClick={(): void => {
+        if (setInViewCategory) setInViewCategory(0);
+        instantTop();
+      }}
       colorScheme='yellow'
       pos='fixed'
       size={['sm', 'sm', 'md']}

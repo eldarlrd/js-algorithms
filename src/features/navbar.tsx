@@ -13,6 +13,10 @@ import {
   Text
 } from '@chakra-ui/react';
 import {
+  type IconProp,
+  type SizeProp
+} from '@fortawesome/fontawesome-svg-core';
+import {
   faBars,
   faInfinity,
   faComment,
@@ -22,7 +26,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import logo from '@/assets/logo.webp';
+import { type ViewCategoryOrder } from '@/app.tsx';
+import logo from '@/assets/images/logo.webp';
 
 const LINK_ITEMS = [
   {
@@ -60,7 +65,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
       align='center'
       {...rest}>
       <IconButton
-        onClick={onOpen}
+        onClick={onOpen as () => void}
         variant='outline'
         aria-label='Open Menu'
         _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
@@ -87,7 +92,12 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
   );
 };
 
-const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
+const Sidebar = ({
+  inViewCategory,
+  setInViewCategory,
+  onClose,
+  ...rest
+}: ViewCategoryOrder & BoxProps): JSX.Element => {
   return (
     <Box
       bg='white'
@@ -117,14 +127,17 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
           </Text>
         </Flex>
         <CloseButton
-          onClick={onClose}
+          onClick={onClose as () => void}
           display={{ base: 'flex', lg: 'none' }}
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
         />
       </Flex>
-      {LINK_ITEMS.map(link => (
+      {LINK_ITEMS.map((link, index) => (
         <NavItem
-          onClose={onClose}
+          inViewCategory={inViewCategory}
+          setInViewCategory={setInViewCategory}
+          onClose={onClose as () => void}
+          index={index}
           key={link.name}
           icon={link.icon}
           size={link.size}
@@ -137,22 +150,29 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
 };
 
 const NavItem = ({
+  inViewCategory,
+  setInViewCategory,
   onClose,
+  index,
   id,
   icon,
   size,
   children,
   ...rest
-}: FlexProps): JSX.Element => {
+}: ViewCategoryOrder & FlexProps): JSX.Element => {
   return (
     <Link
-      onClick={onClose}
-      href={id}
+      onClick={(): void => {
+        if (setInViewCategory) setInViewCategory(index as number);
+        (onClose as () => void)();
+      }}
+      href={id as string}
       style={{ textDecoration: 'none' }}
       _focusVisible={{ boxShadow: 'none' }}>
       <Flex
         p='4'
         mx='4'
+        mb='1'
         gap='2'
         align='center'
         borderRadius='6'
@@ -161,19 +181,23 @@ const NavItem = ({
         fontFamily='main'
         fontWeight='bold'
         color='gray.900'
+        bgColor={inViewCategory === index ? 'yellow.400' : 'transparent'}
         _hover={{
           bg: 'yellow.400',
           color: 'gray.900'
         }}
         {...rest}>
-        <FontAwesomeIcon icon={icon} size={size} />
+        <FontAwesomeIcon icon={icon as IconProp} size={size as SizeProp} />
         {children}
       </Flex>
     </Link>
   );
 };
 
-export const Navbar = (): JSX.Element => {
+const Navbar = ({
+  inViewCategory,
+  setInViewCategory
+}: ViewCategoryOrder): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Close mobile drawer on resize
@@ -194,10 +218,21 @@ export const Navbar = (): JSX.Element => {
         placement='left'
         size='full'>
         <DrawerContent>
-          <Sidebar onClose={onClose} />
+          <Sidebar
+            inViewCategory={inViewCategory}
+            setInViewCategory={setInViewCategory}
+            onClose={onClose}
+          />
         </DrawerContent>
       </Drawer>
-      <Sidebar onClose={onClose} hideBelow='lg' />
+      <Sidebar
+        inViewCategory={inViewCategory}
+        setInViewCategory={setInViewCategory}
+        onClose={onClose}
+        hideBelow='lg'
+      />
     </Box>
   );
 };
+
+export { LINK_ITEMS, Navbar };

@@ -15,11 +15,9 @@ export const ScrollToTop = ({
   const prevScrollPosition = useRef(0);
 
   const handleScroll = useCallback(() => {
-    prevScrollPosition.current - scrollPosition > 50
-      ? setIsScrollingUp(true)
-      : scrollPosition - prevScrollPosition.current > 50
-        ? setIsScrollingUp(false)
-        : null;
+    prevScrollPosition.current - scrollPosition > 50 ? setIsScrollingUp(true)
+    : scrollPosition - prevScrollPosition.current > 50 ? setIsScrollingUp(false)
+    : null;
     setScrollPosition(window.scrollY);
     prevScrollPosition.current = scrollPosition;
   }, [scrollPosition]);
@@ -40,24 +38,22 @@ export const ScrollToTop = ({
     else setIsVisible(false);
   }, [scrollPosition, isScrollingUp]);
 
-  return isVisible ? (
-    <Button
-      onClick={(): void => {
-        if (setInViewCategory) setInViewCategory(0);
-        instantTop();
-      }}
-      colorScheme='yellow'
-      pos='fixed'
-      size={['sm', 'sm', 'md']}
-      bottom='8'
-      right='8'
-      borderWidth={1}
-      borderRadius='100%'
-      borderColor='gray.900'
-      zIndex='1'>
-      <FontAwesomeIcon icon={faAnglesUp} size='xs' />
-    </Button>
-  ) : (
-    <></>
-  );
+  return isVisible ?
+      <Button
+        onClick={(): void => {
+          if (setInViewCategory) setInViewCategory(0);
+          instantTop();
+        }}
+        colorScheme='yellow'
+        pos='fixed'
+        size={['sm', 'sm', 'md']}
+        bottom='8'
+        right='8'
+        borderWidth={1}
+        borderRadius='100%'
+        borderColor='gray.900'
+        zIndex='1'>
+        <FontAwesomeIcon icon={faAnglesUp} size='xs' />
+      </Button>
+    : <></>;
 };

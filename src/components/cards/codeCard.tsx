@@ -123,7 +123,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               minW={[32, 36]}
               fontFamily='main'
               fontSize={[14, 16]}>
-              <Text display='flex' gap='2'>
+              <Text display='flex' alignItems='center' gap='2'>
                 <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
                 {isVisible ? 'Hide Code' : 'Show Code'}
               </Text>

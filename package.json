@@ -1,7 +1,7 @@
 {
   "name": "js-algorithms",
   "private": true,
-  "version": "1.3.0",
+  "version": "1.3.1",
   "type": "module",
   "keywords": [
     "algorithms",
@@ -26,7 +26,8 @@
     "jsxSingleQuote": true,
     "bracketSameLine": true,
     "trailingComma": "none",
-    "arrowParens": "avoid"
+    "arrowParens": "avoid",
+    "experimentalTernaries": true
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",

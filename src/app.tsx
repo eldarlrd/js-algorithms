@@ -21,6 +21,7 @@ interface ViewCategoryOrder {
 
 const App = (): JSX.Element => {
   const [inViewCategory, setInViewCategory] = useState(0);
+  // const [isMouse] = useMediaQuery('(pointer: fine)');
 
   return (
     <ChakraProvider theme={theme}>

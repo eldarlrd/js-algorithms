@@ -1,18 +1,24 @@
 import { Button } from '@chakra-ui/react';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
+import {
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+  useContext
+} from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { type ViewCategoryOrder } from '@/app.tsx';
+import { UIContext } from '@/app.tsx';
 
-export const ScrollToTop = ({
-  setInViewCategory
-}: ViewCategoryOrder): JSX.Element => {
+export const ScrollToTop = (): JSX.Element => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const prevScrollPosition = useRef(0);
+
+  const { setInViewCategory } = useContext(UIContext);
 
   const handleScroll = useCallback(() => {
     prevScrollPosition.current - scrollPosition > 50 ? setIsScrollingUp(true)
@@ -41,7 +47,7 @@ export const ScrollToTop = ({
   return isVisible ?
       <Button
         onClick={(): void => {
-          if (setInViewCategory) setInViewCategory(0);
+          setInViewCategory(0);
           instantTop();
         }}
         colorScheme='yellow'

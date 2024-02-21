@@ -1,5 +1,5 @@
 import { Heading, VStack } from '@chakra-ui/react';
-import { useEffect } from 'preact/hooks';
+import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
 
@@ -9,13 +9,11 @@ import { passwordVerifyObj } from '@/algorithms/inputString/password-verifier.js
 import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
 import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
 import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
-import { type ViewCategoryOrder } from '@/app.tsx';
+import { UIContext } from '@/app.tsx';
 import { CodeCard } from '@/components/cards/codeCard.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
-export const InputString = ({
-  setInViewCategory
-}: ViewCategoryOrder): JSX.Element => {
+export const InputString = (): JSX.Element => {
   const strFuncArr = [
     rot13Obj,
     palindromeObj,
@@ -38,9 +36,10 @@ export const InputString = ({
   });
 
   const { ref, inView } = useInView();
+  const { setInViewCategory } = useContext(UIContext);
 
   useEffect(() => {
-    if (inView && setInViewCategory) {
+    if (inView) {
       window.history.replaceState({}, '', LINK_ITEMS[1].id);
       setInViewCategory(1);
     }

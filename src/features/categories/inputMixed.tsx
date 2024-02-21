@@ -1,16 +1,14 @@
 import { Heading, VStack } from '@chakra-ui/react';
-import { useEffect } from 'preact/hooks';
+import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
 
 import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
-import { type ViewCategoryOrder } from '@/app.tsx';
+import { UIContext } from '@/app.tsx';
 import { CodeCard } from '@/components/cards/codeCard.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
-export const InputMixed = ({
-  setInViewCategory
-}: ViewCategoryOrder): JSX.Element => {
+export const InputMixed = (): JSX.Element => {
   const mixFuncArr = [checkCashRegisterObj];
 
   const mixedCards: JSX.Element[] = [];
@@ -30,8 +28,10 @@ export const InputMixed = ({
     threshold: 1
   });
 
+  const { setInViewCategory } = useContext(UIContext);
+
   useEffect(() => {
-    if (inView && setInViewCategory) {
+    if (inView) {
       window.history.replaceState({}, '', LINK_ITEMS[2].id);
       setInViewCategory(2);
     }

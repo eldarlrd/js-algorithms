@@ -23,10 +23,10 @@ import {
   faBlender
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect } from 'preact/hooks';
+import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { type ViewCategoryOrder } from '@/app.tsx';
+import { UIContext } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
 
 const LINK_ITEMS = [
@@ -92,12 +92,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
   );
 };
 
-const Sidebar = ({
-  inViewCategory,
-  setInViewCategory,
-  onClose,
-  ...rest
-}: ViewCategoryOrder & BoxProps): JSX.Element => {
+const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
   return (
     <Box
       bg='white'
@@ -134,8 +129,6 @@ const Sidebar = ({
       </Flex>
       {LINK_ITEMS.map((link, index) => (
         <NavItem
-          inViewCategory={inViewCategory}
-          setInViewCategory={setInViewCategory}
           onClose={onClose as () => void}
           index={index}
           key={link.name}
@@ -150,8 +143,6 @@ const Sidebar = ({
 };
 
 const NavItem = ({
-  inViewCategory,
-  setInViewCategory,
   onClose,
   index,
   id,
@@ -159,11 +150,13 @@ const NavItem = ({
   size,
   children,
   ...rest
-}: ViewCategoryOrder & FlexProps): JSX.Element => {
+}: FlexProps): JSX.Element => {
+  const { inViewCategory, setInViewCategory } = useContext(UIContext);
+
   return (
     <Link
       onClick={(): void => {
-        if (setInViewCategory) setInViewCategory(index as number);
+        setInViewCategory(index as number);
         (onClose as () => void)();
       }}
       href={id as string}
@@ -194,10 +187,7 @@ const NavItem = ({
   );
 };
 
-const Navbar = ({
-  inViewCategory,
-  setInViewCategory
-}: ViewCategoryOrder): JSX.Element => {
+const Navbar = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Close mobile drawer on resize
@@ -218,19 +208,10 @@ const Navbar = ({
         placement='left'
         size='full'>
         <DrawerContent>
-          <Sidebar
-            inViewCategory={inViewCategory}
-            setInViewCategory={setInViewCategory}
-            onClose={onClose}
-          />
+          <Sidebar onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <Sidebar
-        inViewCategory={inViewCategory}
-        setInViewCategory={setInViewCategory}
-        onClose={onClose}
-        hideBelow='lg'
-      />
+      <Sidebar onClose={onClose} hideBelow='lg' />
     </Box>
   );
 };

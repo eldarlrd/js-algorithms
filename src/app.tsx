@@ -1,4 +1,5 @@
-import { ChakraProvider, Box } from '@chakra-ui/react';
+import { ChakraProvider, Box, useMediaQuery } from '@chakra-ui/react';
+import { createContext } from 'preact';
 import { type StateUpdater, useState } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
@@ -14,34 +15,49 @@ import { InputNumber } from '@/features/categories/inputNumber.tsx';
 import { InputString } from '@/features/categories/inputString.tsx';
 import { Navbar } from '@/features/navbar.tsx';
 
-interface ViewCategoryOrder {
-  inViewCategory?: number;
-  setInViewCategory?: StateUpdater<number>;
-}
+const UIContext = createContext({
+  inViewCategory: 0,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setInViewCategory: (() => {}) as StateUpdater<number>,
+  isMouse: false
+});
 
-const App = (): JSX.Element => {
-  const [inViewCategory, setInViewCategory] = useState(0);
-  // const [isMouse] = useMediaQuery('(pointer: fine)');
-
+const AppContent = (): JSX.Element => {
   return (
-    <ChakraProvider theme={theme}>
-      <Navbar
-        inViewCategory={inViewCategory}
-        setInViewCategory={setInViewCategory}
-      />
-      <ScrollToTop setInViewCategory={setInViewCategory} />
+    <>
+      <Navbar />
+      <ScrollToTop />
       <Box as='main' ms={[0, 0, 0, '21em']}>
         <Header />
-        <InputNumber setInViewCategory={setInViewCategory} />
-        <InputString setInViewCategory={setInViewCategory} />
-        <InputMixed setInViewCategory={setInViewCategory} />
+        <InputNumber />
+        <InputString />
+        <InputMixed />
         <Footer />
       </Box>
-    </ChakraProvider>
+    </>
   );
 };
 
-export { type ViewCategoryOrder, App };
+const App = (): JSX.Element => {
+  const [inViewCategory, setInViewCategory] = useState(0);
+  const [isMouse] = useMediaQuery('(pointer: fine)');
+
+  const contextValue = {
+    inViewCategory,
+    setInViewCategory,
+    isMouse
+  };
+
+  return (
+    <UIContext.Provider value={contextValue}>
+      <ChakraProvider theme={theme}>
+        <AppContent />
+      </ChakraProvider>
+    </UIContext.Provider>
+  );
+};
+
+export { UIContext, App };
 
 // Easter Egg
 console.log('PNEGUNTB QRYRAQN RFG');

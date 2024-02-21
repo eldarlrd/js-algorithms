@@ -1,5 +1,5 @@
 import { Heading, VStack } from '@chakra-ui/react';
-import { useEffect } from 'preact/hooks';
+import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
 
@@ -21,13 +21,11 @@ import { convertToRomanObj } from '@/algorithms/inputNumber/roman-numeral-conver
 import { smallestMultObj } from '@/algorithms/inputNumber/smallest-multiple.js';
 import { sumPrimesObj } from '@/algorithms/inputNumber/sum-all-primes.js';
 import { multiplesOf3and5Obj } from '@/algorithms/inputNumber/sum-multiples.js';
-import { type ViewCategoryOrder } from '@/app.tsx';
+import { UIContext } from '@/app.tsx';
 import { CodeCard } from '@/components/cards/codeCard.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
-export const InputNumber = ({
-  setInViewCategory
-}: ViewCategoryOrder): JSX.Element => {
+export const InputNumber = (): JSX.Element => {
   const numFuncArr = [
     BMICalculatorObj,
     convertCtoFObj,
@@ -62,9 +60,10 @@ export const InputNumber = ({
   });
 
   const { ref, inView } = useInView();
+  const { setInViewCategory } = useContext(UIContext);
 
   useEffect(() => {
-    if (inView && setInViewCategory) {
+    if (inView) {
       window.history.replaceState({}, '', LINK_ITEMS[0].id);
       setInViewCategory(0);
     }

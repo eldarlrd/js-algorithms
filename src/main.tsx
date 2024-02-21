@@ -22,4 +22,5 @@ import { render } from 'preact';
 
 import { App } from '@/app.tsx';
 
-render(<App />, document.body);
+const root = document.getElementById('root');
+if (root) render(<App />, root);

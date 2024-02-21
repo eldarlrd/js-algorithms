@@ -78,7 +78,7 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
           fontSize='2xs'
           fontFamily='main'
           boxSize='6'
-          alt='Logo'
+          alt='Programming icon by Eucalyp'
         />
         <Text
           fontFamily='main'
@@ -111,7 +111,7 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
             fontSize='sm'
             fontFamily='main'
             boxSize='8'
-            alt='Logo'
+            alt='Programming icon by Eucalyp'
           />
           <Text
             fontFamily='main'

@@ -8,13 +8,13 @@ export const Header = (): JSX.Element => {
     <Heading
       as='header'
       bg='yellow.100'
-      px={[4, 4, 8]}
+      px={{ base: 4, md: 8 }}
       py='8'
       mb='8'
       userSelect='none'
       textAlign={['center', 'left']}
       fontFamily='main'>
-      <FontAwesomeIcon style={{ 'margin-right': 8 }} icon={faCode} />
+      <FontAwesomeIcon icon={faCode} />{' '}
       <Highlight
         query='JavaScript'
         styles={{

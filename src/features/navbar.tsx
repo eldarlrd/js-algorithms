@@ -26,7 +26,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { UIContext } from '@/app.tsx';
+import { UiContext } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
 
 const LINK_ITEMS = [
@@ -151,7 +151,7 @@ const NavItem = ({
   children,
   ...rest
 }: FlexProps): JSX.Element => {
-  const { inViewCategory, setInViewCategory } = useContext(UIContext);
+  const { inViewCategory, setInViewCategory } = useContext(UiContext);
 
   return (
     <Link

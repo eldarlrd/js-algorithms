@@ -10,7 +10,7 @@ import {
 } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { UIContext } from '@/app.tsx';
+import { UiContext } from '@/app.tsx';
 
 export const ScrollToTop = (): JSX.Element => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -18,7 +18,7 @@ export const ScrollToTop = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
   const prevScrollPosition = useRef(0);
 
-  const { setInViewCategory } = useContext(UIContext);
+  const { setInViewCategory } = useContext(UiContext);
 
   const handleScroll = useCallback(() => {
     prevScrollPosition.current - scrollPosition > 50 ? setIsScrollingUp(true)

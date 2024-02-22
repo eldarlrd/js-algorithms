@@ -128,11 +128,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
                 {isVisible ? 'Hide Code' : 'Show Code'}
               </Text>
             </Button>
-            <Tooltip
-              hasArrow
-              placement='right'
-              borderRadius='6'
-              label='Copy Code'>
+            <Tooltip placement='right' borderRadius='6' label='Copy Code'>
               <Button
                 aria-label='Run Code'
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
@@ -186,11 +182,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               }}
               bg='gray.100'
             />
-            <Tooltip
-              isDisabled={isSpinner}
-              hasArrow
-              borderRadius='6'
-              label='Run Code'>
+            <Tooltip isDisabled={isSpinner} borderRadius='6' label='Run Code'>
               <Button
                 aria-label='Run Code'
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
@@ -206,7 +198,6 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
             <ScaleFade in={!isSpinner}>
               <Tooltip
                 isDisabled={isError}
-                hasArrow
                 borderRadius='6'
                 label='Copy to Clipboard'>
                 <Button

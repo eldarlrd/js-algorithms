@@ -1,4 +1,4 @@
-import { ChakraProvider, Box, useMediaQuery } from '@chakra-ui/react';
+import { Box, useMediaQuery, ChakraProvider } from '@chakra-ui/react';
 import { createContext } from 'preact';
 import { type StateUpdater, useState } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
@@ -15,11 +15,11 @@ import { InputNumber } from '@/features/categories/inputNumber.tsx';
 import { InputString } from '@/features/categories/inputString.tsx';
 import { Navbar } from '@/features/navbar.tsx';
 
-const UIContext = createContext({
+const UiContext = createContext({
   inViewCategory: 0,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setInViewCategory: (() => {}) as StateUpdater<number>,
-  isMouse: false
+  isMousePointer: false
 });
 
 const AppContent = (): JSX.Element => {
@@ -27,7 +27,7 @@ const AppContent = (): JSX.Element => {
     <>
       <Navbar />
       <ScrollToTop />
-      <Box as='main' ms={[0, 0, 0, '21em']}>
+      <Box as='main' ms={{ lg: '21em' }}>
         <Header />
         <InputNumber />
         <InputString />
@@ -40,24 +40,24 @@ const AppContent = (): JSX.Element => {
 
 const App = (): JSX.Element => {
   const [inViewCategory, setInViewCategory] = useState(0);
-  const [isMouse] = useMediaQuery('(pointer: fine)');
+  const [isMousePointer] = useMediaQuery('(pointer: fine)');
 
   const contextValue = {
     inViewCategory,
     setInViewCategory,
-    isMouse
+    isMousePointer
   };
 
   return (
-    <UIContext.Provider value={contextValue}>
+    <UiContext.Provider value={contextValue}>
       <ChakraProvider theme={theme}>
         <AppContent />
       </ChakraProvider>
-    </UIContext.Provider>
+    </UiContext.Provider>
   );
 };
 
-export { UIContext, App };
+export { UiContext, App };
 
 // Easter Egg
 console.log('PNEGUNTB QRYRAQN RFG');

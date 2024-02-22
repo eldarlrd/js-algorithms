@@ -1,4 +1,4 @@
-import { Stack, Image, Flex, Tooltip, Link } from '@chakra-ui/react';
+import { Stack, Image, Text, Tooltip, Link } from '@chakra-ui/react';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type JSX } from 'preact/jsx-runtime';
@@ -11,7 +11,6 @@ export const Footer = (): JSX.Element => {
       as='footer'
       userSelect='none'
       direction={['column', 'row']}
-      justify={['center', 'flex-start']}
       align='center'
       bg='gray.900'
       maxW='full'
@@ -25,20 +24,13 @@ export const Footer = (): JSX.Element => {
         my='2'
         p='1'
         bg='white'
-        fontFamily='main'
-        fontSize='2xs'
         boxSize='12'
         borderRadius='12'
         alt='Programming icon by Eucalyp'
       />
-      <Flex
-        fontFamily='main'
-        direction={['column', 'row']}
-        color='gray.100'
-        align='center'
-        gap='1'>
-        © 2022 - 2024
-        <Tooltip hasArrow borderRadius='6' label='Go to the Source'>
+      <Text fontFamily='main' color='gray.100'>
+        © 2022 - 2024{' '}
+        <Tooltip borderRadius='6' label='Go to the Source'>
           <Link
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
             href='https://github.com/eldarlrd/js-algorithms'
@@ -48,7 +40,7 @@ export const Footer = (): JSX.Element => {
             eldarlrd <FontAwesomeIcon icon={faGithub} />
           </Link>
         </Tooltip>
-      </Flex>
+      </Text>
     </Stack>
   );
 };

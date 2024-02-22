@@ -4,7 +4,7 @@ import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
 
 import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
-import { UIContext } from '@/app.tsx';
+import { UiContext } from '@/app.tsx';
 import { CodeCard } from '@/components/cards/codeCard.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
@@ -28,7 +28,7 @@ export const InputMixed = (): JSX.Element => {
     threshold: 1
   });
 
-  const { setInViewCategory } = useContext(UIContext);
+  const { setInViewCategory } = useContext(UiContext);
 
   useEffect(() => {
     if (inView) {

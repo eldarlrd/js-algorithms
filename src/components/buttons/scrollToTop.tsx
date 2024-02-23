@@ -10,14 +10,14 @@ import {
 } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { UiContext } from '@/app.tsx';
+import { InViewCategory } from '@/app.tsx';
 
 export const ScrollToTop = (): JSX.Element => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const prevScrollPosition = useRef(0);
-  const { setInViewCategory } = useContext(UiContext);
+  const { setInViewCategory } = useContext(InViewCategory);
 
   const handleScroll = useCallback(() => {
     const scrollPosDiff = prevScrollPosition.current - scrollPosition;
@@ -57,7 +57,7 @@ export const ScrollToTop = (): JSX.Element => {
         right='8'
         borderWidth={1}
         borderRadius='100%'
-        borderColor='gray.600'
+        borderColor='gray.700'
         zIndex='1'>
         <FontAwesomeIcon icon={faAnglesUp} size='xs' />
       </Button>

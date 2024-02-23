@@ -9,7 +9,7 @@ import { passwordVerifyObj } from '@/algorithms/inputString/password-verifier.js
 import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
 import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
 import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
-import { UiContext } from '@/app.tsx';
+import { InViewCategory } from '@/app.tsx';
 import { CodeView } from '@/components/cards/codeView.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
@@ -36,7 +36,7 @@ export const InputString = (): JSX.Element => {
   });
 
   const { ref, inView } = useInView();
-  const { setInViewCategory } = useContext(UiContext);
+  const { setInViewCategory } = useContext(InViewCategory);
 
   useEffect(() => {
     if (inView) {
@@ -49,7 +49,7 @@ export const InputString = (): JSX.Element => {
     <main ref={ref}>
       <Heading
         id='input-string'
-        fontFamily='Ubuntu'
+        fontFamily='main'
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
         _selection={{ bg: 'yellow.300' }}

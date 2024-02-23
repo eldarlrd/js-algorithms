@@ -101,7 +101,7 @@ export const CodeView = (props: CodeProps): JSX.Element => {
     <Card w={['21.5rem', 'md', 'xl']} borderWidth={1} borderColor='gray.200'>
       <CardHeader
         as='h3'
-        fontFamily='Ubuntu'
+        fontFamily='main'
         fontWeight='bold'
         fontSize={{ base: '2xl', md: '3xl' }}
         _selection={{ bg: 'yellow.300' }}
@@ -115,6 +115,7 @@ export const CodeView = (props: CodeProps): JSX.Element => {
         {isHovered && (
           <Link
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+            _selection={{ bg: 'gray.900' }}
             href={kebabCaseName}
             color='yellow.400'
             borderRadius='6'>
@@ -134,15 +135,15 @@ export const CodeView = (props: CodeProps): JSX.Element => {
               verticalAlign='middle'
               whiteSpace='pre-wrap'
               colorScheme='yellow'
-              fontFamily='Ubuntu'
+              fontFamily='main'
               me='2'>
-              <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />{' '}
-              {isVisible ? 'Hide' : 'Show'} Code
+              <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
+              {isVisible ? ' Hide' : ' Show'} Code
             </Button>
 
             <Tooltip
               placement='right'
-              fontFamily='Ubuntu'
+              fontFamily='main'
               borderRadius='6'
               label='Copy Code'>
               <Button
@@ -183,14 +184,14 @@ export const CodeView = (props: CodeProps): JSX.Element => {
               onInput={handleInput}
               onKeyDown={handleKey}
               aria-label={argument}
-              fontFamily='Ubuntu'
+              fontFamily='main'
               value={argument}
               bg='gray.100'
             />
 
             <Tooltip
               isDisabled={isSpinner}
-              fontFamily='Ubuntu'
+              fontFamily='main'
               label='Run Code'
               borderRadius='6'>
               <Button
@@ -209,21 +210,21 @@ export const CodeView = (props: CodeProps): JSX.Element => {
               <Tooltip
                 label='Copy to Clipboard'
                 isDisabled={isError}
-                fontFamily='Ubuntu'
+                fontFamily='main'
                 borderRadius='6'>
                 <Button
                   colorScheme={isError ? 'red' : 'green'}
                   onClick={handleCopyResult}
                   overflowWrap='anywhere'
+                  verticalAlign='middle'
                   whiteSpace='pre-wrap'
-                  fontFamily='Ubuntu'
+                  fontFamily='main'
                   py='2.5'
                   h='full'>
                   <FontAwesomeIcon
                     icon={isError ? faCircleExclamation : faHandHolding}
                   />
-                  {'  '}
-                  {result.toString().replace('ERROR:', '')}
+                  {`  ${result.toString().replace('ERROR:', '')}`}
                 </Button>
               </Tooltip>
             </ScaleFade>

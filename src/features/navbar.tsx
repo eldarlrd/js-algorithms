@@ -26,7 +26,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { UiContext } from '@/app.tsx';
+import { InViewCategory } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
 
 const LINK_ITEMS = [
@@ -76,12 +76,12 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
           src={logo}
           align='center'
           fontSize='2xs'
-          fontFamily='Ubuntu'
+          fontFamily='main'
           boxSize='6'
           alt='Programming icon by Eucalyp'
         />
         <Text
-          fontFamily='Ubuntu'
+          fontFamily='main'
           fontWeight='bold'
           cursor='default'
           color='gray.900'>
@@ -109,12 +109,12 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
             src={logo}
             align='center'
             fontSize='sm'
-            fontFamily='Ubuntu'
+            fontFamily='main'
             boxSize='8'
             alt='Programming icon by Eucalyp'
           />
           <Text
-            fontFamily='Ubuntu'
+            fontFamily='main'
             fontWeight='bold'
             cursor='default'
             color='gray.900'>
@@ -151,7 +151,7 @@ const NavItem = ({
   children,
   ...rest
 }: FlexProps): JSX.Element => {
-  const { inViewCategory, setInViewCategory } = useContext(UiContext);
+  const { inViewCategory, setInViewCategory } = useContext(InViewCategory);
 
   return (
     <Link
@@ -171,7 +171,7 @@ const NavItem = ({
         borderRadius='6'
         role='group'
         cursor='pointer'
-        fontFamily='Ubuntu'
+        fontFamily='main'
         fontWeight='bold'
         color='gray.900'
         bgColor={inViewCategory === index ? 'yellow.400' : 'transparent'}

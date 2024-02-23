@@ -1,10 +1,11 @@
-import { Box, useMediaQuery, ChakraProvider } from '@chakra-ui/react';
+import { Box, ChakraProvider } from '@chakra-ui/react';
 import { createContext } from 'preact';
 import { type StateUpdater, useState } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import '@fontsource/ubuntu/400.css';
-import '@fontsource/ubuntu-mono/400.css';
+import '@fontsource/ubuntu';
+import '@fontsource/ubuntu-mono';
+import theme from '../chakra.config.mts';
 
 import background from '@/assets/images/background.webp';
 import { Footer } from '@/components/banners/footer.tsx';
@@ -15,11 +16,10 @@ import { InputNumber } from '@/features/categories/inputNumber.tsx';
 import { InputString } from '@/features/categories/inputString.tsx';
 import { Navbar } from '@/features/navbar.tsx';
 
-const UiContext = createContext({
+const InViewCategory = createContext({
   inViewCategory: 0,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setInViewCategory: (() => {}) as StateUpdater<number>,
-  isMousePointer: false
+  setInViewCategory: (() => {}) as StateUpdater<number>
 });
 
 const AppContent = (): JSX.Element => {
@@ -44,24 +44,22 @@ const AppContent = (): JSX.Element => {
 
 const App = (): JSX.Element => {
   const [inViewCategory, setInViewCategory] = useState(0);
-  const [isMousePointer] = useMediaQuery('(pointer: fine)');
 
   const contextValue = {
     inViewCategory,
-    setInViewCategory,
-    isMousePointer
+    setInViewCategory
   };
 
   return (
-    <UiContext.Provider value={contextValue}>
-      <ChakraProvider>
+    <InViewCategory.Provider value={contextValue}>
+      <ChakraProvider theme={theme}>
         <AppContent />
       </ChakraProvider>
-    </UiContext.Provider>
+    </InViewCategory.Provider>
   );
 };
 
-export { UiContext, App };
+export { InViewCategory, App };
 
 // Easter Egg
 console.log('PNEGUNTB QRYRAQN RFG');

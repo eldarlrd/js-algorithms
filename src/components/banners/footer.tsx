@@ -27,9 +27,9 @@ export const Footer = (): JSX.Element => (
       borderRadius='12'
       alt='Programming icon by Eucalyp'
     />
-    <Text fontFamily='Ubuntu' color='gray.100'>
+    <Text fontFamily='main' color='gray.100'>
       © 2022 - 2024{' '}
-      <Tooltip fontFamily='Ubuntu' borderRadius='6' label='Go to the Source'>
+      <Tooltip fontFamily='main' borderRadius='6' label='Go to the Source'>
         <Link
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
           href='https://github.com/eldarlrd/js-algorithms'

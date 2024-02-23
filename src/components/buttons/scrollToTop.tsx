@@ -57,7 +57,7 @@ export const ScrollToTop = (): JSX.Element => {
         right='8'
         borderWidth={1}
         borderRadius='100%'
-        borderColor='gray.900'
+        borderColor='gray.600'
         zIndex='1'>
         <FontAwesomeIcon icon={faAnglesUp} size='xs' />
       </Button>

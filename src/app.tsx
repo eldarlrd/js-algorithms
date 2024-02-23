@@ -6,6 +6,7 @@ import { type JSX } from 'preact/jsx-runtime';
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu-mono/400.css';
 
+import background from '@/assets/images/background.webp';
 import { Footer } from '@/components/banners/footer.tsx';
 import { Header } from '@/components/banners/header.tsx';
 import { ScrollToTop } from '@/components/buttons/scrollToTop.tsx';
@@ -25,7 +26,11 @@ const AppContent = (): JSX.Element => {
   return (
     <>
       <Navbar />
-      <Box as='aside' ms={{ lg: '21em' }}>
+      <Box
+        as='aside'
+        bgRepeat='repeat'
+        bgImage={background}
+        ms={{ lg: '21em' }}>
         <Header />
         <InputNumber />
         <InputString />

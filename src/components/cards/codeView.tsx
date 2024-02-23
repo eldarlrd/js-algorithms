@@ -98,7 +98,7 @@ export const CodeView = (props: CodeProps): JSX.Element => {
   }, [result]);
 
   return (
-    <Card w={['21.5rem', 'md', 'xl']} borderWidth={1} borderColor='gray.300'>
+    <Card w={['21.5rem', 'md', 'xl']} borderWidth={1} borderColor='gray.200'>
       <CardHeader
         as='h3'
         fontFamily='Ubuntu'

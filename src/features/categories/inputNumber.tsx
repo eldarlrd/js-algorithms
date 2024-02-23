@@ -1,4 +1,4 @@
-import { Heading, VStack } from '@chakra-ui/react';
+import { Box, Heading, VStack } from '@chakra-ui/react';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
@@ -59,8 +59,8 @@ export const InputNumber = (): JSX.Element => {
     );
   });
 
-  const { ref, inView } = useInView();
   const { setInViewCategory } = useContext(UiContext);
+  const { ref, inView } = useInView();
 
   useEffect(() => {
     if (inView) {
@@ -70,25 +70,25 @@ export const InputNumber = (): JSX.Element => {
   }, [inView, setInViewCategory]);
 
   return (
-    <main ref={ref}>
+    <Box as='main' ref={ref}>
       <Heading
         id='input-number'
         fontFamily='Ubuntu'
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
         _selection={{ bg: 'yellow.300' }}
-        mx={[2, 4, 8]}
+        mx={{ base: 4, md: 8 }}
         my='8'>
         Inputs with Numeric Arguments
       </Heading>
       <VStack
         as='section'
+        align='flex-start'
         w={['initial', 'fit-content']}
         mx={[2, 4, 8]}
-        align='flex-start'
         spacing='8'>
         {numberCards}
       </VStack>
-    </main>
+    </Box>
   );
 };

@@ -6,8 +6,10 @@ import { type JSX } from 'preact/jsx-runtime';
 export const Header = (): JSX.Element => (
   <Heading
     as='header'
-    userSelect='none'
     bg='yellow.100'
+    userSelect='none'
+    borderBottomWidth={1}
+    borderColor='gray.200'
     px={{ base: 4, md: 8 }}
     py='8'
     mb='8'

@@ -7,13 +7,14 @@ import {
   CardBody,
   CardFooter,
   Link,
-  Flex,
   Button,
-  Text,
   Tooltip,
   Collapse,
   ScaleFade,
-  Input
+  Input,
+  VStack,
+  HStack,
+  Box
 } from '@chakra-ui/react';
 import {
   faEye,
@@ -100,7 +101,7 @@ export const CodeView = (props: CodeProps): JSX.Element => {
     <Card w={['21.5rem', 'md', 'xl']} borderWidth={1} borderColor='gray.300'>
       <CardHeader
         as='h3'
-        fontFamily='main'
+        fontFamily='Ubuntu'
         fontWeight='bold'
         fontSize={{ base: '2xl', md: '3xl' }}
         _selection={{ bg: 'yellow.300' }}
@@ -123,98 +124,111 @@ export const CodeView = (props: CodeProps): JSX.Element => {
       </CardHeader>
 
       <CardBody fontSize={[9.4, 12.8, 16]} my='-6'>
-        <Flex direction='column' align='flex-start' gap='2'>
-          <Flex gap='2'>
+        <VStack align='flex-start' gap='2'>
+          <Box>
             <Button
               _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+              fontSize={{ base: 14, md: 16 }}
+              minW={{ base: 32, md: 36 }}
               onClick={setIsVisible}
+              verticalAlign='middle'
+              whiteSpace='pre-wrap'
               colorScheme='yellow'
-              minW={[32, 36]}
-              fontFamily='main'
-              fontSize={[14, 16]}>
-              <Text display='flex' align='center' gap='2'>
-                <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
-                {isVisible ? 'Hide Code' : 'Show Code'}
-              </Text>
+              fontFamily='Ubuntu'
+              me='2'>
+              <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />{' '}
+              {isVisible ? 'Hide' : 'Show'} Code
             </Button>
-            <Tooltip placement='right' borderRadius='6' label='Copy Code'>
+
+            <Tooltip
+              placement='right'
+              fontFamily='Ubuntu'
+              borderRadius='6'
+              label='Copy Code'>
               <Button
-                aria-label='Run Code'
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+                fontSize={{ base: 14, md: 16 }}
                 onClick={handleCopyCode}
+                aria-label='Copy Code'
                 colorScheme='yellow'>
                 <FontAwesomeIcon icon={clipboardIcon} />
               </Button>
             </Tooltip>
-          </Flex>
+          </Box>
 
           <Collapse in={isVisible}>
             <SyntaxHighlighter
-              customStyle={{ borderRadius: 6 }}
-              codeTagProps={{
-                style: { fontFamily: 'Ubuntu Mono' }
-              }}
-              language='javascript'
+              style={gml}
               showLineNumbers
               showInlineLineNumbers
-              style={gml}>
+              language='javascript'
+              customStyle={{ borderRadius: 6 }}
+              codeTagProps={{
+                style: { fontFamily: 'Ubuntu Mono, monospace' }
+              }}>
               {props.raw}
             </SyntaxHighlighter>
           </Collapse>
-        </Flex>
+        </VStack>
       </CardBody>
 
-      <CardFooter as='footer'>
-        <Flex direction='column' align='flex-start' w='full' gap='2'>
-          <Flex w='full' mb='2' gap='2'>
+      <CardFooter>
+        <VStack align='flex-start' w='full' gap='2'>
+          <HStack w='full' mb='2' gap='2'>
             <Input
-              fontFamily='main'
-              focusBorderColor='yellow.300'
-              errorBorderColor='red.300'
-              aria-label={argument}
-              value={argument}
               _selection={{ bg: 'yellow.300' }}
               placeholder={props.placeholder}
+              focusBorderColor='yellow.300'
+              errorBorderColor='red.300'
               onInput={handleInput}
               onKeyDown={handleKey}
+              aria-label={argument}
+              fontFamily='Ubuntu'
+              value={argument}
               bg='gray.100'
             />
-            <Tooltip isDisabled={isSpinner} borderRadius='6' label='Run Code'>
+
+            <Tooltip
+              isDisabled={isSpinner}
+              fontFamily='Ubuntu'
+              label='Run Code'
+              borderRadius='6'>
               <Button
-                aria-label='Run Code'
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-                onClick={runCode}
+                aria-label='Run Code'
                 isLoading={isSpinner}
-                colorScheme='yellow'>
+                colorScheme='yellow'
+                onClick={runCode}>
                 <FontAwesomeIcon icon={faPlay} />
               </Button>
             </Tooltip>
-          </Flex>
+          </HStack>
 
           <Collapse in={isOpen}>
             <ScaleFade in={!isSpinner}>
               <Tooltip
+                label='Copy to Clipboard'
                 isDisabled={isError}
-                borderRadius='6'
-                label='Copy to Clipboard'>
+                fontFamily='Ubuntu'
+                borderRadius='6'>
                 <Button
-                  onClick={handleCopyResult}
                   colorScheme={isError ? 'red' : 'green'}
-                  whiteSpace='normal'
-                  fontFamily='main'
-                  h='full'
-                  py='2.5'>
-                  <Text display='flex' gap='2' overflowWrap='anywhere'>
-                    <FontAwesomeIcon
-                      icon={isError ? faCircleExclamation : faHandHolding}
-                    />
-                    {result.toString().replace('ERROR:', '')}
-                  </Text>
+                  onClick={handleCopyResult}
+                  overflowWrap='anywhere'
+                  whiteSpace='pre-wrap'
+                  fontFamily='Ubuntu'
+                  py='2.5'
+                  h='full'>
+                  <FontAwesomeIcon
+                    icon={isError ? faCircleExclamation : faHandHolding}
+                  />
+                  {'  '}
+                  {result.toString().replace('ERROR:', '')}
                 </Button>
               </Tooltip>
             </ScaleFade>
           </Collapse>
-        </Flex>
+        </VStack>
       </CardFooter>
     </Card>
   );

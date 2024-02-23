@@ -41,7 +41,7 @@ export const InputMixed = (): JSX.Element => {
     <main ref={ref}>
       <Heading
         id='input-mixed'
-        fontFamily='main'
+        fontFamily='Ubuntu'
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
         _selection={{ bg: 'yellow.300' }}

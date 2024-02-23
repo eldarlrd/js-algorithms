@@ -5,7 +5,6 @@ import { type JSX } from 'preact/jsx-runtime';
 
 import '@fontsource/ubuntu/400.css';
 import '@fontsource/ubuntu-mono/400.css';
-import theme from '../chakra.config.mts';
 
 import { Footer } from '@/components/banners/footer.tsx';
 import { Header } from '@/components/banners/header.tsx';
@@ -50,7 +49,7 @@ const App = (): JSX.Element => {
 
   return (
     <UiContext.Provider value={contextValue}>
-      <ChakraProvider theme={theme}>
+      <ChakraProvider>
         <AppContent />
       </ChakraProvider>
     </UiContext.Provider>

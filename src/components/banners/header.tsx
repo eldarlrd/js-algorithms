@@ -12,7 +12,7 @@ export const Header = (): JSX.Element => (
     py='8'
     mb='8'
     textAlign={['center', 'start']}
-    fontFamily='main'>
+    fontFamily='Ubuntu'>
     <FontAwesomeIcon icon={faCode} />{' '}
     <Highlight
       query='JS'

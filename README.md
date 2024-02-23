@@ -12,7 +12,7 @@
 > - **[Font Awesome](https://fontawesome.com)**
 > - **[Vite](https://vitejs.dev)**
 >
-> and is an interface for interactive algorithms.
+> and is an interface for interactive code.
 
 ## Install
 ```sh

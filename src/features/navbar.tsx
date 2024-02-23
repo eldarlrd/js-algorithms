@@ -76,12 +76,12 @@ const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
           src={logo}
           align='center'
           fontSize='2xs'
-          fontFamily='main'
+          fontFamily='Ubuntu'
           boxSize='6'
           alt='Programming icon by Eucalyp'
         />
         <Text
-          fontFamily='main'
+          fontFamily='Ubuntu'
           fontWeight='bold'
           cursor='default'
           color='gray.900'>
@@ -109,12 +109,12 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
             src={logo}
             align='center'
             fontSize='sm'
-            fontFamily='main'
+            fontFamily='Ubuntu'
             boxSize='8'
             alt='Programming icon by Eucalyp'
           />
           <Text
-            fontFamily='main'
+            fontFamily='Ubuntu'
             fontWeight='bold'
             cursor='default'
             color='gray.900'>
@@ -171,7 +171,7 @@ const NavItem = ({
         borderRadius='6'
         role='group'
         cursor='pointer'
-        fontFamily='main'
+        fontFamily='Ubuntu'
         fontWeight='bold'
         color='gray.900'
         bgColor={inViewCategory === index ? 'yellow.400' : 'transparent'}

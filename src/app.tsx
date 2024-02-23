@@ -26,12 +26,12 @@ const AppContent = (): JSX.Element => {
   return (
     <>
       <Navbar />
-      <ScrollToTop />
-      <Box as='main' ms={{ lg: '21em' }}>
+      <Box as='aside' ms={{ lg: '21em' }}>
         <Header />
         <InputNumber />
         <InputString />
         <InputMixed />
+        <ScrollToTop />
         <Footer />
       </Box>
     </>

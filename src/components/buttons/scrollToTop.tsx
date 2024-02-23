@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   useState,
   useRef,
+  useContext,
   useCallback,
-  useEffect,
-  useContext
+  useEffect
 } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
@@ -17,42 +17,42 @@ export const ScrollToTop = (): JSX.Element => {
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const prevScrollPosition = useRef(0);
-
   const { setInViewCategory } = useContext(UiContext);
 
   const handleScroll = useCallback(() => {
-    prevScrollPosition.current - scrollPosition > 50 ? setIsScrollingUp(true)
-    : scrollPosition - prevScrollPosition.current > 50 ? setIsScrollingUp(false)
-    : null;
+    const scrollPosDiff = prevScrollPosition.current - scrollPosition;
+    const isScrollingUp = scrollPosDiff > 50;
+    const isScrollingDown = -scrollPosDiff > 50;
+
+    isScrollingUp !== isScrollingDown && setIsScrollingUp(isScrollingUp);
+
     setScrollPosition(window.scrollY);
     prevScrollPosition.current = scrollPosition;
   }, [scrollPosition]);
 
   const instantTop = (): void => {
     window.scrollTo({ top: 0 });
+    setInViewCategory(0);
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
+    const removeScroll = (): void => {
       window.removeEventListener('scroll', handleScroll);
     };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return removeScroll;
   }, [handleScroll]);
 
   useEffect(() => {
-    if (scrollPosition > 250 && isScrollingUp) setIsVisible(true);
-    else setIsVisible(false);
+    setIsVisible(scrollPosition > 250 && isScrollingUp);
   }, [scrollPosition, isScrollingUp]);
 
   return isVisible ?
       <Button
-        onClick={(): void => {
-          setInViewCategory(0);
-          instantTop();
-        }}
+        size={{ base: 'sm', md: 'md' }}
+        onClick={instantTop}
         colorScheme='yellow'
         pos='fixed'
-        size={['sm', 'sm', 'md']}
         bottom='8'
         right='8'
         borderWidth={1}

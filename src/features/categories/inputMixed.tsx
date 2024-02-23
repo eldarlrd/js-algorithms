@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 
 import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
 import { UiContext } from '@/app.tsx';
-import { CodeCard } from '@/components/cards/codeCard.tsx';
+import { CodeView } from '@/components/cards/codeView.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
 export const InputMixed = (): JSX.Element => {
@@ -14,7 +14,7 @@ export const InputMixed = (): JSX.Element => {
   const mixedCards: JSX.Element[] = [];
   mixFuncArr.forEach(e => {
     mixedCards.push(
-      <CodeCard
+      <CodeView
         name={e.name}
         placeholder={e.placeholder}
         code={e.myFunc}
@@ -38,7 +38,7 @@ export const InputMixed = (): JSX.Element => {
   }, [inView, setInViewCategory]);
 
   return (
-    <div ref={ref}>
+    <main ref={ref}>
       <Heading
         id='input-mixed'
         fontFamily='main'
@@ -50,12 +50,13 @@ export const InputMixed = (): JSX.Element => {
         Inputs with Mixed Arguments
       </Heading>
       <VStack
+        as='section'
         w={['initial', 'fit-content']}
         mx={[2, 4, 8]}
         align='flex-start'
         spacing='8'>
         {mixedCards}
       </VStack>
-    </div>
+    </main>
   );
 };

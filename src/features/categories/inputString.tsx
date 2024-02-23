@@ -10,7 +10,7 @@ import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validat
 import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
 import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
 import { UiContext } from '@/app.tsx';
-import { CodeCard } from '@/components/cards/codeCard.tsx';
+import { CodeView } from '@/components/cards/codeView.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
 export const InputString = (): JSX.Element => {
@@ -26,7 +26,7 @@ export const InputString = (): JSX.Element => {
   const stringCards: JSX.Element[] = [];
   strFuncArr.forEach(e => {
     stringCards.push(
-      <CodeCard
+      <CodeView
         name={e.name}
         placeholder={e.placeholder}
         code={e.myFunc}
@@ -46,7 +46,7 @@ export const InputString = (): JSX.Element => {
   }, [inView, setInViewCategory]);
 
   return (
-    <div ref={ref}>
+    <main ref={ref}>
       <Heading
         id='input-string'
         fontFamily='main'
@@ -58,12 +58,13 @@ export const InputString = (): JSX.Element => {
         Inputs with String Arguments
       </Heading>
       <VStack
+        as='section'
         w={['initial', 'fit-content']}
         mx={[2, 4, 8]}
         align='flex-start'
         spacing='8'>
         {stringCards}
       </VStack>
-    </div>
+    </main>
   );
 };

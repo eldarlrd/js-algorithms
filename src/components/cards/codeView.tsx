@@ -6,27 +6,26 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Heading,
-  Button,
+  Link,
   Flex,
-  Collapse,
-  ScaleFade,
-  Input,
+  Button,
   Text,
   Tooltip,
-  Link
+  Collapse,
+  ScaleFade,
+  Input
 } from '@chakra-ui/react';
 import {
   faEye,
   faEyeSlash,
+  faClipboard,
+  faClipboardCheck,
   faPlay,
   faHandHolding,
-  faCircleExclamation,
-  faClipboard,
-  faClipboardCheck
+  faCircleExclamation
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState, useEffect, type StateUpdater } from 'preact/hooks';
+import { type StateUpdater, useState, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -34,22 +33,24 @@ import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 interface CodeProps {
   name: string;
   placeholder: string;
-  code: (argument: string[] | undefined) => string;
+  code: (argument: string[]) => string;
   raw: string;
 }
 
-export const CodeCard = (props: CodeProps): JSX.Element => {
-  const [isVisible, setIsVisible] = useBoolean();
+export const CodeView = (props: CodeProps): JSX.Element => {
+  const [isVisible, { toggle: setIsVisible }] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
   const [result, setResult] = useState('');
-  const [argument, setArgument] = useState<string>();
-  const [isError, setIsError] = useState<boolean>();
-  const [isSpinner, setIsSpinner] = useState<boolean>();
+  const [argument, setArgument] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [isSpinner, setIsSpinner] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [clipboardIcon, setClipboardIcon] = useState(faClipboard);
 
   const codeClipboard = useClipboard(props.raw);
   const resultClipboard = useClipboard(result);
+
+  const kebabCaseName = `#${props.name.toLowerCase().replaceAll(' ', '-')}`;
 
   const runCode = (): void => {
     if (argument) {
@@ -62,63 +63,71 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
     }
   };
 
-  const copyCodeToClipboard = (text: string): void => {
-    codeClipboard.setValue(text as unknown as StateUpdater<string>);
-    codeClipboard.onCopy();
+  const copyToClipboard = (
+    text: string,
+    clipboard: typeof codeClipboard
+  ): void => {
+    clipboard.setValue(text as unknown as StateUpdater<string>);
+    clipboard.onCopy();
   };
 
-  const copyResultToClipboard = (text: string): void => {
-    resultClipboard.setValue(text as unknown as StateUpdater<string>);
-    resultClipboard.onCopy();
+  const handleCopyCode = (): void => {
+    copyToClipboard(props.raw, codeClipboard);
+    setClipboardIcon(faClipboardCheck);
+    setTimeout(() => {
+      setClipboardIcon(faClipboard);
+    }, 1000);
+  };
+
+  const handleCopyResult = (): void => {
+    if (!isError && result) copyToClipboard(result, resultClipboard);
+  };
+
+  const handleInput = (e: JSX.TargetedInputEvent<HTMLInputElement>): void => {
+    setArgument((e.target as HTMLInputElement).value);
+  };
+
+  const handleKey = (e: JSX.TargetedKeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === 'Enter') runCode();
   };
 
   useEffect(() => {
-    if (result) {
-      const isErrorStr = result.toString().split(' ');
-      if (isErrorStr[0] === 'ERROR:') setIsError(true);
-      else setIsError(false);
-    }
+    const isErrorStr = result.toString().split(' ');
+    setIsError(isErrorStr[0] === 'ERROR:');
   }, [result]);
 
   return (
-    <Card
-      as='section'
-      id={props.name.toLowerCase().replaceAll(' ', '-')}
-      w={['21.5rem', 'md', 'xl']}
-      borderWidth={1}
-      borderColor='gray.300'>
-      <CardHeader as='header'>
-        <Heading
-          fontFamily='main'
-          size='lg'
-          as='h3'
-          onMouseEnter={() => {
-            setIsHovered(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
-          _selection={{ bg: 'yellow.300' }}>
-          {`${props.name} `}
-          {isHovered && (
-            <Link
-              _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-              href={`#${props.name.toLowerCase().replaceAll(' ', '-')}`}
-              _selection={{ bg: 'gray.900' }}
-              color='yellow.400'
-              borderRadius='6'>
-              #
-            </Link>
-          )}
-        </Heading>
+    <Card w={['21.5rem', 'md', 'xl']} borderWidth={1} borderColor='gray.300'>
+      <CardHeader
+        as='h3'
+        fontFamily='main'
+        fontWeight='bold'
+        fontSize={{ base: '2xl', md: '3xl' }}
+        _selection={{ bg: 'yellow.300' }}
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}>
+        {`${props.name} `}
+        {isHovered && (
+          <Link
+            _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+            href={kebabCaseName}
+            color='yellow.400'
+            borderRadius='6'>
+            #
+          </Link>
+        )}
       </CardHeader>
 
-      <CardBody as='main' fontSize={[9.4, 12.8, 16]} my='-6'>
+      <CardBody fontSize={[9.4, 12.8, 16]} my='-6'>
         <Flex direction='column' align='flex-start' gap='2'>
           <Flex gap='2'>
             <Button
               _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-              onClick={setIsVisible.toggle}
+              onClick={setIsVisible}
               colorScheme='yellow'
               minW={[32, 36]}
               fontFamily='main'
@@ -132,13 +141,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               <Button
                 aria-label='Run Code'
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-                onClick={(): void => {
-                  copyCodeToClipboard(props.raw);
-                  setClipboardIcon(faClipboardCheck);
-                  setTimeout(() => {
-                    setClipboardIcon(faClipboard);
-                  }, 1000);
-                }}
+                onClick={handleCopyCode}
                 colorScheme='yellow'>
                 <FontAwesomeIcon icon={clipboardIcon} />
               </Button>
@@ -172,14 +175,8 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
               value={argument}
               _selection={{ bg: 'yellow.300' }}
               placeholder={props.placeholder}
-              onInput={(e: JSX.TargetedEvent<HTMLInputElement>): void => {
-                setArgument((e.target as HTMLInputElement).value);
-              }}
-              onKeyDown={(
-                e: JSX.TargetedKeyboardEvent<HTMLInputElement>
-              ): void => {
-                if (e.key === 'Enter') runCode();
-              }}
+              onInput={handleInput}
+              onKeyDown={handleKey}
               bg='gray.100'
             />
             <Tooltip isDisabled={isSpinner} borderRadius='6' label='Run Code'>
@@ -201,9 +198,7 @@ export const CodeCard = (props: CodeProps): JSX.Element => {
                 borderRadius='6'
                 label='Copy to Clipboard'>
                 <Button
-                  onClick={(): void => {
-                    if (!isError && result) copyResultToClipboard(result);
-                  }}
+                  onClick={handleCopyResult}
                   colorScheme={isError ? 'red' : 'green'}
                   whiteSpace='normal'
                   fontFamily='main'

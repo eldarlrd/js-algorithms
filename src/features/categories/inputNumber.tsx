@@ -22,7 +22,7 @@ import { smallestMultObj } from '@/algorithms/inputNumber/smallest-multiple.js';
 import { sumPrimesObj } from '@/algorithms/inputNumber/sum-all-primes.js';
 import { multiplesOf3and5Obj } from '@/algorithms/inputNumber/sum-multiples.js';
 import { UiContext } from '@/app.tsx';
-import { CodeCard } from '@/components/cards/codeCard.tsx';
+import { CodeView } from '@/components/cards/codeView.tsx';
 import { LINK_ITEMS } from '@/features/navbar.tsx';
 
 export const InputNumber = (): JSX.Element => {
@@ -50,7 +50,7 @@ export const InputNumber = (): JSX.Element => {
   const numberCards: JSX.Element[] = [];
   numFuncArr.forEach(e => {
     numberCards.push(
-      <CodeCard
+      <CodeView
         name={e.name}
         placeholder={e.placeholder}
         code={e.myFunc}
@@ -70,7 +70,7 @@ export const InputNumber = (): JSX.Element => {
   }, [inView, setInViewCategory]);
 
   return (
-    <div ref={ref}>
+    <main ref={ref}>
       <Heading
         id='input-number'
         fontFamily='main'
@@ -82,12 +82,13 @@ export const InputNumber = (): JSX.Element => {
         Inputs with Numeric Arguments
       </Heading>
       <VStack
+        as='section'
         w={['initial', 'fit-content']}
         mx={[2, 4, 8]}
         align='flex-start'
         spacing='8'>
         {numberCards}
       </VStack>
-    </div>
+    </main>
   );
 };

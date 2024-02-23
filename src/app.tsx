@@ -7,19 +7,23 @@ import '@fontsource/ubuntu';
 import '@fontsource/ubuntu-mono';
 import theme from '../chakra.config.mts';
 
+import { categories } from '@/algorithms/categories.ts';
 import background from '@/assets/images/background.webp';
 import { Footer } from '@/components/banners/footer.tsx';
 import { Header } from '@/components/banners/header.tsx';
 import { ScrollToTop } from '@/components/buttons/scrollToTop.tsx';
-import { InputMixed } from '@/features/categories/inputMixed.tsx';
-import { InputNumber } from '@/features/categories/inputNumber.tsx';
-import { InputString } from '@/features/categories/inputString.tsx';
+import { CategoryList } from '@/features/categoryList.tsx';
 import { Navbar } from '@/features/navbar.tsx';
 
+const kebabize = (title: string): string =>
+  `#${title.toLowerCase().replaceAll(' ', '-')}`;
+
+const initKebabCaseName = kebabize(categories[0].title);
+
 const InViewCategory = createContext({
-  inViewCategory: 0,
+  inViewCategory: initKebabCaseName,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setInViewCategory: (() => {}) as StateUpdater<number>
+  setInViewCategory: (() => {}) as StateUpdater<string>
 });
 
 const AppContent = (): JSX.Element => {
@@ -32,9 +36,7 @@ const AppContent = (): JSX.Element => {
         bgImage={background}
         ms={{ lg: '21em' }}>
         <Header />
-        <InputNumber />
-        <InputString />
-        <InputMixed />
+        <CategoryList categories={categories} />
         <ScrollToTop />
         <Footer />
       </Box>
@@ -43,7 +45,7 @@ const AppContent = (): JSX.Element => {
 };
 
 const App = (): JSX.Element => {
-  const [inViewCategory, setInViewCategory] = useState(0);
+  const [inViewCategory, setInViewCategory] = useState(initKebabCaseName);
 
   const contextValue = {
     inViewCategory,
@@ -59,7 +61,7 @@ const App = (): JSX.Element => {
   );
 };
 
-export { InViewCategory, App };
+export { kebabize, InViewCategory, App };
 
 // Easter Egg
 console.log('PNEGUNTB QRYRAQN RFG');

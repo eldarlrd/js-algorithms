@@ -26,25 +26,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { InViewCategory } from '@/app.tsx';
+import { categories } from '@/algorithms/categories.ts';
+import { kebabize, InViewCategory } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
 
 const LINK_ITEMS = [
   {
-    name: 'Inputs with Numeric Arguments',
-    id: '#input-number',
+    title: categories[0].title,
     icon: faInfinity,
     size: '1x'
   },
   {
-    name: 'Inputs with String Arguments',
-    id: '#input-string',
+    title: categories[1].title,
     icon: faComment,
     size: 'lg'
   },
   {
-    name: 'Inputs with Mixed Arguments',
-    id: '#input-mixed',
+    title: categories[2].title,
     icon: faBlender,
     size: 'lg'
   }
@@ -127,15 +125,14 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
         />
       </Flex>
-      {LINK_ITEMS.map((link, index) => (
+      {LINK_ITEMS.map(link => (
         <NavItem
           onClose={onClose as () => void}
-          index={index}
-          key={link.name}
+          key={link.title}
           icon={link.icon}
           size={link.size}
-          id={link.id}>
-          {link.name}
+          id={kebabize(link.title)}>
+          {link.title}
         </NavItem>
       ))}
     </Box>
@@ -144,7 +141,6 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
 
 const NavItem = ({
   onClose,
-  index,
   id,
   icon,
   size,
@@ -156,7 +152,7 @@ const NavItem = ({
   return (
     <Link
       onClick={(): void => {
-        setInViewCategory(index as number);
+        setInViewCategory(id as string);
         (onClose as () => void)();
       }}
       href={id as string}
@@ -174,7 +170,7 @@ const NavItem = ({
         fontFamily='main'
         fontWeight='bold'
         color='gray.900'
-        bgColor={inViewCategory === index ? 'yellow.400' : 'transparent'}
+        bgColor={inViewCategory === id ? 'yellow.400' : ''}
         _hover={{
           bg: 'yellow.400',
           color: 'gray.900'
@@ -187,7 +183,7 @@ const NavItem = ({
   );
 };
 
-const Navbar = (): JSX.Element => {
+export const Navbar = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Close mobile drawer on resize
@@ -215,5 +211,3 @@ const Navbar = (): JSX.Element => {
     </Box>
   );
 };
-
-export { LINK_ITEMS, Navbar };

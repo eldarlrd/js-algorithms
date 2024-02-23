@@ -4,13 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   useState,
   useRef,
-  useContext,
   useCallback,
-  useEffect
+  useEffect,
+  useContext
 } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { InViewCategory } from '@/app.tsx';
+import { categories } from '@/algorithms/categories.ts';
+import { kebabize, InViewCategory } from '@/app.tsx';
 
 export const ScrollToTop = (): JSX.Element => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -31,8 +32,8 @@ export const ScrollToTop = (): JSX.Element => {
   }, [scrollPosition]);
 
   const instantTop = (): void => {
+    setInViewCategory(kebabize(categories[0].title));
     window.scrollTo({ top: 0 });
-    setInViewCategory(0);
   };
 
   useEffect(() => {

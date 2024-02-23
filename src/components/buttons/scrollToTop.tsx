@@ -10,7 +10,7 @@ import {
 } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { categories } from '@/algorithms/categories.ts';
+import { CATEGORIES } from '@/algorithms/categories.ts';
 import { kebabize, InViewCategory } from '@/app.tsx';
 
 export const ScrollToTop = (): JSX.Element => {
@@ -32,7 +32,7 @@ export const ScrollToTop = (): JSX.Element => {
   }, [scrollPosition]);
 
   const instantTop = (): void => {
-    setInViewCategory(kebabize(categories[0].title));
+    setInViewCategory(kebabize(CATEGORIES[0].title));
     window.scrollTo({ top: 0 });
   };
 

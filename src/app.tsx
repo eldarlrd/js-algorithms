@@ -7,7 +7,7 @@ import '@fontsource/ubuntu';
 import '@fontsource/ubuntu-mono';
 import theme from '../chakra.config.mts';
 
-import { categories } from '@/algorithms/categories.ts';
+import { CATEGORIES } from '@/algorithms/categories.ts';
 import background from '@/assets/images/background.webp';
 import { Footer } from '@/components/banners/footer.tsx';
 import { Header } from '@/components/banners/header.tsx';
@@ -18,7 +18,7 @@ import { Navbar } from '@/features/navbar.tsx';
 const kebabize = (title: string): string =>
   `#${title.toLowerCase().replaceAll(' ', '-')}`;
 
-const initKebabCaseName = kebabize(categories[0].title);
+const initKebabCaseName = kebabize(CATEGORIES[0].title);
 
 const InViewCategory = createContext({
   inViewCategory: initKebabCaseName,
@@ -36,7 +36,7 @@ const AppContent = (): JSX.Element => {
         bgImage={background}
         ms={{ lg: '21em' }}>
         <Header />
-        <CategoryList categories={categories} />
+        <CategoryList />
         <ScrollToTop />
         <Footer />
       </Box>

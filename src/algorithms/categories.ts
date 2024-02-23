@@ -1,3 +1,10 @@
+import {
+  type IconDefinition,
+  faInfinity,
+  faComment,
+  faBlender
+} from '@fortawesome/free-solid-svg-icons';
+
 import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
 import { BMICalculatorObj } from '@/algorithms/inputNumber/bmi-calculator.js';
 import { bubbleSortObj } from '@/algorithms/inputNumber/bubble-sort.js';
@@ -64,22 +71,26 @@ interface CategoryDetails {
     myFunc(): string;
     raw: string;
   }[];
+  icon: IconDefinition;
 }
 [];
 
-const categories: CategoryDetails[] = [
+const CATEGORIES: CategoryDetails[] = [
   {
     title: 'Inputs with Numeric Arguments',
-    funcArr: numFuncArr
+    funcArr: numFuncArr,
+    icon: faInfinity
   },
   {
     title: 'Inputs with String Arguments',
-    funcArr: strFuncArr
+    funcArr: strFuncArr,
+    icon: faComment
   },
   {
     title: 'Inputs with Mixed Arguments',
-    funcArr: mixFuncArr
+    funcArr: mixFuncArr,
+    icon: faBlender
   }
 ];
 
-export { type CategoryDetails, categories };
+export { type CategoryDetails, CATEGORIES };

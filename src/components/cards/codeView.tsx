@@ -98,7 +98,11 @@ export const CodeView = (props: CodeProps): JSX.Element => {
   }, [result]);
 
   return (
-    <Card w={['21.5rem', 'md', 'xl']} borderWidth={1} borderColor='gray.200'>
+    <Card
+      id={kebabCaseName.slice(1)}
+      w={['21.5rem', 'md', 'xl']}
+      borderColor='gray.200'
+      borderWidth={1}>
       <CardHeader
         as='h3'
         fontFamily='main'

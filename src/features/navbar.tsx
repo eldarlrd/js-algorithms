@@ -12,41 +12,15 @@ import {
   DrawerContent,
   Text
 } from '@chakra-ui/react';
-import {
-  type IconProp,
-  type SizeProp
-} from '@fortawesome/fontawesome-svg-core';
-import {
-  faBars,
-  faInfinity,
-  faComment,
-  faBlender
-} from '@fortawesome/free-solid-svg-icons';
+import { type IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { categories } from '@/algorithms/categories.ts';
+import { CATEGORIES } from '@/algorithms/categories.ts';
 import { kebabize, InViewCategory } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
-
-const LINK_ITEMS = [
-  {
-    title: categories[0].title,
-    icon: faInfinity,
-    size: '1x'
-  },
-  {
-    title: categories[1].title,
-    icon: faComment,
-    size: 'lg'
-  },
-  {
-    title: categories[2].title,
-    icon: faBlender,
-    size: 'lg'
-  }
-];
 
 const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
   return (
@@ -125,12 +99,11 @@ const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
         />
       </Flex>
-      {LINK_ITEMS.map(link => (
+      {CATEGORIES.map(link => (
         <NavItem
           onClose={onClose as () => void}
           key={link.title}
           icon={link.icon}
-          size={link.size}
           id={kebabize(link.title)}>
           {link.title}
         </NavItem>
@@ -143,7 +116,6 @@ const NavItem = ({
   onClose,
   id,
   icon,
-  size,
   children,
   ...rest
 }: FlexProps): JSX.Element => {
@@ -176,7 +148,7 @@ const NavItem = ({
           color: 'gray.900'
         }}
         {...rest}>
-        <FontAwesomeIcon icon={icon as IconProp} size={size as SizeProp} />
+        <FontAwesomeIcon icon={icon as IconProp} />
         {children}
       </Flex>
     </Link>

@@ -122,7 +122,10 @@ export const CodeView = (props: CodeProps): JSX.Element => {
             _selection={{ bg: 'gray.900' }}
             href={kebabCaseName}
             color='yellow.400'
-            borderRadius='6'>
+            borderRadius='6'
+            onDragStart={(e: DragEvent) => {
+              e.preventDefault();
+            }}>
             #
           </Link>
         )}

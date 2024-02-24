@@ -1,159 +1,161 @@
 import {
   type BoxProps,
-  type FlexProps,
   useDisclosure,
   Box,
-  Flex,
-  CloseButton,
-  IconButton,
-  Image,
-  Link,
   Drawer,
   DrawerContent,
-  Text
+  HStack,
+  Button,
+  Image,
+  CloseButton,
+  Flex,
+  Link
 } from '@chakra-ui/react';
-import { type IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { type IconDefinition, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useContext, useEffect } from 'preact/hooks';
+import { type StateUpdater, useEffect, useContext } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
 import { CATEGORIES } from '@/algorithms/categories.ts';
 import { kebabize, InViewCategory } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
 
-const MobileNav = ({ onOpen, ...rest }: FlexProps): JSX.Element => {
-  return (
-    <Flex
-      userSelect='none'
-      ms={[0, 0, 0, 60]}
-      px={[4, 4, 4, 24]}
-      w='full'
-      h='20'
-      bg='white'
-      borderBottomWidth={1}
-      borderBottomColor='gray.200'
-      justify='flex-start'
-      align='center'
-      {...rest}>
-      <IconButton
-        onClick={onOpen as () => void}
-        variant='outline'
-        aria-label='Open Menu'
-        _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-        icon={<FontAwesomeIcon icon={faBars} />}
-      />
-      <Flex ms='4' gap='2' align='center'>
-        <Image
-          src={logo}
-          align='center'
-          fontSize='2xs'
-          fontFamily='main'
-          boxSize='6'
-          alt='Programming icon by Eucalyp'
-        />
-        <Text
-          fontFamily='main'
-          fontWeight='bold'
-          cursor='default'
-          color='gray.900'>
-          Find Specific
-        </Text>
-      </Flex>
-    </Flex>
-  );
-};
+const MobileNav = ({ onOpen }: { onOpen: () => void }): JSX.Element => (
+  <HStack
+    display={{ base: 'flex', lg: 'none' }}
+    borderBottomColor='gray.200'
+    borderBottomWidth={1}
+    userSelect='none'
+    fontFamily='main'
+    fontWeight='bold'
+    color='gray.900'
+    gap='2.5'
+    px='4'
+    h='20'>
+    <Button
+      _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+      aria-label='Open Menu'
+      variant='outline'
+      onClick={onOpen}
+      w='10'
+      me='0.5'>
+      <FontAwesomeIcon icon={faBars} />
+    </Button>
 
-const Sidebar = ({ onClose, ...rest }: BoxProps): JSX.Element => {
+    <Image
+      src={logo}
+      boxSize='6'
+      alt='Programming icon by Eucalyp'
+      onDragStart={(e: DragEvent) => {
+        e.preventDefault();
+      }}
+    />
+    <>Categories</>
+  </HStack>
+);
+
+const Sidebar = ({
+  onClose,
+  ...rest
+}: { onClose: () => void } & BoxProps): JSX.Element => {
+  const { inViewCategory, setInViewCategory } = useContext(InViewCategory);
+
   return (
     <Box
-      bg='white'
+      h='full'
       pos='fixed'
       userSelect='none'
       borderRightWidth={1}
       borderRightColor='gray.200'
       w={{ base: 'full', lg: '21em' }}
-      h='full'
       {...rest}>
-      <Flex mx='8' h='20' align='center' justify='space-between'>
-        <Flex gap='4' align='center'>
+      <HStack ms='6' me='4' h='20' justify='space-between'>
+        <Box fontFamily='main' color='gray.900' fontWeight='bold'>
           <Image
+            me='2.5'
             src={logo}
-            align='center'
-            fontSize='sm'
-            fontFamily='main'
             boxSize='8'
+            display='inline-block'
+            verticalAlign='middle'
             alt='Programming icon by Eucalyp'
+            onDragStart={(e: DragEvent) => {
+              e.preventDefault();
+            }}
           />
-          <Text
-            fontFamily='main'
-            fontWeight='bold'
-            cursor='default'
-            color='gray.900'>
-            Find Specific
-          </Text>
-        </Flex>
+          Categories
+        </Box>
+
         <CloseButton
-          onClick={onClose as () => void}
+          onClick={onClose}
           display={{ base: 'flex', lg: 'none' }}
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
         />
-      </Flex>
-      {CATEGORIES.map(link => (
+      </HStack>
+      {CATEGORIES.map(category => (
         <NavItem
-          onClose={onClose as () => void}
-          key={link.title}
-          icon={link.icon}
-          id={kebabize(link.title)}>
-          {link.title}
-        </NavItem>
+          onClose={onClose}
+          inViewCategory={inViewCategory}
+          setInViewCategory={setInViewCategory}
+          icon={category.icon}
+          title={category.title}
+          id={kebabize(category.title)}
+          key={category.title}
+        />
       ))}
     </Box>
   );
 };
 
+interface NavItemProps {
+  onClose: () => void;
+  inViewCategory: string;
+  setInViewCategory: StateUpdater<string>;
+  icon: IconDefinition;
+  title: string;
+  id: string;
+}
+
 const NavItem = ({
   onClose,
-  id,
+  inViewCategory,
+  setInViewCategory,
   icon,
-  children,
-  ...rest
-}: FlexProps): JSX.Element => {
-  const { inViewCategory, setInViewCategory } = useContext(InViewCategory);
-
-  return (
-    <Link
-      onClick={(): void => {
-        setInViewCategory(id as string);
-        (onClose as () => void)();
-      }}
-      href={id as string}
-      style={{ textDecoration: 'none' }}
-      _focusVisible={{ boxShadow: 'none' }}>
-      <Flex
-        p='4'
-        mx='4'
-        mb='1'
-        gap='2'
-        align='center'
-        borderRadius='6'
-        role='group'
-        cursor='pointer'
-        fontFamily='main'
-        fontWeight='bold'
-        color='gray.900'
-        bgColor={inViewCategory === id ? 'yellow.400' : ''}
-        _hover={{
-          bg: 'yellow.400',
-          color: 'gray.900'
-        }}
-        {...rest}>
-        <FontAwesomeIcon icon={icon as IconProp} />
-        {children}
-      </Flex>
-    </Link>
-  );
-};
+  title,
+  id
+}: NavItemProps): JSX.Element => (
+  <Link
+    href={id}
+    _hover={{ textDecoration: 'none' }}
+    _focusVisible={{ boxShadow: 'none' }}
+    onDragStart={(e: DragEvent) => {
+      e.preventDefault();
+    }}
+    onClick={(): void => {
+      setInViewCategory(id);
+      onClose();
+    }}>
+    <Flex
+      p='4'
+      mx='4'
+      mb='1'
+      gap='2'
+      role='group'
+      align='center'
+      borderRadius='6'
+      cursor='pointer'
+      fontFamily='main'
+      fontWeight='bold'
+      color='gray.900'
+      bg={inViewCategory === id ? 'yellow.400' : ''}
+      _hover={{
+        bg: 'yellow.400',
+        color: 'gray.900'
+      }}>
+      <FontAwesomeIcon icon={icon} fixedWidth />
+      {title}
+    </Flex>
+  </Link>
+);
 
 export const Navbar = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -167,7 +169,8 @@ export const Navbar = (): JSX.Element => {
 
   return (
     <Box as='nav'>
-      <MobileNav onOpen={onOpen} display={{ base: 'flex', lg: 'none' }} />
+      <MobileNav onOpen={onOpen} />
+
       <Drawer
         isOpen={isOpen}
         returnFocusOnClose={false}
@@ -179,6 +182,7 @@ export const Navbar = (): JSX.Element => {
           <Sidebar onClose={onClose} />
         </DrawerContent>
       </Drawer>
+
       <Sidebar onClose={onClose} hideBelow='lg' />
     </Box>
   );

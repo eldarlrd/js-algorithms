@@ -40,6 +40,7 @@ const CategoryView = ({
     <Box as='main' ref={ref} id={kebabCaseName.slice(1)}>
       <Heading
         fontFamily='main'
+        userSelect='none'
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
         _selection={{ bg: 'yellow.300' }}

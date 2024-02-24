@@ -26,23 +26,17 @@ const InViewCategory = createContext({
   setInViewCategory: (() => {}) as StateUpdater<string>
 });
 
-const AppContent = (): JSX.Element => {
-  return (
-    <>
-      <Navbar />
-      <Box
-        as='aside'
-        bgRepeat='repeat'
-        bgImage={background}
-        ms={{ lg: '21em' }}>
-        <Header />
-        <CategoryList />
-        <ScrollToTop />
-        <Footer />
-      </Box>
-    </>
-  );
-};
+const AppContent = (): JSX.Element => (
+  <>
+    <Navbar />
+    <Box as='aside' bgRepeat='repeat' bgImage={background} ms={{ lg: '21em' }}>
+      <Header />
+      <CategoryList />
+      <ScrollToTop />
+      <Footer />
+    </Box>
+  </>
+);
 
 const App = (): JSX.Element => {
   const [inViewCategory, setInViewCategory] = useState(initKebabCaseName);

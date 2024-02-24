@@ -1,11 +1,12 @@
-import { Box, Heading, VStack } from '@chakra-ui/react';
+import { Box, Heading, Spinner, VStack } from '@chakra-ui/react';
+import { lazy, Suspense } from 'preact/compat';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
 
-import { CATEGORIES, type CategoryDetails } from '@/algorithms/categories.ts';
+import { type CategoryDetails, CATEGORIES } from '@/algorithms/categories.ts';
 import { kebabize, InViewCategory } from '@/app.tsx';
-import { CodeView } from '@/components/cards/codeView.tsx';
+const CodeView = lazy(() => import('@/components/cards/codeView.tsx'));
 
 const CategoryView = ({
   category
@@ -60,10 +61,16 @@ const CategoryView = ({
   );
 };
 
+const CustomSpinner = (): JSX.Element => (
+  <VStack w={['21.5rem', 'md', 'xl']} justify='center' flex='1'>
+    <Spinner size='xl' />
+  </VStack>
+);
+
 export const CategoryList = (): JSX.Element => (
-  <>
+  <Suspense fallback={<CustomSpinner />}>
     {CATEGORIES.map((category: CategoryDetails) => (
       <CategoryView key={category.title} category={category} />
     ))}
-  </>
+  </Suspense>
 );

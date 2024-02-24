@@ -38,7 +38,7 @@ interface CodeProps {
   raw: string;
 }
 
-export const CodeView = (props: CodeProps): JSX.Element => {
+const CodeView = (props: CodeProps): JSX.Element => {
   const [isVisible, { toggle: setIsVisible }] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
   const [result, setResult] = useState('');
@@ -241,3 +241,5 @@ export const CodeView = (props: CodeProps): JSX.Element => {
     </Card>
   );
 };
+
+export default CodeView; // eslint-disable-line import/no-default-export

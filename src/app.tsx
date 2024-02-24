@@ -1,10 +1,10 @@
-import { Box, ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, Flex } from '@chakra-ui/react';
 import { createContext } from 'preact';
 import { type StateUpdater, useState } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import '@fontsource/ubuntu';
-import '@fontsource/ubuntu-mono';
+import '@fontsource/ubuntu/latin-400.css';
+import '@fontsource/ubuntu-mono/latin-400.css';
 import theme from '../chakra.config.mts';
 
 import { CATEGORIES } from '@/algorithms/categories.ts';
@@ -27,15 +27,21 @@ const InViewCategory = createContext({
 });
 
 const AppContent = (): JSX.Element => (
-  <>
+  <Flex direction='column' minH='100svh'>
     <Navbar />
-    <Box as='aside' bgRepeat='repeat' bgImage={background} ms={{ lg: '21em' }}>
+    <Flex
+      flex='1'
+      as='aside'
+      bgRepeat='repeat'
+      direction='column'
+      bgImage={background}
+      ms={{ lg: '21em' }}>
       <Header />
       <CategoryList />
       <ScrollToTop />
       <Footer />
-    </Box>
-  </>
+    </Flex>
+  </Flex>
 );
 
 const App = (): JSX.Element => {

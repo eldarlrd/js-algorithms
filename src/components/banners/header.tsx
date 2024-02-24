@@ -12,7 +12,6 @@ export const Header = (): JSX.Element => (
     borderColor='gray.200'
     px={{ base: 4, md: 8 }}
     py='8'
-    mb='8'
     textAlign={['center', 'start']}
     fontFamily='main'>
     <FontAwesomeIcon icon={faCode} />{' '}

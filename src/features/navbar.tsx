@@ -25,12 +25,12 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }): JSX.Element => (
     display={{ base: 'flex', lg: 'none' }}
     borderBottomColor='gray.200'
     borderBottomWidth={1}
+    px={{ base: 4, md: 8 }}
     userSelect='none'
     fontFamily='main'
     fontWeight='bold'
     color='gray.900'
     gap='2.5'
-    px='4'
     h='20'>
     <Button
       _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
@@ -138,14 +138,15 @@ const NavItem = ({
       p='4'
       mx='4'
       mb='1'
-      gap='2'
+      gap='2.5'
       role='group'
       align='center'
       borderRadius='6'
       cursor='pointer'
+      color='gray.900'
       fontFamily='main'
       fontWeight='bold'
-      color='gray.900'
+      transition='background 200ms'
       bg={inViewCategory === id ? 'yellow.400' : ''}
       _hover={{
         bg: 'yellow.400',

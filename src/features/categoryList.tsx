@@ -41,18 +41,17 @@ const CategoryView = ({
   return (
     <Box as='main' id={kebabCaseName.slice(1)}>
       <Heading
+        display='flex'
         fontFamily='main'
         userSelect='none'
+        alignItems='center'
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
         _selection={{ bg: 'yellow.300' }}
         mx={{ base: 4, md: 8 }}
+        gap='2.5'
         my='8'>
-        <FontAwesomeIcon
-          style={{ marginInlineEnd: '10px' }}
-          icon={category.icon}
-          fixedWidth
-        />
+        <FontAwesomeIcon icon={category.icon} fixedWidth />
         {category.title}
       </Heading>
       <VStack

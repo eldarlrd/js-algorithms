@@ -16,9 +16,9 @@ export const Footer = (): JSX.Element => (
     bg='gray.900'
     maxW='full'
     gap='1'
-    px='4'
     py='6'
     mt='12'
+    px={{ md: 4 }}
     spacing='0'>
     <Image
       src={logo}

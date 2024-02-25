@@ -15,17 +15,15 @@ const CategoryView = ({
 }): JSX.Element => {
   const kebabCaseName = kebabize(category.title);
 
-  const categoryCards: JSX.Element[] = [];
-  category.funcArr.forEach(e => {
-    categoryCards.push(
-      <CodeView
-        name={e.name}
-        placeholder={e.placeholder}
-        code={e.myFunc}
-        raw={e.raw}
-      />
-    );
-  });
+  const categoryCards = category.funcArr.map(func => (
+    <CodeView
+      key={func.name}
+      name={func.name}
+      placeholder={func.placeholder}
+      code={func.myFunc}
+      raw={func.raw}
+    />
+  ));
 
   const { setInViewCategory } = useContext(InViewCategory);
   const { ref, inView } = useInView();
@@ -62,7 +60,11 @@ const CategoryView = ({
 };
 
 const CustomSpinner = (): JSX.Element => (
-  <VStack w={['21.5rem', 'md', 'xl']} justify='center' flex='1'>
+  <VStack
+    w={['21.5rem', 'md', 'xl']}
+    justify='center'
+    color='gray.900'
+    flex='1'>
     <Spinner size='xl' />
   </VStack>
 );

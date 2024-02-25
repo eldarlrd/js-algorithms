@@ -1,8 +1,9 @@
 import {
   type IconDefinition,
-  faInfinity,
+  faSquareRootVariable,
+  faDiceFive,
   faComment,
-  faBlender
+  faDatabase
 } from '@fortawesome/free-solid-svg-icons';
 
 import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
@@ -31,37 +32,42 @@ import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validat
 import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
 import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
 
-const numFuncArr = [
+const mathFuncArr = [
   BMICalculatorObj,
+  fiboEvenSumObj,
+  factorializeObj,
+  fibonacciObj,
+  gcdObj,
+  largestPalindromeProductObj,
+  largestPrimeFactorObj,
+  smallestMultObj,
+  sumPrimesObj
+];
+
+const convFuncArr = [
   convertCtoFObj,
   convertFtoCObj,
   diceRollObj,
-  factorializeObj,
-  fibonacciObj,
-  fiboEvenSumObj,
   fizzBuzzObj,
-  gcdObj,
   isLeapYearObj,
-  convertToRomanObj,
-  sumPrimesObj,
-  largestPrimeFactorObj,
-  largestPalindromeProductObj,
-  smallestMultObj,
-  bubbleSortObj,
-  mergeSortObj,
   multiplesOf3and5Obj
 ];
 
-const strFuncArr = [
+const textFuncArr = [
+  convertToRomanObj,
   rot13Obj,
   palindromeObj,
-  telephoneCheckObj,
-  passwordVerifyObj,
   translatePigLatinObj,
   spinalCaseObj
 ];
 
-const mixFuncArr = [checkCashRegisterObj];
+const sortFuncArr = [
+  bubbleSortObj,
+  mergeSortObj,
+  passwordVerifyObj,
+  telephoneCheckObj,
+  checkCashRegisterObj
+];
 
 interface CategoryDetails {
   title: string;
@@ -77,19 +83,24 @@ interface CategoryDetails {
 
 const CATEGORIES: CategoryDetails[] = [
   {
-    title: 'Inputs with Numeric Arguments',
-    funcArr: numFuncArr,
-    icon: faInfinity
+    title: 'Math & Numbers',
+    funcArr: mathFuncArr,
+    icon: faSquareRootVariable
   },
   {
-    title: 'Inputs with String Arguments',
-    funcArr: strFuncArr,
+    title: 'Conversion & Randomization',
+    funcArr: convFuncArr,
+    icon: faDiceFive
+  },
+  {
+    title: 'Text Operations & Analysis',
+    funcArr: textFuncArr,
     icon: faComment
   },
   {
-    title: 'Inputs with Mixed Arguments',
-    funcArr: mixFuncArr,
-    icon: faBlender
+    title: 'Sorting & Data Validation',
+    funcArr: sortFuncArr,
+    icon: faDatabase
   }
 ];
 

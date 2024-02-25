@@ -1,4 +1,4 @@
-export const BMICalculatorObj = {
+export const bmiCalculatorObj = {
   name: 'BMI Calculator',
   placeholder: 'Weight (kg), Height (m)',
   myFunc(inputArr) {
@@ -21,7 +21,7 @@ export const BMICalculatorObj = {
           : `${bmi} Obese`;
   },
   raw:
-`const BMICalculator = (weight, height) => {
+`const bmiCalculator = (weight, height) => {
   const weight = +weight;
   const height = +height;
   if (!weight || !height)

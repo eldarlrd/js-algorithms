@@ -6,58 +6,58 @@ import {
   faDatabase
 } from '@fortawesome/free-solid-svg-icons';
 
-import { checkCashRegisterObj } from '@/algorithms/inputMixed/cash-register.js';
-import { BMICalculatorObj } from '@/algorithms/inputNumber/bmi-calculator.js';
-import { bubbleSortObj } from '@/algorithms/inputNumber/bubble-sort.js';
-import { convertCtoFObj } from '@/algorithms/inputNumber/celsius-to-fahrenheit.js';
-import { diceRollObj } from '@/algorithms/inputNumber/dice-roll.js';
-import { fiboEvenSumObj } from '@/algorithms/inputNumber/even-fibonacci.js';
-import { factorializeObj } from '@/algorithms/inputNumber/factorialize-numbers.js';
-import { convertFtoCObj } from '@/algorithms/inputNumber/fahrenheit-to-celsius.js';
-import { fibonacciObj } from '@/algorithms/inputNumber/fibonacci.js';
-import { fizzBuzzObj } from '@/algorithms/inputNumber/fizz-buzz.js';
-import { gcdObj } from '@/algorithms/inputNumber/greatest-common-divisor.js';
-import { largestPalindromeProductObj } from '@/algorithms/inputNumber/largest-palindrome.js';
-import { largestPrimeFactorObj } from '@/algorithms/inputNumber/largest-prime-factor.js';
-import { isLeapYearObj } from '@/algorithms/inputNumber/leap-year.js';
-import { mergeSortObj } from '@/algorithms/inputNumber/merge-sort.js';
-import { convertToRomanObj } from '@/algorithms/inputNumber/roman-numeral-converter.js';
-import { smallestMultObj } from '@/algorithms/inputNumber/smallest-multiple.js';
-import { sumPrimesObj } from '@/algorithms/inputNumber/sum-all-primes.js';
-import { multiplesOf3and5Obj } from '@/algorithms/inputNumber/sum-multiples.js';
-import { rot13Obj } from '@/algorithms/inputString/caesar-cipher.js';
-import { palindromeObj } from '@/algorithms/inputString/palindrome-checker.js';
-import { passwordVerifyObj } from '@/algorithms/inputString/password-verifier.js';
-import { telephoneCheckObj } from '@/algorithms/inputString/phone-number-validator.js';
-import { translatePigLatinObj } from '@/algorithms/inputString/pig-latin.js';
-import { spinalCaseObj } from '@/algorithms/inputString/spinal-tap-case.js';
+import { bmiCalculatorObj } from '@/algorithms/convFunc/bmiCalculator.js';
+import { convertCtoFObj } from '@/algorithms/convFunc/convertCtoF.js';
+import { convertFtoCObj } from '@/algorithms/convFunc/convertFtoC.js';
+import { diceRollObj } from '@/algorithms/convFunc/diceRoll.js';
+import { fizzBuzzObj } from '@/algorithms/convFunc/fizzBuzz.js';
+import { isLeapYearObj } from '@/algorithms/convFunc/isLeapYear.js';
+import { factorializeObj } from '@/algorithms/mathFunc/factorialize.js';
+import { fiboEvenSumObj } from '@/algorithms/mathFunc/fiboEvenSum.js';
+import { fibonacciObj } from '@/algorithms/mathFunc/fibonacci.js';
+import { gcdObj } from '@/algorithms/mathFunc/gcd.js';
+import { largestPalindromeProductObj } from '@/algorithms/mathFunc/largestPalindromeProduct.js';
+import { largestPrimeFactorObj } from '@/algorithms/mathFunc/largestPrimeFactor.js';
+import { multiplesOf3and5Obj } from '@/algorithms/mathFunc/multiplesOf3and5.js';
+import { smallestMultObj } from '@/algorithms/mathFunc/smallestMult.js';
+import { sumPrimesObj } from '@/algorithms/mathFunc/sumPrimes.js';
+import { bubbleSortObj } from '@/algorithms/sortFunc/bubbleSort.js';
+import { checkCashRegisterObj } from '@/algorithms/sortFunc/checkCashRegister.js';
+import { mergeSortObj } from '@/algorithms/sortFunc/mergeSort.js';
+import { passwordVerifyObj } from '@/algorithms/sortFunc/passwordVerify.js';
+import { telephoneCheckObj } from '@/algorithms/sortFunc/telephoneCheck.js';
+import { convertToRomanObj } from '@/algorithms/textFunc/convertToRoman.js';
+import { palindromeObj } from '@/algorithms/textFunc/palindrome.js';
+import { rot13Obj } from '@/algorithms/textFunc/rot13.js';
+import { spinalCaseObj } from '@/algorithms/textFunc/spinalCase.js';
+import { translatePigLatinObj } from '@/algorithms/textFunc/translatePigLatin.js';
 
 const mathFuncArr = [
-  BMICalculatorObj,
-  fiboEvenSumObj,
   factorializeObj,
-  fibonacciObj,
   gcdObj,
   largestPalindromeProductObj,
   largestPrimeFactorObj,
+  fibonacciObj,
   smallestMultObj,
-  sumPrimesObj
+  multiplesOf3and5Obj,
+  sumPrimesObj,
+  fiboEvenSumObj
 ];
 
 const convFuncArr = [
+  bmiCalculatorObj,
   convertCtoFObj,
   convertFtoCObj,
   diceRollObj,
   fizzBuzzObj,
-  isLeapYearObj,
-  multiplesOf3and5Obj
+  isLeapYearObj
 ];
 
 const textFuncArr = [
-  convertToRomanObj,
-  rot13Obj,
   palindromeObj,
   translatePigLatinObj,
+  convertToRomanObj,
+  rot13Obj,
   spinalCaseObj
 ];
 

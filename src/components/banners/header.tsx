@@ -14,7 +14,7 @@ export const Header = (): JSX.Element => (
     py='8'
     textAlign={['center', 'start']}
     fontFamily='main'>
-    <FontAwesomeIcon icon={faCode} />{' '}
+    <FontAwesomeIcon style={{ marginInlineEnd: '10px' }} icon={faCode} />
     <Highlight
       query='JS'
       styles={{

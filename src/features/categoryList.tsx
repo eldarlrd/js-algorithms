@@ -1,4 +1,5 @@
 import { Box, Heading, Spinner, VStack } from '@chakra-ui/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { lazy, Suspense } from 'preact/compat';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
@@ -26,7 +27,9 @@ const CategoryView = ({
   ));
 
   const { setInViewCategory } = useContext(InViewCategory);
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({
+    threshold: 0.25
+  });
 
   useEffect(() => {
     if (inView) {
@@ -36,7 +39,7 @@ const CategoryView = ({
   }, [inView, setInViewCategory, kebabCaseName]);
 
   return (
-    <Box as='main' ref={ref} id={kebabCaseName.slice(1)}>
+    <Box as='main' id={kebabCaseName.slice(1)}>
       <Heading
         fontFamily='main'
         userSelect='none'
@@ -45,9 +48,15 @@ const CategoryView = ({
         _selection={{ bg: 'yellow.300' }}
         mx={{ base: 4, md: 8 }}
         my='8'>
+        <FontAwesomeIcon
+          style={{ marginInlineEnd: '10px' }}
+          icon={category.icon}
+          fixedWidth
+        />
         {category.title}
       </Heading>
       <VStack
+        ref={ref}
         as='section'
         align='flex-start'
         w={['initial', 'fit-content']}

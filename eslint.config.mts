@@ -1,6 +1,5 @@
 // @ts-nocheck
 import js from '@eslint/js';
-import vitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import { flatConfigs } from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';

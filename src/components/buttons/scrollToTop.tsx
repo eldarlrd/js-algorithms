@@ -63,6 +63,7 @@ export const ScrollToTop = (): JSX.Element => {
       right='8'
       zIndex='1'>
       <Button
+        // @ts-expect-error: preact/compat issue.
         size={{ base: 'sm', md: 'md' }}
         onClick={instantTop}
         colorScheme='yellow'

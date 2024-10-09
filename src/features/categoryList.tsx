@@ -78,6 +78,7 @@ const CustomSpinner = (): JSX.Element => (
     justify='center'
     color='gray.900'
     flex='1'>
+    {/* @ts-expect-error: preact/compat issue. */}
     <Spinner size='xl' />
   </VStack>
 );

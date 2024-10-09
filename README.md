@@ -10,7 +10,7 @@
 > - **[Chakra UI](https://chakra-ui.com)**
 > - **[Fontsource](https://fontsource.org)**
 > - **[Font Awesome](https://fontawesome.com)**
-> - **[Vite](https://vitejs.dev)**
+> - **[Vite](https://vite.dev)**
 >
 > and is an interface for interactive code.
 

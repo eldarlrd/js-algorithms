@@ -26,7 +26,7 @@ import {
   faCircleExclamation
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type StateUpdater, useState, useEffect } from 'preact/hooks';
+import { type StateUpdater, useState, useEffect, useRef } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -51,6 +51,8 @@ const CodeView = (props: CodeProps): JSX.Element => {
   const codeClipboard = useClipboard(props.raw);
   const resultClipboard = useClipboard(result);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const kebabCaseName = `#${props.name.toLowerCase().replaceAll(' ', '-')}`;
 
   const runCode = (): void => {
@@ -61,7 +63,7 @@ const CodeView = (props: CodeProps): JSX.Element => {
         setIsSpinner(false);
       }, 200);
       setResult(props.code(argument.split(',')));
-    }
+    } else inputRef.current?.focus();
   };
 
   const copyToClipboard = (
@@ -193,6 +195,7 @@ const CodeView = (props: CodeProps): JSX.Element => {
               aria-label={argument}
               fontFamily='main'
               value={argument}
+              ref={inputRef}
               bg='gray.100'
             />
 

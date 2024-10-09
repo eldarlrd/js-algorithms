@@ -5,8 +5,12 @@ import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
 
-import { type CategoryDetails, CATEGORIES } from '@/algorithms/categories.ts';
-import { kebabize, InViewCategory } from '@/app.tsx';
+import {
+  type CategoryDetails,
+  CATEGORIES,
+  kebabize
+} from '@/algorithms/categories.ts';
+import { InViewCategory } from '@/app.tsx';
 const CodeView = lazy(() => import('@/components/cards/codeView.tsx'));
 
 const CategoryView = ({
@@ -21,6 +25,7 @@ const CategoryView = ({
       key={func.name}
       name={func.name}
       placeholder={func.placeholder}
+      // eslint-disable-next-line @typescript-eslint/unbound-method
       code={func.myFunc}
       raw={func.raw}
     />

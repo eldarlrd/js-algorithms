@@ -13,11 +13,11 @@ import {
 } from '@chakra-ui/react';
 import { type IconDefinition, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type StateUpdater, useEffect, useContext } from 'preact/hooks';
+import { useEffect, useContext } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
-import { CATEGORIES } from '@/algorithms/categories.ts';
-import { kebabize, InViewCategory } from '@/app.tsx';
+import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
+import { type ContextProps, InViewCategory } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
 
 const MobileNav = ({ onOpen }: { onOpen: () => void }): JSX.Element => (
@@ -106,10 +106,8 @@ const Sidebar = ({
   );
 };
 
-interface NavItemProps {
+interface NavItemProps extends ContextProps {
   onClose: () => void;
-  inViewCategory: string;
-  setInViewCategory: StateUpdater<string>;
   icon: IconDefinition;
   title: string;
   id: string;

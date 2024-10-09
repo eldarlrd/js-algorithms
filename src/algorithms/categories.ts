@@ -79,7 +79,6 @@ interface CategoryDetails {
   }[];
   icon: IconDefinition;
 }
-[];
 
 const CATEGORIES: CategoryDetails[] = [
   {
@@ -104,4 +103,7 @@ const CATEGORIES: CategoryDetails[] = [
   }
 ];
 
-export { type CategoryDetails, CATEGORIES };
+const kebabize = (title: string): string =>
+  `#${title.toLowerCase().replaceAll(' ', '-')}`;
+
+export { type CategoryDetails, CATEGORIES, kebabize };

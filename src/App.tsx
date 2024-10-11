@@ -9,11 +9,11 @@ import theme from '../chakra.config.mts';
 
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
 import background from '@/assets/images/background.webp';
-import { Footer } from '@/components/banners/footer.tsx';
-import { Header } from '@/components/banners/header.tsx';
-import { ScrollToTop } from '@/components/buttons/scrollToTop.tsx';
-import { CategoryList } from '@/features/categoryList.tsx';
-import { Navbar } from '@/features/navbar.tsx';
+import { Footer } from '@/components/banners/Footer.tsx';
+import { Header } from '@/components/banners/Header.tsx';
+import { ScrollToTop } from '@/components/buttons/ScrollToTop.tsx';
+import { CategoryList } from '@/features/CategoryList.tsx';
+import { Navbar } from '@/features/Navbar.tsx';
 
 const initKebabCaseName = kebabize(CATEGORIES[0].title);
 

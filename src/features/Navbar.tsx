@@ -16,8 +16,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useContext } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
+import { type ContextProps, InViewCategory } from '@/App.tsx';
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
-import { type ContextProps, InViewCategory } from '@/app.tsx';
 import logo from '@/assets/images/logo.webp';
 
 const MobileNav = ({ onOpen }: { onOpen: () => void }): JSX.Element => (

@@ -1,17 +1,23 @@
-import { Box, Heading, Spinner, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Spinner,
+  VisuallyHidden,
+  VStack
+} from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { lazy, Suspense } from 'preact/compat';
 import { useContext, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 import { useInView } from 'react-intersection-observer';
 
+import { InViewCategory } from '@/App.tsx';
 import {
   type CategoryDetails,
   CATEGORIES,
   kebabize
 } from '@/algorithms/categories.ts';
-import { InViewCategory } from '@/app.tsx';
-const CodeView = lazy(() => import('@/components/cards/codeView.tsx'));
+const CodeView = lazy(() => import('@/components/cards/CodeView.tsx'));
 
 const CategoryView = ({
   category
@@ -85,6 +91,8 @@ const CustomSpinner = (): JSX.Element => (
 
 export const CategoryList = (): JSX.Element => (
   <Suspense fallback={<CustomSpinner />}>
+    {/* Prevent FOUT */}
+    <VisuallyHidden fontFamily='Ubuntu Mono, monospace' />
     {CATEGORIES.map((category: CategoryDetails) => (
       <CategoryView key={category.title} category={category} />
     ))}

@@ -11,8 +11,8 @@ import {
 } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
 
+import { InViewCategory } from '@/App.tsx';
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
-import { InViewCategory } from '@/app.tsx';
 
 export const ScrollToTop = (): JSX.Element => {
   const [scrollPosition, setScrollPosition] = useState(0);

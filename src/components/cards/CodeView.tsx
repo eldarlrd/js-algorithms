@@ -56,6 +56,7 @@ const CodeView = (props: CodeProps): JSX.Element => {
   const kebabCaseName = `#${props.name.toLowerCase().replaceAll(' ', '-')}`;
 
   const runCode = (): void => {
+    inputRef.current?.focus();
     if (argument) {
       onOpen();
       setIsSpinner(true);
@@ -63,7 +64,7 @@ const CodeView = (props: CodeProps): JSX.Element => {
         setIsSpinner(false);
       }, 200);
       setResult(props.code(argument.split(',')));
-    } else inputRef.current?.focus();
+    }
   };
 
   const copyToClipboard = (

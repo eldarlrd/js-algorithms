@@ -91,8 +91,10 @@ const CustomSpinner = (): JSX.Element => (
 
 export const CategoryList = (): JSX.Element => (
   <Suspense fallback={<CustomSpinner />}>
-    {/* Prevent FOUT */}
-    <VisuallyHidden fontFamily='Ubuntu Mono, monospace' />
+    <VisuallyHidden fontFamily='Ubuntu Mono, monospace'>
+      Prevent FOUT
+    </VisuallyHidden>
+
     {CATEGORIES.map((category: CategoryDetails) => (
       <CategoryView key={category.title} category={category} />
     ))}

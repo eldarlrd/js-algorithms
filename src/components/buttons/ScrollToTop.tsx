@@ -2,17 +2,8 @@ import { Box, Button } from '@chakra-ui/react';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import {
-  useState,
-  useRef,
-  useCallback,
-  useEffect,
-  useContext
-} from 'preact/hooks';
+import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
-
-import { InViewCategory } from '@/App.tsx';
-import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
 
 export const ScrollToTop = (): JSX.Element => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -20,7 +11,6 @@ export const ScrollToTop = (): JSX.Element => {
 
   const [isVisible, setIsVisible] = useState(false);
 
-  const { setInViewCategory } = useContext(InViewCategory);
   const prevScrollPosition = useRef(0);
 
   const handleScroll = useCallback(() => {
@@ -35,7 +25,6 @@ export const ScrollToTop = (): JSX.Element => {
   }, [scrollPosition]);
 
   const instantTop = (): void => {
-    setInViewCategory(kebabize(CATEGORIES[0].title));
     window.scrollTo({ top: 0 });
   };
 
@@ -63,7 +52,6 @@ export const ScrollToTop = (): JSX.Element => {
       right='8'
       zIndex='1'>
       <Button
-        // @ts-expect-error: preact/compat issue.
         size={{ base: 'sm', md: 'md' }}
         onClick={instantTop}
         colorScheme='yellow'

@@ -9,14 +9,14 @@ import {
   Image,
   CloseButton,
   Flex,
-  Link
+  Link as ChakraLink
 } from '@chakra-ui/react';
 import { type IconDefinition, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useContext } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
+import { Link as ReactRouterLink, useLocation } from 'react-router';
 
-import { type ContextProps, InViewCategory } from '@/App.tsx';
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
 import logo from '@/assets/images/logo.webp';
 
@@ -57,104 +57,94 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }): JSX.Element => (
 const Sidebar = ({
   onClose,
   ...rest
-}: { onClose: () => void } & BoxProps): JSX.Element => {
-  const { inViewCategory, setInViewCategory } = useContext(InViewCategory);
-
-  return (
-    <Box
-      h='full'
-      pos='fixed'
-      userSelect='none'
-      borderRightWidth={1}
-      borderRightColor='gray.200'
-      w={{ base: 'full', lg: '21em' }}
-      {...rest}>
-      <HStack ms='6' me='4' h='20' justify='space-between'>
-        <Box fontFamily='main' color='gray.900' fontWeight='bold'>
-          <Image
-            me='2.5'
-            src={logo}
-            boxSize='8'
-            display='inline-block'
-            verticalAlign='middle'
-            alt='Programming icon by Eucalyp'
-            onDragStart={(e: DragEvent) => {
-              e.preventDefault();
-            }}
-          />
-          Categories
-        </Box>
-
-        <CloseButton
-          onClick={onClose}
-          display={{ base: 'flex', lg: 'none' }}
-          _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+}: { onClose: () => void } & BoxProps): JSX.Element => (
+  <Box
+    h='full'
+    pos='fixed'
+    userSelect='none'
+    borderRightWidth={1}
+    borderRightColor='gray.200'
+    w={{ base: 'full', lg: '21em' }}
+    {...rest}>
+    <HStack ms='6' me='4' h='20' justify='space-between'>
+      <Box fontFamily='main' color='gray.900' fontWeight='bold'>
+        <Image
+          me='2.5'
+          src={logo}
+          boxSize='8'
+          display='inline-block'
+          verticalAlign='middle'
+          alt='Programming icon by Eucalyp'
+          onDragStart={(e: DragEvent) => {
+            e.preventDefault();
+          }}
         />
-      </HStack>
-      {CATEGORIES.map(category => (
-        <NavItem
-          onClose={onClose}
-          inViewCategory={inViewCategory}
-          setInViewCategory={setInViewCategory}
-          icon={category.icon}
-          title={category.title}
-          id={kebabize(category.title)}
-          key={category.title}
-        />
-      ))}
-    </Box>
-  );
-};
+        Categories
+      </Box>
 
-interface NavItemProps extends ContextProps {
+      <CloseButton
+        onClick={onClose}
+        display={{ base: 'flex', lg: 'none' }}
+        _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+      />
+    </HStack>
+
+    {CATEGORIES.map(category => (
+      <NavItem
+        onClose={onClose}
+        icon={category.icon}
+        title={category.title}
+        id={kebabize(category.title)}
+        key={category.title}
+      />
+    ))}
+  </Box>
+);
+
+interface NavItemProps {
   onClose: () => void;
   icon: IconDefinition;
   title: string;
   id: string;
 }
 
-const NavItem = ({
-  onClose,
-  inViewCategory,
-  setInViewCategory,
-  icon,
-  title,
-  id
-}: NavItemProps): JSX.Element => (
-  <Link
-    href={id}
-    _hover={{ textDecoration: 'none' }}
-    _focusVisible={{ boxShadow: 'none' }}
-    onDragStart={(e: DragEvent) => {
-      e.preventDefault();
-    }}
-    onClick={(): void => {
-      setInViewCategory(id);
-      onClose();
-    }}>
-    <Flex
-      p='4'
-      mx='4'
-      mb='1'
-      gap='2.5'
-      role='group'
-      align='center'
-      borderRadius='6'
-      cursor='pointer'
-      color='gray.900'
-      fontFamily='main'
-      fontWeight='bold'
-      transition='background 200ms'
-      bg={inViewCategory === id ? 'yellow.400' : ''}
-      _hover={{
-        bg: 'yellow.400',
-        color: 'gray.900'
-      }}>
-      <FontAwesomeIcon icon={icon} fixedWidth />
-      {title}
-    </Flex>
-  </Link>
-);
+const NavItem = ({ onClose, icon, title, id }: NavItemProps): JSX.Element => {
+  const { pathname } = useLocation();
+
+  return (
+    <ChakraLink
+      as={ReactRouterLink}
+      to={id}
+      _hover={{ textDecoration: 'none' }}
+      _focusVisible={{ boxShadow: 'none' }}
+      onDragStart={(e: DragEvent) => {
+        e.preventDefault();
+      }}
+      onClick={onClose}>
+      <Flex
+        p='4'
+        mx='4'
+        mb='1'
+        gap='2.5'
+        role='group'
+        align='center'
+        borderRadius='6'
+        cursor='pointer'
+        color='gray.900'
+        fontFamily='main'
+        fontWeight='bold'
+        transition='background 200ms'
+        bg={pathname === `/${id}` ? 'yellow.400' : ''}
+        _hover={{
+          bg: 'yellow.400',
+          color: 'gray.900'
+        }}>
+        <FontAwesomeIcon icon={icon} fixedWidth />
+        {title}
+      </Flex>
+    </ChakraLink>
+  );
+};
 
 export const Navbar = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -1,10 +1,9 @@
 import { ChakraProvider, Flex } from '@chakra-ui/react';
-import { createContext } from 'preact';
-import { type Dispatch, useState } from 'preact/hooks';
 import { type JSX } from 'preact/jsx-runtime';
-
 import '@fontsource/ubuntu/latin-400.css';
 import '@fontsource/ubuntu-mono/latin-400.css';
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router';
+
 import theme from '../chakra.config.mts';
 
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
@@ -14,19 +13,6 @@ import { Header } from '@/components/banners/Header.tsx';
 import { ScrollToTop } from '@/components/buttons/ScrollToTop.tsx';
 import { CategoryList } from '@/features/CategoryList.tsx';
 import { Navbar } from '@/features/Navbar.tsx';
-
-const initKebabCaseName = kebabize(CATEGORIES[0].title);
-
-interface ContextProps {
-  inViewCategory: string;
-  setInViewCategory: Dispatch<string>;
-}
-
-const InViewCategory = createContext<ContextProps>({
-  inViewCategory: initKebabCaseName,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setInViewCategory: () => {}
-});
 
 const AppContent = (): JSX.Element => (
   <Flex direction='column' minH='100svh'>
@@ -39,31 +25,35 @@ const AppContent = (): JSX.Element => (
       bgImage={background}
       ms={{ lg: '21em' }}>
       <Header />
-      <CategoryList />
+      <Routes>
+        <Route
+          path='/'
+          element={<Navigate to={kebabize(CATEGORIES[0].title)} />}
+        />
+
+        {CATEGORIES.map(category => (
+          <Route
+            key={category.title}
+            path={kebabize(category.title)}
+            element={<CategoryList category={category} />}
+          />
+        ))}
+
+        <Route path='*' element={<Navigate to='/' />} />
+      </Routes>
       <ScrollToTop />
       <Footer />
     </Flex>
   </Flex>
 );
 
-const App = (): JSX.Element => {
-  const [inViewCategory, setInViewCategory] = useState(initKebabCaseName);
-
-  const contextValue = {
-    inViewCategory,
-    setInViewCategory
-  };
-
-  return (
-    <InViewCategory.Provider value={contextValue}>
-      <ChakraProvider theme={theme}>
-        <AppContent />
-      </ChakraProvider>
-    </InViewCategory.Provider>
-  );
-};
-
-export { type ContextProps, InViewCategory, App };
+export const App = (): JSX.Element => (
+  <ChakraProvider theme={theme}>
+    <BrowserRouter basename='js-algorithms'>
+      <AppContent />
+    </BrowserRouter>
+  </ChakraProvider>
+);
 
 // Easter Egg
 console.log('PNEGUNTB QRYRAQN RFG');

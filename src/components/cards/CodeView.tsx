@@ -31,6 +31,8 @@ import { type JSX } from 'preact/jsx-runtime';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
+import { kebabize } from '@/algorithms/categories.ts';
+
 interface CodeProps {
   name: string;
   placeholder: string;
@@ -53,16 +55,18 @@ const CodeView = (props: CodeProps): JSX.Element => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const kebabCaseName = `#${props.name.toLowerCase().replaceAll(' ', '-')}`;
+  const kebabCaseName = '#' + kebabize(props.name);
 
   const runCode = (): void => {
     inputRef.current?.focus();
     if (argument) {
       onOpen();
       setIsSpinner(true);
+
       setTimeout(() => {
         setIsSpinner(false);
       }, 200);
+
       setResult(props.code(argument.split(',')));
     }
   };
@@ -78,6 +82,7 @@ const CodeView = (props: CodeProps): JSX.Element => {
   const handleCopyCode = (): void => {
     copyToClipboard(props.raw, codeClipboard);
     setClipboardIcon(faClipboardCheck);
+
     setTimeout(() => {
       setClipboardIcon(faClipboard);
     }, 1000);
@@ -118,7 +123,7 @@ const CodeView = (props: CodeProps): JSX.Element => {
         onMouseLeave={() => {
           setIsHovered(false);
         }}>
-        {`${props.name} `}
+        {props.name}{' '}
         {isHovered && (
           <Link
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
@@ -234,8 +239,8 @@ const CodeView = (props: CodeProps): JSX.Element => {
                   h='full'>
                   <FontAwesomeIcon
                     icon={isError ? faCircleExclamation : faHandHolding}
-                  />
-                  {`  ${result.toString().replace('ERROR:', '')}`}
+                  />{' '}
+                  {result.toString().replace('ERROR:', '')}
                 </Button>
               </Tooltip>
             </ScaleFade>

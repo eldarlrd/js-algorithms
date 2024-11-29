@@ -28,13 +28,13 @@ const AppContent = (): JSX.Element => (
       <Routes>
         <Route
           path='/'
-          element={<Navigate to={kebabize(CATEGORIES[0].title)} />}
+          element={<Navigate to={'/' + kebabize(CATEGORIES[0].title)} />}
         />
 
         {CATEGORIES.map(category => (
           <Route
             key={category.title}
-            path={kebabize(category.title)}
+            path={'/' + kebabize(category.title)}
             element={<CategoryList category={category} />}
           />
         ))}
@@ -49,7 +49,7 @@ const AppContent = (): JSX.Element => (
 
 export const App = (): JSX.Element => (
   <ChakraProvider theme={theme}>
-    <BrowserRouter basename='js-algorithms'>
+    <BrowserRouter basename='/js-algorithms'>
       <AppContent />
     </BrowserRouter>
   </ChakraProvider>

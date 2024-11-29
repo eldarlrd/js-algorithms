@@ -36,7 +36,7 @@ export const Footer = (): JSX.Element => (
     />
     <>
       © 2022 - 2024
-      <Tooltip fontFamily='main' borderRadius='6' label='Go to the Source'>
+      <Tooltip fontFamily='main' borderRadius='6' label='Source'>
         <Link
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
           href='https://github.com/eldarlrd/js-algorithms'

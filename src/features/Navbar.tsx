@@ -94,7 +94,7 @@ const Sidebar = ({
         onClose={onClose}
         icon={category.icon}
         title={category.title}
-        id={kebabize(category.title)}
+        id={'/' + kebabize(category.title)}
         key={category.title}
       />
     ))}
@@ -134,7 +134,7 @@ const NavItem = ({ onClose, icon, title, id }: NavItemProps): JSX.Element => {
         fontFamily='main'
         fontWeight='bold'
         transition='background 200ms'
-        bg={pathname === `/${id}` ? 'yellow.400' : ''}
+        bg={pathname === id ? 'yellow.400' : ''}
         _hover={{
           bg: 'yellow.400',
           color: 'gray.900'

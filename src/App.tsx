@@ -13,7 +13,6 @@ import { Header } from '@/components/banners/Header.tsx';
 import { ScrollToTop } from '@/components/buttons/ScrollToTop.tsx';
 import { CategoryList } from '@/features/CategoryList.tsx';
 import { Navbar } from '@/features/Navbar.tsx';
-import { NoPage } from '@/features/NoPage.tsx';
 
 const AppContent = (): ReactElement => (
   <Flex direction='column' minH='100dvh'>
@@ -41,7 +40,7 @@ const AppContent = (): ReactElement => (
             />
           ))}
 
-          <Route path='*' element={<NoPage />} />
+          <Route path='*' element={<Navigate to='/' />} />
         </Routes>
       </Box>
       <ScrollToTop />

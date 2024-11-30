@@ -1,8 +1,8 @@
 import { Box, ChakraProvider, Flex } from '@chakra-ui/react';
-import { type JSX } from 'preact/jsx-runtime';
 import '@fontsource/ubuntu/latin-400.css';
 import '@fontsource/ubuntu-mono/latin-400.css';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
+import { type ReactElement } from 'preact/compat';
+import { HashRouter, Routes, Route, Navigate } from 'react-router';
 
 import theme from '../chakra.config.mts';
 
@@ -15,8 +15,8 @@ import { CategoryList } from '@/features/CategoryList.tsx';
 import { Navbar } from '@/features/Navbar.tsx';
 import { NoPage } from '@/features/NoPage.tsx';
 
-const AppContent = (): JSX.Element => (
-  <Flex direction='column' minH='100svh'>
+const AppContent = (): ReactElement => (
+  <Flex direction='column' minH='100dvh'>
     <Navbar />
     <Flex
       flex='1'
@@ -50,11 +50,11 @@ const AppContent = (): JSX.Element => (
   </Flex>
 );
 
-export const App = (): JSX.Element => (
+export const App = (): ReactElement => (
   <ChakraProvider theme={theme}>
-    <BrowserRouter basename='/js-algorithms'>
+    <HashRouter>
       <AppContent />
-    </BrowserRouter>
+    </HashRouter>
   </ChakraProvider>
 );
 

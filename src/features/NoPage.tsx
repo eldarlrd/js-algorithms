@@ -1,10 +1,10 @@
 import { Stack, Heading, Link as ChakraLink, Text } from '@chakra-ui/react';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type JSX } from 'preact/jsx-runtime';
+import { type ReactElement } from 'preact/compat';
 import { Link as ReactRouterLink } from 'react-router';
 
-export const NoPage = (): JSX.Element => (
+export const NoPage = (): ReactElement => (
   <Stack
     as='section'
     gap='2'

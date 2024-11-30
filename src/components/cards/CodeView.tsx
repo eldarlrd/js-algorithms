@@ -26,8 +26,13 @@ import {
   faCircleExclamation
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  type ReactElement,
+  type ChangeEvent,
+  type KeyboardEvent
+} from 'preact/compat';
 import { type StateUpdater, useState, useEffect, useRef } from 'preact/hooks';
-import { type JSX } from 'preact/jsx-runtime';
+import { useLocation } from 'react-router';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -40,7 +45,7 @@ interface CodeProps {
   raw: string;
 }
 
-const CodeView = (props: CodeProps): JSX.Element => {
+const CodeView = (props: CodeProps): ReactElement => {
   const [isVisible, { toggle: setIsVisible }] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
   const [result, setResult] = useState('');
@@ -50,12 +55,14 @@ const CodeView = (props: CodeProps): JSX.Element => {
   const [isHovered, setIsHovered] = useState(false);
   const [clipboardIcon, setClipboardIcon] = useState(faClipboard);
 
+  const { pathname } = useLocation();
+
   const codeClipboard = useClipboard(props.raw);
   const resultClipboard = useClipboard(result);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const kebabCaseName = '#' + kebabize(props.name);
+  const kebabCaseName = '#' + pathname + '#' + kebabize(props.name);
 
   const runCode = (): void => {
     inputRef.current?.focus();
@@ -92,11 +99,11 @@ const CodeView = (props: CodeProps): JSX.Element => {
     if (!isError && result) copyToClipboard(result, resultClipboard);
   };
 
-  const handleInput = (e: JSX.TargetedInputEvent<HTMLInputElement>): void => {
+  const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setArgument((e.target as HTMLInputElement).value);
   };
 
-  const handleKey = (e: JSX.TargetedKeyboardEvent<HTMLInputElement>): void => {
+  const handleKey = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') runCode();
   };
 

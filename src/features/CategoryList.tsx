@@ -6,8 +6,7 @@ import {
   VStack
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { lazy, Suspense } from 'preact/compat';
-import { type JSX } from 'preact/jsx-runtime';
+import { lazy, type ReactElement, Suspense } from 'preact/compat';
 
 import { type CategoryDetails } from '@/algorithms/categories.ts';
 const CodeView = lazy(() => import('@/components/cards/CodeView.tsx'));
@@ -16,7 +15,7 @@ const CategoryView = ({
   category
 }: {
   category: CategoryDetails;
-}): JSX.Element => {
+}): ReactElement => {
   const categoryCards = category.funcArr.map(func => (
     <CodeView
       key={func.name}
@@ -56,7 +55,7 @@ const CategoryView = ({
   );
 };
 
-const CustomSpinner = (): JSX.Element => (
+const CustomSpinner = (): ReactElement => (
   <VStack
     w={['21.5rem', 'md', 'xl']}
     justify='center'
@@ -70,7 +69,7 @@ export const CategoryList = ({
   category
 }: {
   category: CategoryDetails;
-}): JSX.Element => (
+}): ReactElement => (
   <Suspense fallback={<CustomSpinner />}>
     <VisuallyHidden fontFamily='Ubuntu Mono, monospace'>
       Prevent FOUT

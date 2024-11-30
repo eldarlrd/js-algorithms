@@ -104,6 +104,6 @@ const CATEGORIES: CategoryDetails[] = [
 ];
 
 const kebabize = (title: string): string =>
-  title.toLowerCase().replaceAll(' ', '-');
+  title.toLowerCase().replaceAll(' ', '-').replaceAll('&', 'and');
 
 export { type CategoryDetails, CATEGORIES, kebabize };

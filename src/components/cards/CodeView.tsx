@@ -32,7 +32,6 @@ import {
   type KeyboardEvent
 } from 'preact/compat';
 import { type StateUpdater, useState, useEffect, useRef } from 'preact/hooks';
-import { useLocation } from 'react-router';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -55,14 +54,12 @@ const CodeView = (props: CodeProps): ReactElement => {
   const [isHovered, setIsHovered] = useState(false);
   const [clipboardIcon, setClipboardIcon] = useState(faClipboard);
 
-  const { pathname } = useLocation();
-
   const codeClipboard = useClipboard(props.raw);
   const resultClipboard = useClipboard(result);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const kebabCaseName = '#' + pathname + '#' + kebabize(props.name);
+  const kebabCaseName = '#' + kebabize(props.name);
 
   const runCode = (): void => {
     inputRef.current?.focus();

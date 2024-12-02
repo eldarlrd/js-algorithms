@@ -2,7 +2,7 @@ import { Box, ChakraProvider, Flex } from '@chakra-ui/react';
 import '@fontsource/ubuntu/latin-400.css';
 import '@fontsource/ubuntu-mono/latin-400.css';
 import { type ReactElement } from 'preact/compat';
-import { HashRouter, Routes, Route, Navigate } from 'react-router';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 
 import theme from '../chakra.config.mts';
 
@@ -51,9 +51,9 @@ const AppContent = (): ReactElement => (
 
 export const App = (): ReactElement => (
   <ChakraProvider theme={theme}>
-    <HashRouter>
+    <BrowserRouter basename='/js-algorithms'>
       <AppContent />
-    </HashRouter>
+    </BrowserRouter>
   </ChakraProvider>
 );
 

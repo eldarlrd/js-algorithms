@@ -78,6 +78,10 @@ export default tseslint.config({
     'n/no-missing-import': 0,
     'no-unused-vars': 0,
     'prefer-const': 2,
+    'padding-line-between-statements': [2,
+      { blankLine: 'always', prev: '*', next: 'return' },
+      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] }],
     eqeqeq: 2
   }
 }) satisfies FlatConfig.ConfigArray;

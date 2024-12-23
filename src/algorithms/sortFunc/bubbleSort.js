@@ -5,6 +5,7 @@ export const bubbleSortObj = {
     arr = arr.map(num => +num);
     if (!arr.every(n => n / 1 === n))
       return 'ERROR: Inputs must be numbers';
+
     let isDone = false;
     while (!isDone) {
       isDone = true;
@@ -19,9 +20,6 @@ export const bubbleSortObj = {
   },
   raw:
 `const bubbleSort = arr => {
-  arr = arr.map(num => +num);
-  if (!arr.every(n => n / 1 === n))
-    return 'ERROR: Inputs must be numbers';
   let isDone = false;
   while (!isDone) {
     isDone = true;

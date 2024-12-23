@@ -7,6 +7,7 @@ export const sumPrimesObj = {
       return 'ERROR: Input must be a natural number';
     else if (num > 1000)
       return 'ERROR: Input value too high';
+
     let sum = 0;
     while (num >= 2) {
       sumPrimesObj.isPrime(num) ? sum += num : false;
@@ -14,7 +15,7 @@ export const sumPrimesObj = {
     } return sum;
   },
   isPrime(num) {
-    let i = Math.floor(Math.sqrt(num));
+    let i = ~~Math.sqrt(num);
     while (i >= 2) {
       if (num % i === 0)
         return false;
@@ -24,20 +25,16 @@ export const sumPrimesObj = {
   raw:
 `// Checking for Prime Numbers
 const isPrime = num => {
-  let i = Math.floor(Math.sqrt(num));
+  let i = ~~Math.sqrt(num);
   while (i >= 2) {
     if (num % i === 0)
       return false;
     else i--;
   } return true;
 }
+
 // Summarizing the Prime Numbers
 const sumPrimes = num => {
-  num = +num;
-  if (num <= 0 || num % 1 !== 0)
-    return 'ERROR: Input must be a natural number';
-  else if (num > 1000)
-    return 'ERROR: Input value too high';
   let sum = 0;
   while (num >= 2) {
     isPrime(num) ? sum += num : false;

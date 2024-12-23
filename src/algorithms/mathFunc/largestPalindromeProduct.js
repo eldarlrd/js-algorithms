@@ -5,8 +5,8 @@ export const largestPalindromeProductObj = {
     n = +n;
     if (n <= 0 || n % 1 !== 0)
       return 'ERROR: Input must be a natural number';
-    if (n > 3)
-      return 'ERROR: Input value too high'
+    else if (n > 3) return 'ERROR: Input value too high';
+
     const highLim = (10 ** n) - 1;
     const lowLim = (10 ** n) / 10;
     let maxProd = 0;
@@ -24,11 +24,6 @@ export const largestPalindromeProductObj = {
   },
   raw:
 `const largestPalindromeProduct = n => {
-  n = +n;
-  if (n <= 0 || n % 1 !== 0)
-    return 'ERROR: Input must be a natural number';
-  if (n > 3)
-    return 'ERROR: Input value too high'
   const highLim = (10 ** n) - 1;
   const lowLim = (10 ** n) / 10;
   let maxProd = 0;

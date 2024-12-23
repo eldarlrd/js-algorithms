@@ -19,6 +19,7 @@ import { gcdObj } from '@/algorithms/mathFunc/gcd.js';
 import { largestPalindromeProductObj } from '@/algorithms/mathFunc/largestPalindromeProduct.js';
 import { largestPrimeFactorObj } from '@/algorithms/mathFunc/largestPrimeFactor.js';
 import { multiplesOf3and5Obj } from '@/algorithms/mathFunc/multiplesOf3and5.js';
+import { permutationsObj } from '@/algorithms/mathFunc/permutations.js';
 import { smallestMultObj } from '@/algorithms/mathFunc/smallestMult.js';
 import { sumPrimesObj } from '@/algorithms/mathFunc/sumPrimes.js';
 import { bubbleSortObj } from '@/algorithms/sortFunc/bubbleSort.js';
@@ -38,6 +39,7 @@ const mathFuncArr = [
   largestPalindromeProductObj,
   largestPrimeFactorObj,
   fibonacciObj,
+  permutationsObj,
   smallestMultObj,
   multiplesOf3and5Obj,
   sumPrimesObj,

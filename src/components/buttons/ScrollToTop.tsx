@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { type ReactElement } from 'preact/compat';
 import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
+import { useLocation } from 'react-router';
 
 export const ScrollToTop = (): ReactElement => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -12,6 +13,8 @@ export const ScrollToTop = (): ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
 
   const prevScrollPosition = useRef(0);
+
+  const { pathname } = useLocation();
 
   const handleScroll = useCallback(() => {
     const scrollPosDiff = prevScrollPosition.current - scrollPosition;
@@ -34,12 +37,17 @@ export const ScrollToTop = (): ReactElement => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+
     return removeScroll;
   }, [handleScroll]);
 
   useEffect(() => {
     setIsVisible(scrollPosition > 250 && isScrollingUp);
   }, [scrollPosition, isScrollingUp]);
+
+  useEffect(() => {
+    instantTop();
+  }, [pathname]);
 
   return (
     <Box

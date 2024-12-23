@@ -106,6 +106,7 @@ const CodeView = (props: CodeProps): ReactElement => {
 
   useEffect(() => {
     const isErrorStr = result.toString().split(' ');
+
     setIsError(isErrorStr[0] === 'ERROR:');
   }, [result]);
 

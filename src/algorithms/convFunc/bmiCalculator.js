@@ -7,36 +7,21 @@ export const bmiCalculatorObj = {
     if (inputArr.length !== 2 ||
         !weight || !height)
       return 'ERROR: Inputs must be (number, number)';
-    if (weight <= 0 || height <= 0)
+    else if (weight <= 0 || height <= 0)
       return 'ERROR: Inputs must be positive numbers';
     else if (weight > 635 || height > 2.72)
       return 'ERROR: Input values too high';
+
     const bmi = (weight / (height * height)).toFixed(2);
-    return bmi < 18.5
-      ? `${bmi} Underweight`
-      : bmi <= 25
-        ? `${bmi} Healthy`
-        : bmi <= 30
-          ? `${bmi} Overweight`
-          : `${bmi} Obese`;
+    const state = bmi < 18.5 ? 'Underweight' : bmi <= 25
+      ? 'Healthy' : bmi <= 30 ? 'Overweight' : 'Obese';
+    return `${bmi} ${state}`;
   },
   raw:
 `const bmiCalculator = (weight, height) => {
-  const weight = +weight;
-  const height = +height;
-  if (!weight || !height)
-    return 'ERROR: Inputs must be (number, number)';
-  if (weight <= 0 || height <= 0)
-    return 'ERROR: Inputs must be positive numbers';
-  else if (weight > 635 || height > 2.72)
-    return 'ERROR: Input values too high';
   const bmi = (weight / (height * height)).toFixed(2);
-  return bmi < 18.5
-    ? \`\${bmi} Underweight\`
-    : bmi <= 25
-      ? \`\${bmi} Healthy\`
-      : bmi <= 30
-        ? \`\${bmi} Overweight\`
-        : \`\${bmi} Obese\`;
+  const state = bmi < 18.5 ? 'Underweight' : bmi <= 25
+    ? 'Healthy' : bmi <= 30 ? 'Overweight' : 'Obese';
+  return \`\${bmi} \${state}\`;
 }`
 }

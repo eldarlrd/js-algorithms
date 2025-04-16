@@ -1,11 +1,3 @@
-import {
-  type IconDefinition,
-  faSquareRootVariable,
-  faDiceFive,
-  faComment,
-  faDatabase
-} from '@fortawesome/free-solid-svg-icons';
-
 import { bmiCalculatorObj } from '@/algorithms/convFunc/bmiCalculator.js';
 import { convertCtoFObj } from '@/algorithms/convFunc/convertCtoF.js';
 import { convertFtoCObj } from '@/algorithms/convFunc/convertFtoC.js';
@@ -27,11 +19,19 @@ import { checkCashRegisterObj } from '@/algorithms/sortFunc/checkCashRegister.js
 import { mergeSortObj } from '@/algorithms/sortFunc/mergeSort.js';
 import { passwordVerifyObj } from '@/algorithms/sortFunc/passwordVerify.js';
 import { telephoneCheckObj } from '@/algorithms/sortFunc/telephoneCheck.js';
+import { towerOfHanoiObj } from '@/algorithms/sortFunc/towerOfHanoi.js';
 import { convertToRomanObj } from '@/algorithms/textFunc/convertToRoman.js';
 import { palindromeObj } from '@/algorithms/textFunc/palindrome.js';
 import { rot13Obj } from '@/algorithms/textFunc/rot13.js';
 import { spinalCaseObj } from '@/algorithms/textFunc/spinalCase.js';
 import { translatePigLatinObj } from '@/algorithms/textFunc/translatePigLatin.js';
+import {
+  faComment,
+  faDatabase,
+  faDiceFive,
+  faSquareRootVariable,
+  type IconDefinition
+} from '@fortawesome/free-solid-svg-icons';
 
 const mathFuncArr = [
   factorializeObj,
@@ -66,6 +66,7 @@ const textFuncArr = [
 const sortFuncArr = [
   bubbleSortObj,
   mergeSortObj,
+  towerOfHanoiObj,
   passwordVerifyObj,
   telephoneCheckObj,
   checkCashRegisterObj

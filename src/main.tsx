@@ -1,7 +1,7 @@
 /**
  * @license AGPL-3.0-only
  * JS Algorithms - Interactive JavaScript Algorithms
- * Copyright (C) 2022-2024 Eldar Pashazade <eldarlrd@pm.me>
+ * Copyright (C) 2022-2025 Eldar Pashazade <eldarlrd@pm.me>
  *
  * This file is part of JS Algorithms.
  *
@@ -18,9 +18,8 @@
  * along with JS Algorithms. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { render } from 'preact';
-
 import { App } from '@/App.tsx';
+import { render } from 'preact';
 
 const root = document.getElementById('root');
 

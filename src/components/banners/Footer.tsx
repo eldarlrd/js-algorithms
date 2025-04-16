@@ -1,9 +1,8 @@
-import { Stack, Image, Tooltip, Link } from '@chakra-ui/react';
+import logo from '@/assets/images/logo.webp';
+import { Image, Link, Stack, Tooltip } from '@chakra-ui/react';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement } from 'preact/compat';
-
-import logo from '@/assets/images/logo.webp';
 
 export const Footer = (): ReactElement => (
   <Stack
@@ -35,7 +34,7 @@ export const Footer = (): ReactElement => (
       }}
     />
     <>
-      © 2022 - 2024
+      © 2022 - 2025
       <Tooltip fontFamily='main' borderRadius='6' label='Source'>
         <Link
           _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}

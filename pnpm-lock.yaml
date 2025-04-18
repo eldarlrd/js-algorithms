@@ -51,8 +51,8 @@ importers:
         specifier: ^9.16.0
         version: 9.16.0(@preact/compat@18.3.1(preact@10.26.5))(@preact/compat@18.3.1(preact@10.26.5))
       react-router:
-        specifier: ^7.5.0
-        version: 7.5.0(@preact/compat@18.3.1(preact@10.26.5))(@preact/compat@18.3.1(preact@10.26.5))
+        specifier: ^7.5.1
+        version: 7.5.1(@preact/compat@18.3.1(preact@10.26.5))(@preact/compat@18.3.1(preact@10.26.5))
       react-syntax-highlighter:
         specifier: ^15.6.1
         version: 15.6.1(@preact/compat@18.3.1(preact@10.26.5))
@@ -68,7 +68,7 @@ importers:
         version: 9.24.0
       '@preact/preset-vite':
         specifier: ^2.10.1
-        version: 2.10.1(@babel/core@7.26.10)(preact@10.26.5)(vite@6.3.0(jiti@2.4.2))
+        version: 2.10.1(@babel/core@7.26.10)(magic-string@0.30.17)(preact@10.26.5)(vite@6.3.2(jiti@2.4.2))
       '@types/react':
         specifier: ^18.3.20
         version: 18.3.20
@@ -130,8 +130,8 @@ importers:
         specifier: ^8.30.1
         version: 8.30.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
       vite:
-        specifier: ^6.3.0
-        version: 6.3.0(jiti@2.4.2)
+        specifier: ^6.3.2
+        version: 6.3.2(jiti@2.4.2)
 
 packages:
 
@@ -480,8 +480,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@eslint-community/eslint-utils@4.6.0':
-    resolution: {integrity: sha512-WhCn7Z7TauhBtmzhvKpoQs0Wwb/kBcy4CwpuI0/eEIr2Lx2auxmulAzLr91wVZJaz47iUZdkXOK7WlAfxGKCnA==}
+  '@eslint-community/eslint-utils@4.6.1':
+    resolution: {integrity: sha512-KTsJMmobmbrFLe3LDh0PC2FXpcSYJt/MLjlkh/9LEnmKYLSYmT/0EW9JWANjeoemiuZrmogti0tW5Ch+qNUYDw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
@@ -747,9 +747,6 @@ packages:
 
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
-
-  '@types/cookie@0.6.0':
-    resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
@@ -1198,8 +1195,8 @@ packages:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
 
-  electron-to-chromium@1.5.137:
-    resolution: {integrity: sha512-/QSJaU2JyIuTbbABAo/crOs+SuAZLS+fVVS10PVrIT9hrRkmZl8Hb0xPSkKRUUWHQtYzXHpQUW3Dy5hwMzGZkA==}
+  electron-to-chromium@1.5.138:
+    resolution: {integrity: sha512-FWlQc52z1dXqm+9cCJ2uyFgJkESd+16j6dBEjsgDNuHjBpuIzL8/lRc0uvh1k8RNI6waGo6tcy2DvwkTBJOLDg==}
 
   email-addresses@5.0.0:
     resolution: {integrity: sha512-4OIPYlA6JXqtVn8zpHpGiI7vE6EQOAg16aGnDMIAlZVinnoZ8208tW1hAbjWydgN/4PLTT9q+O1K6AH/vALJGw==}
@@ -2114,8 +2111,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-router@7.5.0:
-    resolution: {integrity: sha512-estOHrRlDMKdlQa6Mj32gIks4J+AxNsYoE0DbTTxiMy2mPzZuWSDU+N85/r1IlNR7kGfznF3VCUlvc5IUO+B9g==}
+  react-router@7.5.1:
+    resolution: {integrity: sha512-/jjU3fcYNd2bwz9Q0xt5TwyiyoO8XjSEFXJY4O/lMAlkGTHWuHRAbR9Etik+lSDqMC7A7mz3UlXzgYT6Vl58sA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
@@ -2425,11 +2422,14 @@ packages:
       '@types/react':
         optional: true
 
-  vite-prerender-plugin@0.5.8:
-    resolution: {integrity: sha512-XAED6mSH3kAW09/kQTN+jHTdDlM1cdKjVpB3ME1hGspExu5rRiqVRxSA+i1iembvuTnklb7urCykFYVJrtDlxg==}
+  vite-prerender-plugin@0.5.9:
+    resolution: {integrity: sha512-JfMNmgHcrLOXqxdtGM86+/C8J034uV8YrqGuD5q9otV/J5n38JNBtk8wYJZ74+2N2VtzKZA5XG3aH7GmuM42cQ==}
+    peerDependencies:
+      magic-string: '>= 0.26.0'
+      vite: 5.x || 6.x
 
-  vite@6.3.0:
-    resolution: {integrity: sha512-9aC0n4pr6hIbvi1YOpFjwQ+QOTGssvbJKoeYkuHHGWwlXfdxQlI8L2qNMo9awEEcCPSiS+5mJZk5jH1PAqoDeQ==}
+  vite@6.3.2:
+    resolution: {integrity: sha512-ZSvGOXKGceizRQIZSz7TGJ0pS3QLlVY/9hwxVh17W3re67je1RKYzFHivZ/t0tubU78Vkyb9WnHPENSBCzbckg==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -2881,7 +2881,7 @@ snapshots:
   '@esbuild/win32-x64@0.25.2':
     optional: true
 
-  '@eslint-community/eslint-utils@4.6.0(eslint@9.24.0(jiti@2.4.2))':
+  '@eslint-community/eslint-utils@4.6.1(eslint@9.24.0(jiti@2.4.2))':
     dependencies:
       eslint: 9.24.0(jiti@2.4.2)
       eslint-visitor-keys: 3.4.3
@@ -3010,19 +3010,20 @@ snapshots:
     dependencies:
       preact: 10.26.5
 
-  '@preact/preset-vite@2.10.1(@babel/core@7.26.10)(preact@10.26.5)(vite@6.3.0(jiti@2.4.2))':
+  '@preact/preset-vite@2.10.1(@babel/core@7.26.10)(magic-string@0.30.17)(preact@10.26.5)(vite@6.3.2(jiti@2.4.2))':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-transform-react-jsx': 7.25.9(@babel/core@7.26.10)
       '@babel/plugin-transform-react-jsx-development': 7.25.9(@babel/core@7.26.10)
-      '@prefresh/vite': 2.4.7(preact@10.26.5)(vite@6.3.0(jiti@2.4.2))
+      '@prefresh/vite': 2.4.7(preact@10.26.5)(vite@6.3.2(jiti@2.4.2))
       '@rollup/pluginutils': 4.2.1
       babel-plugin-transform-hook-names: 1.0.2(@babel/core@7.26.10)
       debug: 4.4.0
       kolorist: 1.8.0
-      vite: 6.3.0(jiti@2.4.2)
-      vite-prerender-plugin: 0.5.8
+      vite: 6.3.2(jiti@2.4.2)
+      vite-prerender-plugin: 0.5.9(magic-string@0.30.17)(vite@6.3.2(jiti@2.4.2))
     transitivePeerDependencies:
+      - magic-string
       - preact
       - supports-color
 
@@ -3034,7 +3035,7 @@ snapshots:
 
   '@prefresh/utils@1.2.0': {}
 
-  '@prefresh/vite@2.4.7(preact@10.26.5)(vite@6.3.0(jiti@2.4.2))':
+  '@prefresh/vite@2.4.7(preact@10.26.5)(vite@6.3.2(jiti@2.4.2))':
     dependencies:
       '@babel/core': 7.26.10
       '@prefresh/babel-plugin': 0.5.1
@@ -3042,7 +3043,7 @@ snapshots:
       '@prefresh/utils': 1.2.0
       '@rollup/pluginutils': 4.2.1
       preact: 10.26.5
-      vite: 6.3.0(jiti@2.4.2)
+      vite: 6.3.2(jiti@2.4.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -3117,8 +3118,6 @@ snapshots:
     dependencies:
       tslib: 2.8.1
     optional: true
-
-  '@types/cookie@0.6.0': {}
 
   '@types/estree@1.0.7': {}
 
@@ -3218,7 +3217,7 @@ snapshots:
 
   '@typescript-eslint/utils@8.30.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
-      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.1(eslint@9.24.0(jiti@2.4.2))
       '@typescript-eslint/scope-manager': 8.30.1
       '@typescript-eslint/types': 8.30.1
       '@typescript-eslint/typescript-estree': 8.30.1(typescript@5.8.3)
@@ -3426,7 +3425,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001714
-      electron-to-chromium: 1.5.137
+      electron-to-chromium: 1.5.138
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.24.4)
 
@@ -3590,7 +3589,7 @@ snapshots:
       es-errors: 1.3.0
       gopd: 1.2.0
 
-  electron-to-chromium@1.5.137: {}
+  electron-to-chromium@1.5.138: {}
 
   email-addresses@5.0.0: {}
 
@@ -3784,7 +3783,7 @@ snapshots:
 
   eslint-plugin-es-x@7.8.0(eslint@9.24.0(jiti@2.4.2)):
     dependencies:
-      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.1(eslint@9.24.0(jiti@2.4.2))
       '@eslint-community/regexpp': 4.12.1
       eslint: 9.24.0(jiti@2.4.2)
       eslint-compat-utils: 0.5.1(eslint@9.24.0(jiti@2.4.2))
@@ -3839,7 +3838,7 @@ snapshots:
 
   eslint-plugin-n@17.17.0(eslint@9.24.0(jiti@2.4.2)):
     dependencies:
-      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.1(eslint@9.24.0(jiti@2.4.2))
       enhanced-resolve: 5.18.1
       eslint: 9.24.0(jiti@2.4.2)
       eslint-plugin-es-x: 7.8.0(eslint@9.24.0(jiti@2.4.2))
@@ -3853,7 +3852,7 @@ snapshots:
 
   eslint-plugin-promise@7.2.1(eslint@9.24.0(jiti@2.4.2)):
     dependencies:
-      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.1(eslint@9.24.0(jiti@2.4.2))
       eslint: 9.24.0(jiti@2.4.2)
 
   eslint-plugin-react-hooks@5.2.0(eslint@9.24.0(jiti@2.4.2)):
@@ -3897,7 +3896,7 @@ snapshots:
 
   eslint@9.24.0(jiti@2.4.2):
     dependencies:
-      '@eslint-community/eslint-utils': 4.6.0(eslint@9.24.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.6.1(eslint@9.24.0(jiti@2.4.2))
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.20.0
       '@eslint/config-helpers': 0.2.1
@@ -4660,9 +4659,8 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.20
 
-  react-router@7.5.0(@preact/compat@18.3.1(preact@10.26.5))(@preact/compat@18.3.1(preact@10.26.5)):
+  react-router@7.5.1(@preact/compat@18.3.1(preact@10.26.5))(@preact/compat@18.3.1(preact@10.26.5)):
     dependencies:
-      '@types/cookie': 0.6.0
       cookie: 1.0.2
       react: '@preact/compat@18.3.1(preact@10.26.5)'
       set-cookie-parser: 2.7.1
@@ -5065,7 +5063,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.20
 
-  vite-prerender-plugin@0.5.8:
+  vite-prerender-plugin@0.5.9(magic-string@0.30.17)(vite@6.3.2(jiti@2.4.2)):
     dependencies:
       kolorist: 1.8.0
       magic-string: 0.30.17
@@ -5073,8 +5071,9 @@ snapshots:
       simple-code-frame: 1.3.0
       source-map: 0.7.4
       stack-trace: 1.0.0-pre2
+      vite: 6.3.2(jiti@2.4.2)
 
-  vite@6.3.0(jiti@2.4.2):
+  vite@6.3.2(jiti@2.4.2):
     dependencies:
       esbuild: 0.25.2
       fdir: 6.4.3(picomatch@4.0.2)

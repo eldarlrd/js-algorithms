@@ -1,8 +1,9 @@
-import logo from '@/assets/images/logo.webp';
 import { Image, Link, Stack, Tooltip } from '@chakra-ui/react';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type ReactElement } from 'preact/compat';
+
+import logo from '@/assets/images/logo.webp';
 
 export const Footer = (): ReactElement => (
   <Stack

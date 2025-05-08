@@ -18,8 +18,9 @@
  * along with JS Algorithms. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { App } from '@/App.tsx';
 import { render } from 'preact';
+
+import { App } from '@/App.tsx';
 
 const root = document.getElementById('root');
 

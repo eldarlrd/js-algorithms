@@ -55,8 +55,8 @@ export default tseslint.config({
     '@typescript-eslint/explicit-function-return-type': 2,
     '@typescript-eslint/consistent-type-imports': [2, { fixStyle: 'inline-type-imports' }],
     'no-relative-import-paths/no-relative-import-paths': [2, { rootDir: 'src', prefix: '@' }],
-    'import/order': [2, { 'newlines-between': 'always', alphabetize: { order: 'asc' } }],
-    'import/consistent-type-specifier-style': [2, 'prefer-inline'],
+    'import/order': [1, { 'newlines-between': 'always', alphabetize: { order: 'asc' } }],
+    'import/consistent-type-specifier-style': [1, 'prefer-inline'],
     'import/extensions': [2, 'ignorePackages'],
     'import/no-named-as-default-member': 0,
     'import/no-useless-path-segments': 2,
@@ -78,9 +78,9 @@ export default tseslint.config({
     'n/no-missing-import': 0,
     'no-unused-vars': 0,
     'prefer-const': 2,
-    'padding-line-between-statements': [2,
+    'padding-line-between-statements': [1,
       { blankLine: 'always', prev: '*', next: 'return' },
-      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      { blankLine: 'always', prev: ['directive', 'const', 'let', 'var'], next: '*' },
       { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] }],
     eqeqeq: 2
   }

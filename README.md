@@ -35,7 +35,7 @@ pnpm preview
 ```sh
 pnpm format
 ```
-### Cut Unused Deps (Knip)
+### Cut Orphans (Knip)
 ```sh
 pnpm cut
 ```

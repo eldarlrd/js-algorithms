@@ -20,7 +20,7 @@
     "lint": "eslint src",
     "pretty": "prettier '{src,__{tests,mocks,snapshots}__}/**/*.{ts,tsx}' --write",
     "format": "pnpm lint --fix && pnpm pretty",
-    "cut": "knip --fix"
+    "cut": "knip --fix --cache"
   },
   "prettier": {
     "singleQuote": true,

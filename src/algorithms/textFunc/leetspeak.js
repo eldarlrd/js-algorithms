@@ -40,7 +40,7 @@ export const leetspeakObj = {
       ).join('');
   },
   raw:
-`const leetspeak = str =>
+`const leetspeak = str => {
   const LEETTERS = {
     a: ['4', '@', 'Д'],
     b: ['8', '!3', 'ß'],

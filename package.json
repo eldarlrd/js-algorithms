@@ -57,6 +57,7 @@
     "@types/react-syntax-highlighter": "catalog:types",
     "eslint": "catalog:lint",
     "eslint-config-prettier": "catalog:lint",
+    "eslint-import-resolver-typescript": "catalog:lint",
     "eslint-plugin-import": "catalog:lint",
     "eslint-plugin-jsx-a11y": "catalog:lint",
     "eslint-plugin-n": "catalog:lint",

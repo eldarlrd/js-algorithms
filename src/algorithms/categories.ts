@@ -29,6 +29,7 @@ import { passwordVerifyObj } from '@/algorithms/sortFunc/passwordVerify.js';
 import { telephoneCheckObj } from '@/algorithms/sortFunc/telephoneCheck.js';
 import { towerOfHanoiObj } from '@/algorithms/sortFunc/towerOfHanoi.js';
 import { convertToRomanObj } from '@/algorithms/textFunc/convertToRoman.js';
+import { leetspeakObj } from '@/algorithms/textFunc/leetspeak.js';
 import { palindromeObj } from '@/algorithms/textFunc/palindrome.js';
 import { rot13Obj } from '@/algorithms/textFunc/rot13.js';
 import { spinalCaseObj } from '@/algorithms/textFunc/spinalCase.js';
@@ -57,6 +58,7 @@ const convFuncArr = [
 ];
 
 const textFuncArr = [
+  leetspeakObj,
   palindromeObj,
   translatePigLatinObj,
   convertToRomanObj,

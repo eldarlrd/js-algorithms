@@ -132,8 +132,8 @@ const CodeView = (props: CodeProps): ReactElement => {
         {isHovered && (
           <Link
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-            _selection={{ bg: 'gray.900' }}
             href={kebabCaseName}
+            userSelect={'none'}
             color='yellow.400'
             borderRadius='6'
             onDragStart={(e: DragEvent) => {

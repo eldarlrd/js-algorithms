@@ -180,10 +180,8 @@ const CodeView = (props: CodeProps): ReactElement => {
           <Collapse in={isVisible}>
             <SyntaxHighlighter
               style={gml}
-              showLineNumbers
-              showInlineLineNumbers
               language='javascript'
-              customStyle={{ borderRadius: 6 }}
+              customStyle={{ borderRadius: 6, paddingLeft: 16 }}
               codeTagProps={{
                 style: { fontFamily: 'Ubuntu Mono, monospace' }
               }}>

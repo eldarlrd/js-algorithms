@@ -9,8 +9,8 @@
   ],
   "description": "Interactive JavaScript Algorithms",
   "repository": "github:eldarlrd/js-algorithms",
-  "homepage": "https://eldarlrd.github.io/js-algorithms",
-  "author": "Eldar Pashazade <eldarlrd@pm.me> (https://eldarlrd.github.io)",
+  "homepage": "https://eldarlrd.is-a.dev/js-algorithms",
+  "author": "Eldar Pashazade <eldarlrd@pm.me> (https://eldarlrd.is-a.dev)",
   "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vite",

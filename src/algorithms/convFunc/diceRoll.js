@@ -27,13 +27,7 @@ export const diceRollObj = {
         i++;
       } else return 'ERROR: Input values too low';
 
-    // Bonus Roll
-    const uniqArr = [...new Set(arr)];
-    if (uniqArr.length === 1 && rolls !== 1) {
-      const bonus = ~~(Math.random() * sides) + 1;
-      textArr.push(` Bonus Roll: ${bonus}`);
-      total += bonus;
-    } return `${textArr} = Total: ${total}`;
+    return `${textArr} = Total: ${total}`;
   },
   raw:
 `const diceRoll = (rolls, sides) => {
@@ -52,12 +46,6 @@ export const diceRollObj = {
       i++;
     }
 
-  // Bonus Roll
-  const uniqArr = [...new Set(arr)];
-  if (uniqArr.length === 1 && rolls !== 1) {
-    const bonus = ~~(Math.random() * sides) + 1;
-    textArr.push(\` Bonus Roll: \${bonus}\`);
-    total += bonus;
-  } return \`\${textArr} = Total: \${total}\`;
+  return \`\${textArr} = Total: \${total}\`;
 }`
 }

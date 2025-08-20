@@ -47,15 +47,15 @@ interface CodeProps {
 const CodeView = (props: CodeProps): ReactElement => {
   const [isVisible, { toggle: setIsVisible }] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
-  const [result, setResult] = useState('');
   const [argument, setArgument] = useState('');
   const [isError, setIsError] = useState(false);
   const [isSpinner, setIsSpinner] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [result, setResult] = useState<string | number>('');
   const [clipboardIcon, setClipboardIcon] = useState(faClipboard);
 
   const codeClipboard = useClipboard(props.raw);
-  const resultClipboard = useClipboard(result);
+  const resultClipboard = useClipboard(result.toString());
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -93,7 +93,7 @@ const CodeView = (props: CodeProps): ReactElement => {
   };
 
   const handleCopyResult = (): void => {
-    if (!isError && result) copyToClipboard(result, resultClipboard);
+    if (!isError && result) copyToClipboard(result.toString(), resultClipboard);
   };
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {

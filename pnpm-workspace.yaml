@@ -1,47 +1,47 @@
 catalogs:
+  build:
+    '@babel/core': ^7.28.3
+    '@preact/preset-vite': ^2.10.2
+    typescript: ^5.9.2
+    vite: ^6.3.5
+  frontend:
+    '@chakra-ui/react': ^2.10.9
+    '@emotion/react': ^11.14.0
+    '@emotion/styled': ^11.14.1
+    '@fontsource/ubuntu': ^5.2.6
+    '@fontsource/ubuntu-mono': ^5.2.6
+    '@fortawesome/fontawesome-svg-core': ^6.7.2
+    '@fortawesome/free-brands-svg-icons': ^6.7.2
+    '@fortawesome/free-solid-svg-icons': ^6.7.2
+    '@fortawesome/react-fontawesome': ^0.2.5
+    framer-motion: ^11.18.2
+    preact: ^10.27.1
+    react: npm:@preact/compat@^18.3.1
+    react-dom: npm:@preact/compat@^18.3.1
+    react-router: ^7.8.1
+    react-syntax-highlighter: ^15.6.1
   lint:
-    '@eslint/js': ^9.26.0
-    eslint: ^9.26.0
-    eslint-config-prettier: ^9.1.0
+    '@eslint/js': ^9.33.0
+    eslint: ^9.33.0
+    eslint-config-prettier: ^9.1.2
     eslint-import-resolver-typescript: ^3.10.1
-    eslint-plugin-import: ^2.31.0
+    eslint-plugin-import: ^2.32.0
     eslint-plugin-jsx-a11y: ^6.10.2
-    eslint-plugin-n: ^17.17.0
+    eslint-plugin-n: ^17.21.3
     eslint-plugin-no-relative-import-paths: ^1.6.1
     eslint-plugin-promise: ^7.2.1
     eslint-plugin-react: ^7.37.5
     eslint-plugin-react-hooks: ^5.2.0
     eslint-plugin-react-refresh: ^0.4.20
     globals: ^15.15.0
-    jiti: ^2.4.2
-    knip: ^5.55.1
-    prettier: ^3.5.3
-    typescript-eslint: ^8.32.0
-  build:
-    vite: ^6.3.5
-    '@babel/core': ^7.27.1
-    '@preact/preset-vite': ^2.10.1
-    typescript: ^5.8.3
+    jiti: ^2.5.1
+    knip: ^5.62.0
+    prettier: ^3.6.2
+    typescript-eslint: ^8.40.0
   script:
     gh-pages: ^6.3.0
-  frontend:
-    '@chakra-ui/react': ^2.10.7
-    '@emotion/react': ^11.14.0
-    '@emotion/styled': ^11.14.0
-    '@fontsource/ubuntu': ^5.2.5
-    '@fontsource/ubuntu-mono': ^5.2.5
-    '@fortawesome/fontawesome-svg-core': ^6.7.2
-    '@fortawesome/free-brands-svg-icons': ^6.7.2
-    '@fortawesome/free-solid-svg-icons': ^6.7.2
-    '@fortawesome/react-fontawesome': ^0.2.2
-    framer-motion: ^11.18.2
-    preact: ^10.26.6
-    react: npm:@preact/compat@^18.3.1
-    react-dom: npm:@preact/compat@^18.3.1
-    react-router: ^7.5.3
-    react-syntax-highlighter: ^15.6.1
   types:
-    '@types/node': ^22.15.16
-    '@types/react': ^18.3.21
+    '@types/node': ^22.17.2
+    '@types/react': ^18.3.23
     '@types/react-dom': ^18.3.7
     '@types/react-syntax-highlighter': ^15.5.13

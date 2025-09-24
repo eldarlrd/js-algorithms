@@ -1,9 +1,9 @@
 import { Heading, Highlight } from '@chakra-ui/react';
 import { faCode } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type ReactElement } from 'preact/compat';
+import { type VNode } from 'preact';
 
-export const Header = (): ReactElement => (
+export const Header = (): VNode => (
   <Heading
     as='header'
     bg='yellow.100'

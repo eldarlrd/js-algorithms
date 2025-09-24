@@ -27,10 +27,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  type ReactElement,
-  type ChangeEvent,
-  type KeyboardEvent
-} from 'preact/compat';
+  type TargetedInputEvent,
+  type TargetedKeyboardEvent,
+  type VNode
+} from 'preact';
 import { type StateUpdater, useState, useEffect, useRef } from 'preact/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -44,7 +44,7 @@ interface CodeProps {
   raw: string;
 }
 
-const CodeView = (props: CodeProps): ReactElement => {
+const CodeView = (props: CodeProps): VNode => {
   const [isVisible, { toggle: setIsVisible }] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
   const [argument, setArgument] = useState('');
@@ -96,11 +96,11 @@ const CodeView = (props: CodeProps): ReactElement => {
     if (!isError && result) copyToClipboard(result.toString(), resultClipboard);
   };
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
+  const handleInput = (e: TargetedInputEvent<HTMLInputElement>): void => {
     setArgument((e.target as HTMLInputElement).value);
   };
 
-  const handleKey = (e: KeyboardEvent<HTMLInputElement>): void => {
+  const handleKey = (e: TargetedKeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') runCode();
   };
 

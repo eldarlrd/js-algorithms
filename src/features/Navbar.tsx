@@ -13,14 +13,14 @@ import {
 } from '@chakra-ui/react';
 import { type IconDefinition, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type ReactElement } from 'preact/compat';
+import { type VNode } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { Link as ReactRouterLink, useLocation } from 'react-router';
 
+import logo from '#/images/logo.webp';
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
-import logo from '@/assets/images/logo.webp';
 
-const MobileNav = ({ onOpen }: { onOpen: () => void }): ReactElement => (
+const MobileNav = ({ onOpen }: { onOpen: () => void }): VNode => (
   <HStack
     display={{ base: 'flex', lg: 'none' }}
     borderBottomColor='gray.200'
@@ -57,7 +57,7 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }): ReactElement => (
 const Sidebar = ({
   onClose,
   ...rest
-}: { onClose: () => void } & BoxProps): ReactElement => (
+}: { onClose: () => void } & BoxProps): VNode => (
   <Box
     h='full'
     pos='fixed'
@@ -108,7 +108,7 @@ interface NavItemProps {
   id: string;
 }
 
-const NavItem = ({ onClose, icon, title, id }: NavItemProps): ReactElement => {
+const NavItem = ({ onClose, icon, title, id }: NavItemProps): VNode => {
   const { pathname } = useLocation();
 
   return (
@@ -146,7 +146,7 @@ const NavItem = ({ onClose, icon, title, id }: NavItemProps): ReactElement => {
   );
 };
 
-export const Navbar = (): ReactElement => {
+export const Navbar = (): VNode => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // Close mobile drawer on resize

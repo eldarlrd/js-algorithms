@@ -25,7 +25,7 @@ pnpm dev
 ```
 ### Prod Build
 ```sh
-pnpm build
+pnpm bundle
 ```
 ### Preview Prod Build
 ```sh

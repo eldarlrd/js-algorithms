@@ -1,11 +1,11 @@
 import { Image, Link, Stack, Tooltip } from '@chakra-ui/react';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type ReactElement } from 'preact/compat';
+import { type VNode } from 'preact';
 
-import logo from '@/assets/images/logo.webp';
+import logo from '#/images/logo.webp';
 
-export const Footer = (): ReactElement => (
+export const Footer = (): VNode => (
   <Stack
     as='footer'
     userSelect='none'

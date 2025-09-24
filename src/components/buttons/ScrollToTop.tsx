@@ -2,11 +2,11 @@ import { Box, Button } from '@chakra-ui/react';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import { type ReactElement } from 'preact/compat';
+import { type VNode } from 'preact';
 import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
 import { useLocation } from 'react-router';
 
-export const ScrollToTop = (): ReactElement => {
+export const ScrollToTop = (): VNode => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(false);
 

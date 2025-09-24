@@ -19,6 +19,7 @@
     "jsxImportSource": "preact",
     "paths": {
       "@/*": ["./src/*"],
+      "#/*": ["./src/assets/*"],
       "react": ["./node_modules/preact/compat/"],
       "react-dom": ["./node_modules/preact/compat/"]
     },

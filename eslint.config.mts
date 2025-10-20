@@ -1,16 +1,16 @@
-// @ts-nocheck
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import { flatConfigs } from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import nodePlugin from 'eslint-plugin-n';
 import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths';
+// @ts-expect-error: missing type declaration
 import pluginPromise from 'eslint-plugin-promise';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import tseslint, { type Config } from 'typescript-eslint';
 
 export default tseslint.config({
   extends: [
@@ -84,4 +84,4 @@ export default tseslint.config({
       { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] }],
     eqeqeq: 2
   }
-}) satisfies FlatConfig.ConfigArray;
+}) as Config;

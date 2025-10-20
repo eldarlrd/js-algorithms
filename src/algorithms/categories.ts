@@ -12,6 +12,7 @@ import { convertFtoCObj } from '@/algorithms/convFunc/convertFtoC.js';
 import { diceRollObj } from '@/algorithms/convFunc/diceRoll.js';
 import { fizzBuzzObj } from '@/algorithms/convFunc/fizzBuzz.js';
 import { isLeapYearObj } from '@/algorithms/convFunc/isLeapYear.js';
+import { rgbaToHexObj } from '@/algorithms/convFunc/rgbaToHex.js';
 import { factorializeObj } from '@/algorithms/mathFunc/factorialize.js';
 import { fiboEvenSumObj } from '@/algorithms/mathFunc/fiboEvenSum.js';
 import { fibonacciObj } from '@/algorithms/mathFunc/fibonacci.js';
@@ -56,7 +57,8 @@ const convFuncArr = [
   convertFtoCObj,
   diceRollObj,
   fizzBuzzObj,
-  isLeapYearObj
+  isLeapYearObj,
+  rgbaToHexObj
 ];
 
 const textFuncArr = [

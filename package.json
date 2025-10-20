@@ -51,6 +51,7 @@
     "@babel/core": "catalog:build",
     "@eslint/js": "catalog:lint",
     "@preact/preset-vite": "catalog:build",
+    "@types/eslint-plugin-jsx-a11y": "catalog:types",
     "@types/node": "catalog:types",
     "@types/react": "catalog:types",
     "@types/react-dom": "catalog:types",

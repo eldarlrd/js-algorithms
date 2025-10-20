@@ -2,8 +2,8 @@ catalogs:
   build:
     '@babel/core': ^7.28.4
     '@preact/preset-vite': ^2.10.2
-    typescript: ^5.9.2
-    vite: ^6.3.6
+    typescript: ^5.9.3
+    vite: ^6.4.1
   frontend:
     '@chakra-ui/react': ^2.10.9
     '@emotion/react': ^11.14.0
@@ -18,12 +18,12 @@ catalogs:
     preact: ^10.27.2
     react: npm:@preact/compat@^18.3.1
     react-dom: npm:@preact/compat@^18.3.1
-    react-router: ^7.9.1
+    react-router: ^7.9.4
     react-syntax-highlighter: ^15.6.6
   lint:
-    '@eslint/js': ^9.36.0
-    eslint: ^9.36.0
-    eslint-config-prettier: ^9.1.2
+    '@eslint/js': ^9.38.0
+    eslint: ^9.38.0
+    eslint-config-prettier: ^10.1.8
     eslint-import-resolver-typescript: ^3.10.1
     eslint-plugin-import: ^2.32.0
     eslint-plugin-jsx-a11y: ^6.10.2
@@ -32,16 +32,17 @@ catalogs:
     eslint-plugin-promise: ^7.2.1
     eslint-plugin-react: ^7.37.5
     eslint-plugin-react-hooks: ^5.2.0
-    eslint-plugin-react-refresh: ^0.4.21
+    eslint-plugin-react-refresh: ^0.4.24
     globals: ^15.15.0
-    jiti: ^2.6.0
-    knip: ^5.64.0
+    jiti: ^2.6.1
+    knip: ^5.66.1
     prettier: ^3.6.2
-    typescript-eslint: ^8.44.1
+    typescript-eslint: ^8.46.1
   script:
     gh-pages: ^6.3.0
   types:
-    '@types/node': ^22.18.6
-    '@types/react': ^18.3.24
+    '@types/eslint-plugin-jsx-a11y': ^6.10.1
+    '@types/node': ^22.18.11
+    '@types/react': ^18.3.26
     '@types/react-dom': ^18.3.7
     '@types/react-syntax-highlighter': ^15.5.13

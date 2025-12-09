@@ -50,7 +50,7 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }): VNode => (
         e.preventDefault();
       }}
     />
-    <>Categories</>
+    <>JS Algorithms</>
   </HStack>
 );
 
@@ -79,7 +79,7 @@ const Sidebar = ({
             e.preventDefault();
           }}
         />
-        Categories
+        JS Algorithms
       </Box>
 
       <CloseButton

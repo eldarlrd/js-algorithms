@@ -1,7 +1,7 @@
 {
   "name": "js-algorithms",
   "private": true,
-  "version": "1.5.7",
+  "version": "1.5.8",
   "type": "module",
   "keywords": [
     "algorithms",
@@ -19,8 +19,8 @@
     "deployer": "pnpm bundle && gh-pages -b prod -m 'build(prod): deployment' -d dist",
     "lint": "eslint src",
     "pretty": "prettier '{src,__{tests,mocks,snapshots}__}/**/*.{ts,tsx}' --write",
-    "format": "pnpm lint --fix && pnpm pretty",
-    "cut": "knip --fix --cache"
+    "check": "pnpm lint --fix && pnpm pretty",
+    "cut": "knip --cache"
   },
   "prettier": {
     "singleQuote": true,

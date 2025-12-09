@@ -13,6 +13,7 @@ import { diceRollObj } from '@/algorithms/convFunc/diceRoll.js';
 import { fizzBuzzObj } from '@/algorithms/convFunc/fizzBuzz.js';
 import { isLeapYearObj } from '@/algorithms/convFunc/isLeapYear.js';
 import { rgbaToHexObj } from '@/algorithms/convFunc/rgbaToHex.js';
+import { determinantObj } from '@/algorithms/mathFunc/determinant.js';
 import { factorializeObj } from '@/algorithms/mathFunc/factorialize.js';
 import { fiboEvenSumObj } from '@/algorithms/mathFunc/fiboEvenSum.js';
 import { fibonacciObj } from '@/algorithms/mathFunc/fibonacci.js';
@@ -43,6 +44,7 @@ const mathFuncArr = [
   gcdObj,
   largestPalindromeProductObj,
   largestPrimeFactorObj,
+  determinantObj,
   fibonacciObj,
   permutationsObj,
   smallestMultObj,

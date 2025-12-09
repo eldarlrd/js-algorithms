@@ -35,7 +35,7 @@ export default tseslint.config({
     globals: {
       ...globals.serviceworker,
       ...globals.browser,
-      ...globals.es2024
+      ...globals.es2025
     },
     parser: tseslint.parser,
     parserOptions: {
@@ -54,7 +54,7 @@ export default tseslint.config({
     '@typescript-eslint/explicit-member-accessibility': 2,
     '@typescript-eslint/explicit-function-return-type': 2,
     '@typescript-eslint/consistent-type-imports': [2, { fixStyle: 'inline-type-imports' }],
-    'no-relative-import-paths/no-relative-import-paths': [2, { rootDir: 'src', prefix: '@' }],
+    'no-relative-import-paths/no-relative-import-paths': [1, { rootDir: 'src', prefix: '@' }],
     'import/order': [1, { 'newlines-between': 'always', alphabetize: { order: 'asc' } }],
     'import/consistent-type-specifier-style': [1, 'prefer-inline'],
     'import/extensions': [2, 'ignorePackages'],

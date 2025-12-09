@@ -31,13 +31,13 @@ pnpm bundle
 ```sh
 pnpm preview
 ```
-### Format Code (ESLint + Prettier)
+### Check Code (ESLint + Prettier)
 ```sh
-pnpm format
+pnpm check
 ```
-### Cut Orphans (Knip)
+### See Orphans (Knip)
 ```sh
-pnpm cut
+pnpm orphans
 ```
 ## Deploy
 ```sh

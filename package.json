@@ -19,7 +19,7 @@
     "deployer": "pnpm bundle && gh-pages -b prod -m 'build(prod): deployment' -d dist",
     "lint": "eslint src",
     "pretty": "prettier '{src,__{tests,mocks,snapshots}__}/**/*.{ts,tsx}' --write",
-    "check": "pnpm lint --fix && pnpm pretty",
+    "fix": "pnpm lint --fix && pnpm pretty",
     "cut": "knip --cache"
   },
   "prettier": {

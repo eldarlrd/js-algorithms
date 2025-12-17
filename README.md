@@ -31,9 +31,9 @@ pnpm bundle
 ```sh
 pnpm preview
 ```
-### Check Code (ESLint + Prettier)
+### Fix Code (ESLint + Prettier)
 ```sh
-pnpm check
+pnpm fix
 ```
 ### See Orphans (Knip)
 ```sh

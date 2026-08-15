@@ -20,14 +20,6 @@
     "fix": "biome check --fix --unsafe --no-errors-on-unmatched --reporter=concise",
     "orphans": "knip --cache --no-exit-code"
   },
-  "prettier": {
-    "singleQuote": true,
-    "jsxSingleQuote": true,
-    "bracketSameLine": true,
-    "trailingComma": "none",
-    "arrowParens": "avoid",
-    "experimentalTernaries": true
-  },
   "dependencies": {
     "@chakra-ui/react": "catalog:frontend",
     "@emotion/react": "catalog:frontend",

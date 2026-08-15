@@ -1,25 +1,20 @@
-import {
-  Box,
-  Heading,
-  Spinner,
-  VisuallyHidden,
-  VStack
-} from '@chakra-ui/react';
+import { Box, Heading, Spinner, VStack, VisuallyHidden } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type VNode } from 'preact';
-import { lazy, Suspense } from 'preact/compat';
+import { Suspense, lazy } from 'preact/compat';
 
 import { type CategoryDetails } from '@/algorithms/categories.ts';
+
 const CodeView = lazy(() => import('@/components/cards/CodeView.tsx'));
 
 const CategoryView = ({ category }: { category: CategoryDetails }): VNode => {
-  const categoryCards = category.funcArr.map(func => (
+  const categoryCards = category.funcArr.map((func) => (
     <CodeView
+      // eslint-disable-next-line @typescript-eslint/unbound-method
+      code={func.myFunc}
       key={func.name}
       name={func.name}
       placeholder={func.placeholder}
-      // eslint-disable-next-line @typescript-eslint/unbound-method
-      code={func.myFunc}
       raw={func.raw}
     />
   ));
@@ -27,25 +22,25 @@ const CategoryView = ({ category }: { category: CategoryDetails }): VNode => {
   return (
     <Box as='main'>
       <Heading
+        _selection={{ bg: 'yellow.300' }}
+        alignItems='center'
         display='flex'
         fontFamily='main'
-        userSelect='none'
-        alignItems='center'
+        gap='2.5'
+        mx={{ base: 4, md: 8 }}
+        my='8'
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
-        _selection={{ bg: 'yellow.300' }}
-        mx={{ base: 4, md: 8 }}
-        gap='2.5'
-        my='8'>
-        <FontAwesomeIcon icon={category.icon} fixedWidth />
+        userSelect='none'>
+        <FontAwesomeIcon fixedWidth icon={category.icon} />
         {category.title}
       </Heading>
       <VStack
-        as='section'
         align='flex-start'
-        w={['initial', 'fit-content']}
+        as='section'
         mx={[2, 4, 8]}
-        spacing='8'>
+        spacing='8'
+        w={['initial', 'fit-content']}>
         {categoryCards}
       </VStack>
     </Box>
@@ -53,25 +48,15 @@ const CategoryView = ({ category }: { category: CategoryDetails }): VNode => {
 };
 
 const CustomSpinner = (): VNode => (
-  <VStack
-    w={['21.5rem', 'md', 'xl']}
-    justify='center'
-    color='gray.900'
-    flex='1'>
+  <VStack color='gray.900' flex='1' justify='center' w={['21.5rem', 'md', 'xl']}>
     <Spinner size='xl' />
   </VStack>
 );
 
-export const CategoryList = ({
-  category
-}: {
-  category: CategoryDetails;
-}): VNode => (
+export const CategoryList = ({ category }: { category: CategoryDetails }): VNode => (
   <Suspense fallback={<CustomSpinner />}>
-    <VisuallyHidden fontFamily='Ubuntu Mono, monospace'>
-      Prevent FOUT
-    </VisuallyHidden>
+    <VisuallyHidden fontFamily='Ubuntu Mono, monospace'>Prevent FOUT</VisuallyHidden>
 
-    <CategoryView key={category.title} category={category} />
+    <CategoryView category={category} key={category.title} />
   </Suspense>
 );

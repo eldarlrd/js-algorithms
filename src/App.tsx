@@ -1,46 +1,42 @@
 import { Box, ChakraProvider, Flex } from '@chakra-ui/react';
 import '@fontsource/ubuntu/latin-400.css';
 import '@fontsource/ubuntu-mono/latin-400.css';
-import { type VNode } from 'preact';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 
-import theme from '../chakra.config.mts';
+import { type VNode } from 'preact';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 
 import background from '#/images/background.webp';
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
 import { Footer } from '@/components/banners/Footer.tsx';
-import { Header } from '@/components/banners/Header.tsx';
 import { ScrollToTop } from '@/components/buttons/ScrollToTop.tsx';
 import { CategoryList } from '@/features/CategoryList.tsx';
 import { Navbar } from '@/features/Navbar.tsx';
+// biome-ignore lint/style/noRestrictedImports: theme config file
+import theme from '../chakra.config.mts';
 
 const AppContent = (): VNode => (
   <Flex direction='column' minH='100dvh'>
     <Navbar />
     <Flex
-      flex='1'
       as='aside'
+      bgImage={background}
       bgRepeat='repeat'
       direction='column'
-      bgImage={background}
+      flex='1'
       ms={{ lg: '21em' }}>
-      <Header />
-      <Box as='main' flex='1' flexDirection='column' alignContent='center'>
+      <Box alignContent='center' as='main' flex='1' flexDirection='column'>
         <Routes>
-          <Route
-            path='/'
-            element={<Navigate to={'/' + kebabize(CATEGORIES[0].title)} />}
-          />
+          <Route element={<Navigate to={'/' + kebabize(CATEGORIES[0].title)} />} path='/' />
 
-          {CATEGORIES.map(category => (
+          {CATEGORIES.map((category) => (
             <Route
+              element={<CategoryList category={category} />}
               key={category.title}
               path={'/' + kebabize(category.title)}
-              element={<CategoryList category={category} />}
             />
           ))}
 
-          <Route path='*' element={<Navigate to='/' />} />
+          <Route element={<Navigate to='/' />} path='*' />
         </Routes>
       </Box>
       <ScrollToTop />
@@ -49,6 +45,9 @@ const AppContent = (): VNode => (
   </Flex>
 );
 
+// Easter Egg
+console.log('PNEGUNTB QRYRAQN RFG');
+
 export const App = (): VNode => (
   <ChakraProvider theme={theme}>
     <BrowserRouter basename='/js-algorithms'>
@@ -56,6 +55,3 @@ export const App = (): VNode => (
     </BrowserRouter>
   </ChakraProvider>
 );
-
-// Easter Egg
-console.log('PNEGUNTB QRYRAQN RFG');

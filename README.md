@@ -31,7 +31,8 @@ pnpm bundle
 ```sh
 pnpm preview
 ```
-### Fix Code (ESLint + Prettier)
+## Tools
+### Fix Code (Biome)
 ```sh
 pnpm fix
 ```

@@ -1,48 +1,37 @@
+allowBuilds:
+  esbuild: true
 catalogs:
   build:
-    '@babel/core': ^7.28.5
-    '@preact/preset-vite': ^2.10.2
+    '@babel/core': ^7.29.7
+    '@preact/preset-vite': ^2.10.6
     typescript: ^5.9.3
-    vite: ^6.4.1
+    vite: ^6.4.3
   frontend:
-    '@chakra-ui/react': ^2.10.9
+    '@chakra-ui/react': ^2.10.10
     '@emotion/react': ^11.14.0
     '@emotion/styled': ^11.14.1
-    '@fontsource/ubuntu': ^5.2.8
-    '@fontsource/ubuntu-mono': ^5.2.8
+    '@fontsource/ubuntu': ^5.3.0
+    '@fontsource/ubuntu-mono': ^5.3.0
     '@fortawesome/fontawesome-svg-core': ^6.7.2
     '@fortawesome/free-brands-svg-icons': ^6.7.2
     '@fortawesome/free-solid-svg-icons': ^6.7.2
     '@fortawesome/react-fontawesome': ^0.2.6
     framer-motion: ^11.18.2
-    preact: ^10.28.0
-    react: npm:@preact/compat@^18.3.1
-    react-dom: npm:@preact/compat@^18.3.1
-    react-router: ^7.10.1
+    preact: ^10.29.8
+    react: npm:@preact/compat@^18.3.2
+    react-dom: npm:@preact/compat@^18.3.2
+    react-router: ^7.18.2
     react-syntax-highlighter: ^15.6.6
   lint:
-    '@eslint/js': ^9.39.2
-    eslint: ^9.39.2
-    eslint-config-prettier: ^10.1.8
-    eslint-import-resolver-typescript: ^3.10.1
-    eslint-plugin-import: ^2.32.0
-    eslint-plugin-jsx-a11y: ^6.10.2
-    eslint-plugin-n: ^17.23.1
-    eslint-plugin-no-relative-import-paths: ^1.6.1
-    eslint-plugin-promise: ^7.2.1
-    eslint-plugin-react: ^7.37.5
-    eslint-plugin-react-hooks: ^5.2.0
-    eslint-plugin-react-refresh: ^0.4.26
-    globals: ^15.15.0
-    jiti: ^2.6.1
-    knip: ^5.75.1
-    prettier: ^3.7.4
-    typescript-eslint: ^8.50.0
+    '@biomejs/biome': ^2.5.8
+    '@commitlint/cli': ^21.2.2
+    '@commitlint/config-conventional': ^21.2.2
+    knip: ^5.88.1
   script:
     gh-pages: ^6.3.0
   types:
     '@types/eslint-plugin-jsx-a11y': ^6.10.1
-    '@types/node': ^22.19.3
-    '@types/react': ^18.3.27
+    '@types/node': ^22.20.1
+    '@types/react': ^18.3.31
     '@types/react-dom': ^18.3.7
     '@types/react-syntax-highlighter': ^15.5.13

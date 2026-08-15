@@ -17,10 +17,8 @@
     "bundle": "tsc -b && vite build && cp 404.html dist",
     "preview": "vite preview",
     "deployer": "pnpm bundle && gh-pages -b prod -m 'build(prod): deployment' -d dist",
-    "lint": "eslint src",
-    "pretty": "prettier '{src,__{tests,mocks,snapshots}__}/**/*.{ts,tsx}' --write",
-    "fix": "pnpm lint --fix && pnpm pretty",
-    "cut": "knip --cache"
+    "fix": "biome check --fix --unsafe --no-errors-on-unmatched --reporter=concise",
+    "orphans": "knip --cache --no-exit-code"
   },
   "prettier": {
     "singleQuote": true,
@@ -49,31 +47,17 @@
   },
   "devDependencies": {
     "@babel/core": "catalog:build",
-    "@eslint/js": "catalog:lint",
+    "@biomejs/biome": "catalog:lint",
+    "@commitlint/cli": "catalog:lint",
+    "@commitlint/config-conventional": "catalog:lint",
     "@preact/preset-vite": "catalog:build",
-    "@types/eslint-plugin-jsx-a11y": "catalog:types",
     "@types/node": "catalog:types",
     "@types/react": "catalog:types",
     "@types/react-dom": "catalog:types",
     "@types/react-syntax-highlighter": "catalog:types",
-    "eslint": "catalog:lint",
-    "eslint-config-prettier": "catalog:lint",
-    "eslint-import-resolver-typescript": "catalog:lint",
-    "eslint-plugin-import": "catalog:lint",
-    "eslint-plugin-jsx-a11y": "catalog:lint",
-    "eslint-plugin-n": "catalog:lint",
-    "eslint-plugin-no-relative-import-paths": "catalog:lint",
-    "eslint-plugin-promise": "catalog:lint",
-    "eslint-plugin-react": "catalog:lint",
-    "eslint-plugin-react-hooks": "catalog:lint",
-    "eslint-plugin-react-refresh": "catalog:lint",
     "gh-pages": "catalog:script",
-    "globals": "catalog:lint",
-    "jiti": "catalog:lint",
     "knip": "catalog:lint",
-    "prettier": "catalog:lint",
     "typescript": "catalog:build",
-    "typescript-eslint": "catalog:lint",
     "vite": "catalog:build"
   }
 }

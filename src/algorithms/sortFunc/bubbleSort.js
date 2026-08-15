@@ -1,10 +1,7 @@
 export const bubbleSortObj = {
-  name: 'Bubble Sort',
-  placeholder: 'Numbers',
   myFunc(arr) {
-    arr = arr.map(num => +num);
-    if (!arr.every(n => n / 1 === n))
-      return 'ERROR: Inputs must be numbers';
+    arr = arr.map((num) => +num);
+    if (!arr.every((n) => n / 1 === n)) return 'ERROR: Inputs must be numbers';
 
     let isDone = false;
     while (!isDone) {
@@ -16,10 +13,12 @@ export const bubbleSortObj = {
           arr[i] = lesserNum;
           isDone = false;
         }
-    } return arr;
+    }
+    return arr;
   },
-  raw:
-`const bubbleSort = arr => {
+  name: 'Bubble Sort',
+  placeholder: 'Numbers',
+  raw: `const bubbleSort = arr => {
   let isDone = false;
   while (!isDone) {
     isDone = true;
@@ -32,4 +31,4 @@ export const bubbleSortObj = {
       }
   } return arr;
 }`
-}
+};

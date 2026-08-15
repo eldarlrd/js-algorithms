@@ -1,15 +1,16 @@
 import {
-  type BoxProps,
-  useDisclosure,
   Box,
+  type BoxProps,
+  Button,
+  Link as ChakraLink,
+  CloseButton,
   Drawer,
   DrawerContent,
-  HStack,
-  Button,
-  Image,
-  CloseButton,
   Flex,
-  Link as ChakraLink
+  HStack,
+  Highlight,
+  Text,
+  useDisclosure
 } from '@chakra-ui/react';
 import { type IconDefinition, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,95 +18,89 @@ import { type VNode } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { Link as ReactRouterLink, useLocation } from 'react-router';
 
-import logo from '#/images/logo.webp';
 import { CATEGORIES, kebabize } from '@/algorithms/categories.ts';
 
 const MobileNav = ({ onOpen }: { onOpen: () => void }): VNode => (
   <HStack
-    display={{ base: 'flex', lg: 'none' }}
     borderBottomColor='gray.200'
     borderBottomWidth={1}
-    px={{ base: 4, md: 8 }}
-    userSelect='none'
+    color='gray.900'
+    display={{ base: 'flex', lg: 'none' }}
     fontFamily='main'
     fontWeight='bold'
-    color='gray.900'
     gap='2.5'
-    h='20'>
+    h='20'
+    px={{ base: 4, md: 8 }}
+    userSelect='none'>
     <Button
       _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
       aria-label='Open Menu'
-      variant='outline'
+      me='0.5'
       onClick={onOpen}
-      w='10'
-      me='0.5'>
+      variant='outline'
+      w='10'>
       <FontAwesomeIcon icon={faBars} />
     </Button>
 
-    <Image
-      src={logo}
-      boxSize='6'
-      alt='Programming icon by Eucalyp'
-      onDragStart={(e: DragEvent) => {
-        e.preventDefault();
-      }}
-    />
-    <>JS Algorithms</>
+    <Text mt='2'>
+      <Highlight
+        query='JS'
+        styles={{ bg: 'yellow.300', borderRadius: '6', pb: '0.5', pe: '0.5', ps: '3', pt: '2.5' }}>
+        JS Algorithms
+      </Highlight>
+    </Text>
   </HStack>
 );
 
-const Sidebar = ({
-  onClose,
-  ...rest
-}: { onClose: () => void } & BoxProps): VNode => (
+const Sidebar = ({ onClose, ...rest }: { onClose: () => void } & BoxProps): VNode => (
   <Box
+    borderRightColor='gray.200'
+    borderRightWidth={1}
     h='full'
     pos='fixed'
     userSelect='none'
-    borderRightWidth={1}
-    borderRightColor='gray.200'
     w={{ base: 'full', lg: '21em' }}
     {...rest}>
-    <HStack ms='6' me='4' h='20' justify='space-between'>
-      <Box fontFamily='main' color='gray.900' fontWeight='bold'>
-        <Image
-          me='2.5'
-          src={logo}
-          boxSize='8'
-          display='inline-block'
-          verticalAlign='middle'
-          alt='Programming icon by Eucalyp'
-          onDragStart={(e: DragEvent) => {
-            e.preventDefault();
-          }}
-        />
-        JS Algorithms
-      </Box>
+    <HStack h='20' justify='space-between' me='4' ms='6'>
+      <Text color='gray.900' fontFamily='main' fontWeight='bold' mt='2'>
+        <Highlight
+          query='JS'
+          styles={{
+            bg: 'yellow.300',
+            borderRadius: '6',
+            pb: '0.5',
+            pe: '0.5',
+            ps: '3',
+            pt: '2.5'
+          }}>
+          JS Algorithms
+        </Highlight>
+      </Text>
 
       <CloseButton
-        onClick={onClose}
-        display={{ base: 'flex', lg: 'none' }}
         _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+        display={{ base: 'flex', lg: 'none' }}
+        onClick={onClose}
       />
     </HStack>
 
-    {CATEGORIES.map(category => (
+    {CATEGORIES.map((category) => (
       <NavItem
-        onClose={onClose}
         icon={category.icon}
-        title={category.title}
         id={'/' + kebabize(category.title)}
         key={category.title}
+        onClose={onClose}
+        title={category.title}
       />
     ))}
   </Box>
 );
 
 interface NavItemProps {
-  onClose: () => void;
   icon: IconDefinition;
-  title: string;
   id: string;
+  onClose: () => void;
+  title: string;
 }
 
 const NavItem = ({ onClose, icon, title, id }: NavItemProps): VNode => {
@@ -113,33 +108,33 @@ const NavItem = ({ onClose, icon, title, id }: NavItemProps): VNode => {
 
   return (
     <ChakraLink
-      as={ReactRouterLink}
-      to={id}
-      _hover={{ textDecoration: 'none' }}
       _focusVisible={{ boxShadow: 'none' }}
-      onDragStart={(e: DragEvent) => {
+      _hover={{ textDecoration: 'none' }}
+      as={ReactRouterLink}
+      onClick={onClose}
+      onDragStart={(e: DragEvent): void => {
         e.preventDefault();
       }}
-      onClick={onClose}>
+      to={id}>
       <Flex
-        p='4'
-        mx='4'
-        mb='1'
-        gap='2.5'
-        role='group'
-        align='center'
-        borderRadius='6'
-        cursor='pointer'
-        color='gray.900'
-        fontFamily='main'
-        fontWeight='bold'
-        transition='background 200ms'
-        bg={pathname === id ? 'yellow.400' : ''}
         _hover={{
           bg: 'yellow.400',
           color: 'gray.900'
-        }}>
-        <FontAwesomeIcon icon={icon} fixedWidth />
+        }}
+        align='center'
+        bg={pathname === id ? 'yellow.400' : ''}
+        borderRadius='6'
+        color='gray.900'
+        cursor='pointer'
+        fontFamily='main'
+        fontWeight='bold'
+        gap='2.5'
+        mb='1'
+        mx='4'
+        p='4'
+        role='group'
+        transition='background 200ms'>
+        <FontAwesomeIcon fixedWidth icon={icon} />
         {title}
       </Flex>
     </ChakraLink>
@@ -162,17 +157,17 @@ export const Navbar = (): VNode => {
 
       <Drawer
         isOpen={isOpen}
-        returnFocusOnClose={false}
         onClose={onClose}
         onOverlayClick={onClose}
         placement='left'
+        returnFocusOnClose={false}
         size='full'>
         <DrawerContent>
           <Sidebar onClose={onClose} />
         </DrawerContent>
       </Drawer>
 
-      <Sidebar onClose={onClose} hideBelow='lg' />
+      <Sidebar hideBelow='lg' onClose={onClose} />
     </Box>
   );
 };

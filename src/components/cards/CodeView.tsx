@@ -1,49 +1,46 @@
 import {
-  useBoolean,
-  useDisclosure,
-  useClipboard,
+  Box,
+  Button,
   Card,
-  CardHeader,
   CardBody,
   CardFooter,
-  Link,
-  Button,
-  Tooltip,
+  CardHeader,
   Collapse,
-  ScaleFade,
-  Input,
-  VStack,
   HStack,
-  Box
+  Input,
+  Link,
+  ScaleFade,
+  Tooltip,
+  VStack,
+  useBoolean,
+  useClipboard,
+  useDisclosure
 } from '@chakra-ui/react';
 import {
-  faEye,
-  faEyeSlash,
+  faCircleExclamation,
   faClipboard,
   faClipboardCheck,
-  faPlay,
+  faEye,
+  faEyeSlash,
   faHandHolding,
-  faCircleExclamation
+  faPlay
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  type TargetedInputEvent,
-  type TargetedKeyboardEvent,
-  type VNode
-} from 'preact';
-import { type StateUpdater, useState, useEffect, useRef } from 'preact/hooks';
+import { type TargetedInputEvent, type TargetedKeyboardEvent, type VNode } from 'preact';
+import { type StateUpdater, useEffect, useRef, useState } from 'preact/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import { kebabize } from '@/algorithms/categories.ts';
 
 interface CodeProps {
+  code: (argument: string[]) => string;
   name: string;
   placeholder: string;
-  code: (argument: string[]) => string;
   raw: string;
 }
 
+// biome-ignore lint/complexity/noExcessiveLinesPerFunction: a hassle to refactor
 const CodeView = (props: CodeProps): VNode => {
   const [isVisible, { toggle: setIsVisible }] = useBoolean();
   const { isOpen, onOpen } = useDisclosure();
@@ -75,10 +72,7 @@ const CodeView = (props: CodeProps): VNode => {
     }
   };
 
-  const copyToClipboard = (
-    text: string,
-    clipboard: typeof codeClipboard
-  ): void => {
+  const copyToClipboard = (text: string, clipboard: typeof codeClipboard): void => {
     clipboard.setValue(text as unknown as StateUpdater<string>);
     clipboard.onCopy();
   };
@@ -112,33 +106,33 @@ const CodeView = (props: CodeProps): VNode => {
 
   return (
     <Card
-      id={kebabCaseName.slice(1)}
-      w={['21.5rem', 'md', 'xl']}
       borderColor='gray.200'
-      borderWidth={1}>
+      borderWidth={1}
+      id={kebabCaseName.slice(1)}
+      w={['21.5rem', 'md', 'xl']}>
       <CardHeader
+        _selection={{ bg: 'yellow.300' }}
         as='h3'
         fontFamily='main'
-        fontWeight='bold'
         fontSize={{ base: '2xl', md: '3xl' }}
-        _selection={{ bg: 'yellow.300' }}
-        onMouseEnter={() => {
+        fontWeight='bold'
+        onMouseEnter={(): void => {
           setIsHovered(true);
         }}
-        onMouseLeave={() => {
+        onMouseLeave={(): void => {
           setIsHovered(false);
         }}>
         {props.name}{' '}
         {isHovered && (
           <Link
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-            href={kebabCaseName}
-            userSelect={'none'}
-            color='yellow.400'
             borderRadius='6'
-            onDragStart={(e: DragEvent) => {
+            color='yellow.400'
+            href={kebabCaseName}
+            onDragStart={(e: DragEvent): void => {
               e.preventDefault();
-            }}>
+            }}
+            userSelect={'none'}>
             #
           </Link>
         )}
@@ -149,29 +143,25 @@ const CodeView = (props: CodeProps): VNode => {
           <Box>
             <Button
               _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
+              colorScheme='yellow'
+              fontFamily='main'
               fontSize={{ base: 14, md: 16 }}
+              me='2'
               minW={{ base: 32, md: 36 }}
               onClick={setIsVisible}
               verticalAlign='middle'
-              whiteSpace='pre-wrap'
-              colorScheme='yellow'
-              fontFamily='main'
-              me='2'>
+              whiteSpace='pre-wrap'>
               <FontAwesomeIcon icon={isVisible ? faEyeSlash : faEye} />
               {isVisible ? ' Hide' : ' Show'} Code
             </Button>
 
-            <Tooltip
-              placement='right'
-              fontFamily='main'
-              borderRadius='6'
-              label='Copy Code'>
+            <Tooltip borderRadius='6' fontFamily='main' label='Copy Code' placement='right'>
               <Button
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
-                fontSize={{ base: 14, md: 16 }}
-                onClick={handleCopyCode}
                 aria-label='Copy Code'
-                colorScheme='yellow'>
+                colorScheme='yellow'
+                fontSize={{ base: 14, md: 16 }}
+                onClick={handleCopyCode}>
                 <FontAwesomeIcon icon={clipboardIcon} />
               </Button>
             </Tooltip>
@@ -179,12 +169,12 @@ const CodeView = (props: CodeProps): VNode => {
 
           <Collapse in={isVisible}>
             <SyntaxHighlighter
-              style={gml}
-              language='javascript'
-              customStyle={{ borderRadius: 6, paddingLeft: 16 }}
               codeTagProps={{
                 style: { fontFamily: 'Ubuntu Mono, monospace' }
-              }}>
+              }}
+              customStyle={{ borderRadius: 6, paddingLeft: 16 }}
+              language='javascript'
+              style={gml}>
               {props.raw}
             </SyntaxHighlighter>
           </Collapse>
@@ -192,32 +182,28 @@ const CodeView = (props: CodeProps): VNode => {
       </CardBody>
 
       <CardFooter>
-        <VStack align='flex-start' w='full' gap='2'>
-          <HStack w='full' mb='2' gap='2'>
+        <VStack align='flex-start' gap='2' w='full'>
+          <HStack gap='2' mb='2' w='full'>
             <Input
               _selection={{ bg: 'yellow.300' }}
-              placeholder={props.placeholder}
-              focusBorderColor='yellow.300'
+              aria-label={argument}
+              bg='gray.100'
               errorBorderColor='red.300'
+              focusBorderColor='yellow.300'
+              fontFamily='main'
               onInput={handleInput}
               onKeyDown={handleKey}
-              aria-label={argument}
-              fontFamily='main'
-              value={argument}
+              placeholder={props.placeholder}
               ref={inputRef}
-              bg='gray.100'
+              value={argument}
             />
 
-            <Tooltip
-              isDisabled={isSpinner}
-              fontFamily='main'
-              label='Run Code'
-              borderRadius='6'>
+            <Tooltip borderRadius='6' fontFamily='main' isDisabled={isSpinner} label='Run Code'>
               <Button
                 _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
                 aria-label='Run Code'
-                isLoading={isSpinner}
                 colorScheme='yellow'
+                isLoading={isSpinner}
                 onClick={runCode}>
                 <FontAwesomeIcon icon={faPlay} />
               </Button>
@@ -227,22 +213,20 @@ const CodeView = (props: CodeProps): VNode => {
           <Collapse in={isOpen}>
             <ScaleFade in={!isSpinner}>
               <Tooltip
-                label='Copy to Clipboard'
-                isDisabled={isError}
+                borderRadius='6'
                 fontFamily='main'
-                borderRadius='6'>
+                isDisabled={isError}
+                label='Copy to Clipboard'>
                 <Button
                   colorScheme={isError ? 'red' : 'green'}
+                  fontFamily='main'
+                  h='full'
                   onClick={handleCopyResult}
                   overflowWrap='anywhere'
-                  verticalAlign='middle'
-                  whiteSpace='pre-wrap'
-                  fontFamily='main'
                   py='2.5'
-                  h='full'>
-                  <FontAwesomeIcon
-                    icon={isError ? faCircleExclamation : faHandHolding}
-                  />{' '}
+                  verticalAlign='middle'
+                  whiteSpace='pre-wrap'>
+                  <FontAwesomeIcon icon={isError ? faCircleExclamation : faHandHolding} />{' '}
                   {result.toString().replace('ERROR:', '')}
                 </Button>
               </Tooltip>

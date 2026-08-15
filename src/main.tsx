@@ -1,7 +1,7 @@
 /**
  * @license AGPL-3.0-only
  * JS Algorithms - Interactive JavaScript Algorithms
- * Copyright (C) 2022-2025 Eldar Pashazade <eldarlrd@pm.me>
+ * Copyright (C) 2022-2026 Eldar Pashazade <eldarlrd@pm.me>
  *
  * This file is part of JS Algorithms.
  *
@@ -18,6 +18,7 @@
  * along with JS Algorithms. If not, see <https://www.gnu.org/licenses/>.
  */
 
+// biome-ignore lint/suspicious/noDeprecatedImports: not yet available
 import { render } from 'preact';
 
 import { App } from '@/App.tsx';

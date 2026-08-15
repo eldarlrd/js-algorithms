@@ -1,21 +1,4 @@
 export const smallestMultObj = {
-  name: 'Smallest Multiple',
-  placeholder: 'Number',
-  myFunc(n) {
-    n = +n;
-    if (n < 1 || n % 1 !== 0)
-      return 'ERROR: Input must be a natural number';
-    else if (n > 100)
-      return 'ERROR: Input value too high';
-
-    let mult = 1;
-    for (let i = 2; i <= n; i++)
-      mult = smallestMultObj.lcm(mult, i);
-    return mult;
-  },
-  lcm(a, b) {
-    return (a * b) / this.gcd(a, b);
-  },
   gcd(a, b) {
     let max = Math.max(a, b);
     let min = Math.min(a, b);
@@ -25,10 +8,24 @@ export const smallestMultObj = {
       newMin = max % min;
       max = min;
       min = newMin;
-    } return max;
+    }
+    return max;
   },
-  raw:
-`// Greatest Common Divisor
+  lcm(a, b) {
+    return (a * b) / this.gcd(a, b);
+  },
+  myFunc(n) {
+    n = +n;
+    if (n < 1 || n % 1 !== 0) return 'ERROR: Input must be a natural number';
+    if (n > 100) return 'ERROR: Input value too high';
+
+    let mult = 1;
+    for (let i = 2; i <= n; i++) mult = smallestMultObj.lcm(mult, i);
+    return mult;
+  },
+  name: 'Smallest Multiple',
+  placeholder: 'Number',
+  raw: `// Greatest Common Divisor
 const gcd = (a, b) => {
   let max = Math.max(a, b);
   let min = Math.min(a, b);
@@ -50,4 +47,4 @@ const smallestMult = n => {
     mult = lcm(mult, i);
   return mult;
 }`
-}
+};

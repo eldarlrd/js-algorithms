@@ -1,12 +1,21 @@
 export const largestPrimeFactorObj = {
-  name: 'Largest Prime Factor',
-  placeholder: 'Number',
+  isFactor(num) {
+    const factorArr = [];
+    for (let i = 2; i <= num; i++) if (num % i === 0) factorArr.push(i);
+    return factorArr;
+  },
+  isPrime(num) {
+    let i = ~~Math.sqrt(num);
+    while (i >= 2) {
+      if (num % i === 0) return false;
+      i--;
+    }
+    return true;
+  },
   myFunc(num) {
     num = +num;
-    if (num <= 0 || num % 1 !== 0)
-      return 'ERROR: Input must be a natural number';
-    else if (num > 1000)
-      return 'ERROR: Input value too high';
+    if (num <= 0 || num % 1 !== 0) return 'ERROR: Input must be a natural number';
+    if (num > 1000) return 'ERROR: Input value too high';
 
     const primeArr = [];
     const factorArr = largestPrimeFactorObj.isFactor(num);
@@ -16,25 +25,12 @@ export const largestPrimeFactorObj = {
       num--;
     }
 
-    const primeFactorArr = primeArr.filter(e => factorArr.includes(e));
+    const primeFactorArr = primeArr.filter((e) => factorArr.includes(e));
     return Math.max(...primeFactorArr);
   },
-  isPrime(num) {
-    let i = ~~Math.sqrt(num);
-    while (i >= 2) {
-      if (num % i === 0)
-        return false;
-      else i--;
-    } return true;
-  },
-  isFactor(num) {
-    const factorArr = [];
-    for (let i = 2; i <= num; i++)
-      if (num % i === 0) factorArr.push(i);
-    return factorArr;
-  },
-  raw:
-`// Checking for Prime Numbers
+  name: 'Largest Prime Factor',
+  placeholder: 'Number',
+  raw: `// Checking for Prime Numbers
 const isPrime = num => {
   let i = ~~Math.sqrt(num);
   while (i >= 2) {
@@ -66,4 +62,4 @@ const largestPrimeFactor = num => {
     e => factorArr.includes(e));
   return Math.max(...primeFactorArr);
 }`
-}
+};

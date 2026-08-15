@@ -3,7 +3,7 @@ import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { type VNode } from 'preact';
-import { useState, useRef, useCallback, useEffect } from 'preact/hooks';
+import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import { useLocation } from 'react-router';
 
 export const ScrollToTop = (): VNode => {
@@ -51,21 +51,21 @@ export const ScrollToTop = (): VNode => {
 
   return (
     <Box
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      transition='easeInOut 0.2s'
       animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.5 }}
-      pos='fixed'
+      as={motion.div}
       bottom='8'
+      initial={{ opacity: 0 }}
+      pos='fixed'
       right='8'
+      transition='easeInOut 0.2s'
       zIndex='1'>
       <Button
-        size={{ base: 'sm', md: 'md' }}
-        onClick={instantTop}
-        colorScheme='yellow'
-        borderWidth={1}
+        borderColor='gray.700'
         borderRadius='100%'
-        borderColor='gray.700'>
+        borderWidth={1}
+        colorScheme='yellow'
+        onClick={instantTop}
+        size={{ base: 'sm', md: 'md' }}>
         <FontAwesomeIcon icon={faAnglesUp} size='xs' />
       </Button>
     </Box>

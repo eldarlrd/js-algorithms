@@ -1,9 +1,9 @@
 import {
+  type IconDefinition,
   faComment,
   faDatabase,
   faDiceFive,
-  faSquareRootVariable,
-  type IconDefinition
+  faSquareRootVariable
 } from '@fortawesome/free-solid-svg-icons';
 
 import { bmiCalculatorObj } from '@/algorithms/convFunc/bmiCalculator.js';
@@ -13,7 +13,6 @@ import { diceRollObj } from '@/algorithms/convFunc/diceRoll.js';
 import { fizzBuzzObj } from '@/algorithms/convFunc/fizzBuzz.js';
 import { isLeapYearObj } from '@/algorithms/convFunc/isLeapYear.js';
 import { rgbaToHexObj } from '@/algorithms/convFunc/rgbaToHex.js';
-import { determinantObj } from '@/algorithms/mathFunc/determinant.js';
 import { factorializeObj } from '@/algorithms/mathFunc/factorialize.js';
 import { fiboEvenSumObj } from '@/algorithms/mathFunc/fiboEvenSum.js';
 import { fibonacciObj } from '@/algorithms/mathFunc/fibonacci.js';
@@ -44,7 +43,6 @@ const mathFuncArr = [
   gcdObj,
   largestPalindromeProductObj,
   largestPrimeFactorObj,
-  determinantObj,
   fibonacciObj,
   permutationsObj,
   smallestMultObj,
@@ -84,7 +82,6 @@ const sortFuncArr = [
 ];
 
 interface CategoryDetails {
-  title: string;
   funcArr: {
     name: string;
     placeholder: string;
@@ -92,32 +89,33 @@ interface CategoryDetails {
     raw: string;
   }[];
   icon: IconDefinition;
+  title: string;
 }
 
 const CATEGORIES: CategoryDetails[] = [
   {
-    title: 'Math & Numbers',
     funcArr: mathFuncArr,
-    icon: faSquareRootVariable
+    icon: faSquareRootVariable,
+    title: 'Math & Numbers'
   },
   {
-    title: 'Conversion & Randomization',
     funcArr: convFuncArr,
-    icon: faDiceFive
+    icon: faDiceFive,
+    title: 'Conversion & Randomization'
   },
   {
-    title: 'Text Operations & Analysis',
     funcArr: textFuncArr,
-    icon: faComment
+    icon: faComment,
+    title: 'Text Operations & Analysis'
   },
   {
-    title: 'Sorting & Data Validation',
     funcArr: sortFuncArr,
-    icon: faDatabase
+    icon: faDatabase,
+    title: 'Sorting & Data Validation'
   }
 ];
 
 const kebabize = (title: string): string =>
   title.toLowerCase().replaceAll(' ', '-').replaceAll('&', 'and');
 
-export { type CategoryDetails, CATEGORIES, kebabize };
+export { CATEGORIES, type CategoryDetails, kebabize };

@@ -23,9 +23,9 @@ export const Footer = (): VNode => (
         query='JS'
         styles={{ bg: 'yellow.300', borderRadius: '6', pb: '0.5', pe: '0.5', ps: '3', pt: '2.5' }}>
         JS Algorithms
-      </Highlight>
+      </Highlight>{' '}
+      © 2022 - 2026
     </Text>
-    © 2022 - 2026
     <Tooltip borderRadius='6' fontFamily='main' label='Source'>
       <Link
         _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}

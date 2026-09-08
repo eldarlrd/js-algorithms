@@ -2,7 +2,7 @@ import { Box, Button } from '@chakra-ui/react';
 import { faAnglesUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import { type VNode } from 'preact';
+import type { VNode } from 'preact';
 import { useCallback, useEffect, useRef, useState } from 'preact/hooks';
 import { useLocation } from 'react-router';
 
@@ -45,6 +45,7 @@ export const ScrollToTop = (): VNode => {
     setIsVisible(scrollPosition > 250 && isScrollingUp);
   }, [scrollPosition, isScrollingUp]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional
   useEffect(() => {
     instantTop();
   }, [pathname]);
@@ -66,7 +67,7 @@ export const ScrollToTop = (): VNode => {
         colorScheme='yellow'
         onClick={instantTop}
         size={{ base: 'sm', md: 'md' }}>
-        <FontAwesomeIcon icon={faAnglesUp} size='xs' />
+        <FontAwesomeIcon icon={faAnglesUp} size='xs' widthAuto />
       </Button>
     </Box>
   );

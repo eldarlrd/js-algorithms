@@ -16,5 +16,5 @@ export const isLeapYearObj = {
       year % 400 !== 0) return true;
   else if (year % 400 === 0) return true;
   return false;
-}`
+}`,
 };

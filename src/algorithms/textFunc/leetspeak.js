@@ -25,7 +25,7 @@ export const leetspeakObj = {
     w: ['\\/\\/', '\\^/', 'ω'],
     x: ['><', '×', ']['],
     y: ['`/', '¥', '\\|/'],
-    z: ['7_', '>_', '%']
+    z: ['7_', '>_', '%'],
   },
   myFunc(str) {
     return [...str.join().toLowerCase()]
@@ -61,5 +61,5 @@ const leetspeak = str =>
         CHARS[char][
           ~~(Math.random() * CHARS[char].length)
         ] : char
-    ).join('');`
+    ).join('');`,
 };

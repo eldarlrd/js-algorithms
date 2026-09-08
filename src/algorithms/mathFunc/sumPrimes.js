@@ -40,5 +40,5 @@ const sumPrimes = num => {
     isPrime(num) ? sum += num : false;
     num--;
   } return sum;
-}`
+}`,
 };

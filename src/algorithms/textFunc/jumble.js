@@ -19,5 +19,5 @@ export const jumbleObj = {
     const mid = word.slice(1, -1).split('').sort().join('');
 
     return word[0] + mid + word[word.length - 1];
-  }).join(' ');`
+  }).join(' ');`,
 };

@@ -30,5 +30,5 @@ export const gcdObj = {
     max = min;
     min = newMin;
   } return max;
-}`
+}`,
 };

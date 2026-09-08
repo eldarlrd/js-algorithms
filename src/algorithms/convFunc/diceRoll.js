@@ -43,5 +43,5 @@ export const diceRollObj = {
     }
 
   return \`\${textArr} = Total: \${total}\`;
-}`
+}`,
 };

@@ -30,5 +30,5 @@ export const bubbleSortObj = {
         isDone = false;
       }
   } return arr;
-}`
+}`,
 };

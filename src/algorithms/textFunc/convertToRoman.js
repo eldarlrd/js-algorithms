@@ -34,5 +34,5 @@ export const convertToRomanObj = {
      .replace(/LX{4}/g, 'XC')
      .replace(/X{4}/g, 'XL')
      .replace(/VI{4}/g, 'IX')
-     .replace(/I{4}/g, 'IV');`
+     .replace(/I{4}/g, 'IV');`,
 };

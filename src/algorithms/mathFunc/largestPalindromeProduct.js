@@ -36,5 +36,5 @@ export const largestPalindromeProductObj = {
         break;
       }
     } return maxProd;
-}`
+}`,
 };

@@ -24,7 +24,9 @@
         "useSortedInterfaceMembers": "on",
         "useSortedKeys": "on",
         "useSortedPackageJson": "on",
-        "useSortedProperties": "on"
+        "useSortedProperties": "on",
+        "useSortedSelectionSet": "on",
+        "useSortedTypeFields": "on"
       }
     }
   },
@@ -62,12 +64,32 @@
       "bracketSameLine": true,
       "jsxQuoteStyle": "single",
       "quoteStyle": "single",
-      "trailingCommas": "none"
+      "trailingCommas": "es5"
     }
   },
   "linter": {
+    "domains": {
+      "astro": "all",
+      "drizzle": "all",
+      // "next": "all", • Conflicts w/ React
+      "playwright": "all",
+      "project": "all",
+      // "qwik": "all", • Conflicts w/ React
+      "react": "all",
+      "reactNative": "all",
+      // "solid": "all", • Conflicts w/ React
+      "svelte": "all",
+      "tailwind": "all",
+      "test": "all",
+      "turborepo": "all",
+      "types": "all",
+      "vue": "all"
+    },
     "rules": {
       // Missing • padding-line-between-statements
+      "a11y": {
+        "noNoninteractiveElementInteractions": "error"
+      },
       "complexity": {
         "noExcessiveCognitiveComplexity": "info",
         "noExcessiveLinesPerFunction": {
@@ -77,56 +99,104 @@
             "skipBlankLines": true
           }
         },
-        "noExcessiveNestedTestSuites": "info",
+        "noRedundantDefaultExport": "warn",
         "noUselessReturn": "info",
-        "useArrayFind": "info",
         "useSimplifiedLogicExpression": "info",
         "useWhile": "warn"
       },
       "correctness": {
-        "noNestedComponentDefinitions": "error",
+        "noNestedComponentDefinitions": "error", // React
+        "noUnresolvedImports": "off",
         "noUnusedInstantiation": "info",
-        "useImportExtensions": "warn",
-        "useSingleJsDocAsterisk": "info"
+        "useSingleJsDocAsterisk": "info",
+        "useUniqueElementIds": "off" // React
       },
       "nursery": {
-        "noBaseToString": "info",
+        "noAstroSetHtmlDirective": "error", // Astro
+        "noBaseToString": "info", // Types
+        "noComponentHookFactories": "error", // React
+        "noConditionalExpect": "info", // Test
         "noDuplicateSelectors": "error", // CSS
         "noEmptyObjectKeys": "error", // JSON
-        "noFloatingPromises": "info",
-        "noIdenticalTestTitle": "warn",
+        "noExtendNative": "error",
+        "noFloatingPromises": "info", // Types
+        "noIdenticalTestTitle": "warn", // Test
         "noImpliedEval": "error",
-        "noJsxLeakedDollar": "warn",
-        "noMisleadingReturnType": "info",
-        "noMisusedPromises": "info",
+        "noJsxLeakedDollar": "warn", // React
+        "noJsxNamespace": "info", // React
+        "noMisleadingReturnType": "info", // Types
+        "noMisusedPromises": "info", // Types
+        "noReactNativeDeepImports": "error", // React Native
+        "noReactNativeLiteralColors": "info", // React Native
+        // "noReactNativeRawText": "error", // React Native • Conflicts w/ React
+        "noReactStringRefs": "warn", // React
         "noRestrictedDependencies": "info",
+        "noSvelteLegacyConst": "info", // Svelte
+        "noSvelteUnnecessaryStateWrap": "info", // Svelte
         "noTopLevelLiterals": "error", // JSON
-        "noUndeclaredClasses": "info", // CSS
+        "noUndeclaredClasses": "info", // Project • CSS
+        "noUndeclaredCustomProperties": "error", // Project • CSS
         "noUnnecessaryTemplateExpression": "info",
-        "noUntrustedLicenses": "warn", // JSON
-        "noUnusedClasses": "info", // CSS
-        "noUselessTypeConversion": "info",
+        "noUnsafePlusOperands": "info", // Types
+        "noUntrustedLicenses": "warn", // Project
+        "noUnusedClasses": "info", // Project • CSS
+        "noUselessTypeConversion": "info", // Types
+        "noVueImportCompilerMacros": "info", // Vue
+        "noVueVOnNumberValues": "info", // Vue
         "useArraySome": "info",
-        "useBaseline": "info", // CSS
-        "useExhaustiveSwitchCases": "info",
+        "useAstroClientOnlyDirectiveValue": "warn", // Astro
+        "useBaseline": {
+          "level": "info", // CSS
+          "options": {
+            "available": "newly"
+          }
+        },
+        "useConsistentTestIt": "warn", // Test
+        "useDisposables": "error", // Types
+        "useExhaustiveSwitchCases": "info", // Types
+        "useExpect": "info", // Test
         "useExplicitReturnType": "error",
         "useIframeSandbox": "warn",
         "useImportsFirst": "warn",
+        "useIncludes": "info", // Types
         "useMathMinMax": "warn",
-        "useNullishCoalescing": "info",
-        "useReactAsyncServerFunction": "info",
+        "useNamedCaptureGroup": "info",
+        "useNamedLayer": "warn", // CSS
+        "useNullishCoalescing": "warn", // Types
+        "useQwikLoaderLocation": "warn", // Qwik
+        "useReactAsyncServerFunction": "info", // React
+        "useReactCompiler": "warn", // React
+        "useReactFunctionComponentDefinition": {
+          "level": "info", // React
+          "options": {
+            "namedComponents": "arrowFunction"
+          }
+        },
+        "useReactNativePlatformComponents": "error", // React Native
         "useReduceTypeParameter": "info",
-        "useRegexpTest": "info",
+        "useRegexpExec": "info", // Types
+        "useRegexpTest": "warn",
+        // "useScopedStyles": "info", // Vue • Conflicts w/ React
         "useSortedClasses": "warn",
-        "useTestHooksInOrder": "warn",
-        "useTestHooksOnTop": "warn",
-        "useThisInClassMethods": "warn"
+        "useStringStartsEndsWith": "info", // Types
+        "useSvelteRequireEachKey": "info", // Svelte
+        "useTailwindShorthandClasses": "info", // Tailwind • CSS
+        "useTestHooksInOrder": "warn", // Test
+        "useTestHooksOnTop": "warn", // Test
+        "useThisInClassMethods": "warn",
+        // "noVueRefAsOperand": "error", // Vue • Conflicts w/ React
+        "useVueConsistentDefinePropsDeclaration": "info", // Vue
+        "useVueNextTickPromise": "info", // Vue
+        "useVueValidVFor": "info" // Vue
       },
       "performance": {
         "noAwaitInLoops": "info",
         "noBarrelFile": "warn",
+        "noDelete": "warn",
+        "noJsxPropsBind": "off", // React
         "noNamespaceImport": "warn",
-        "noReExportAll": "warn"
+        "noReExportAll": "warn",
+        "useTopLevelRegex": "warn"
       },
       "preset": "recommended",
       "security": {
@@ -139,6 +209,7 @@
       },
       "style": {
         "noCommonJs": "warn",
+        "noDefaultExport": "warn",
         "noExcessiveClassesPerFile": {
           "level": "info",
           "options": {
@@ -152,6 +223,7 @@
             "skipBlankLines": true
           }
         },
+        // "noMagicNumbers": "warn", • Hassle
         "noNegationElse": "info",
         // https://github.com/biomejs/biome/issues/5936#issuecomment-3876398540
         "noRestrictedImports": {
@@ -166,6 +238,7 @@
           }
         },
         "noShoutyConstants": "info",
+        "noSubstr": "info",
         "noUnusedTemplateLiteral": "warn",
         "noUselessElse": "info",
         "noYodaExpression": "info",
@@ -174,14 +247,13 @@
         "useCollapsedElseIf": "info",
         "useCollapsedIf": "info",
         "useComponentExportOnlyModules": {
-          "level": "error",
+          "level": "error", // React
           "options": {
             "allowConstantExport": true
           }
         },
         "useConsistentArrayType": "info",
         "useConsistentArrowReturn": "info",
-        "useConsistentEnumValueType": "info",
         "useConsistentMemberAccessibility": {
           "level": "error",
           "options": {
@@ -196,13 +268,6 @@
         "useFragmentSyntax": "info",
         "useGlobalThis": "warn",
         "useGroupedAccessorPairs": "info",
-        "useImportType": {
-          "level": "warn",
-          "options": {
-            "style": "inlineType"
-          }
-        },
-        "useReactFunctionComponents": "warn",
         "useReadonlyClassProperties": {
           "level": "info",
           "options": {
@@ -219,19 +284,16 @@
         "useUnifiedTypeSignatures": "info"
       },
       "suspicious": {
-        "noDeprecatedImports": "warn",
         "noDuplicateDependencies": "error",
-        "noDuplicatedSpreadProps": "error",
         "noEmptyBlock": "warn",
+        "noEmptyBlockStatements": "warn",
         "noEmptySource": "warn",
         "noEvolvingTypes": "error",
         "noMisplacedAssertion": "warn",
-        "noReactForwardRef": "warn",
         "noUnassignedVariables": "error",
-        "noUnnecessaryConditions": "warn",
+        "noUnknownAttribute": "off", // React
         "noUnusedExpressions": "warn",
         "noVar": "error",
-        "useArraySortCompare": "error",
         "useAwait": "error",
         "useGuardForIn": "warn",
         "useNumberToFixedDigitsArgument": "warn"

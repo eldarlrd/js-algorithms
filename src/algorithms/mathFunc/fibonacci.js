@@ -15,5 +15,5 @@ export const fibonacciObj = {
   for (let i = 0; i < n - 1; i++)
     count.push(count[i] + count[count.length - 1]);
   return count[n];
-}`
+}`,
 };

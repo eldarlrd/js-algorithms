@@ -22,7 +22,7 @@ export const checkCashRegisterObj = {
       { name: 'QUARTER', val: 0.25 },
       { name: 'DIME', val: 0.1 },
       { name: 'NICKEL', val: 0.05 },
-      { name: 'PENNY', val: 0.01 }
+      { name: 'PENNY', val: 0.01 },
     ];
 
     // Declaring the Change
@@ -120,5 +120,5 @@ export const checkCashRegisterObj = {
   return change <= 0
     ? {status: 'OPEN', change: changeArr}
     : {status: 'INSUFFICIENT_FUNDS', change: []};
-}`
+}`,
 };

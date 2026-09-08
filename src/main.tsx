@@ -1,6 +1,6 @@
 /**
  * @license AGPL-3.0-only
- * JS Algorithms - Interactive JavaScript Algorithms
+ * JS Algorithms - Interactive JS Algorithms
  * Copyright (C) 2022-2026 Eldar Pashazade <eldarlrd@pm.me>
  *
  * This file is part of JS Algorithms.

@@ -61,5 +61,5 @@ const largestPrimeFactor = num => {
   const primeFactorArr = primeArr.filter(
     e => factorArr.includes(e));
   return Math.max(...primeFactorArr);
-}`
+}`,
 };

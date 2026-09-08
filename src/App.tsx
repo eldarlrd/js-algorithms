@@ -2,7 +2,7 @@ import { Box, ChakraProvider, Flex } from '@chakra-ui/react';
 import '@fontsource/ubuntu/latin-400.css';
 import '@fontsource/ubuntu-mono/latin-400.css';
 
-import { type VNode } from 'preact';
+import type { VNode } from 'preact';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 
 import background from '#/images/background.webp';

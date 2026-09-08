@@ -23,5 +23,5 @@ const factorialize = num => {
 
 // Find Permutations of N
 const permutations = (n, m) =>
-  factorialize(n) / factorialize(n - m);`
+  factorialize(n) / factorialize(n - m);`,
 };

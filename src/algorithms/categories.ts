@@ -3,7 +3,7 @@ import {
   faComment,
   faDatabase,
   faDiceFive,
-  faSquareRootVariable
+  faSquareRootVariable,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { bmiCalculatorObj } from '@/algorithms/convFunc/bmiCalculator.js';
@@ -48,7 +48,7 @@ const mathFuncArr = [
   smallestMultObj,
   multiplesOf3and5Obj,
   sumPrimesObj,
-  fiboEvenSumObj
+  fiboEvenSumObj,
 ];
 
 const convFuncArr = [
@@ -58,7 +58,7 @@ const convFuncArr = [
   diceRollObj,
   fizzBuzzObj,
   isLeapYearObj,
-  rgbaToHexObj
+  rgbaToHexObj,
 ];
 
 const textFuncArr = [
@@ -69,7 +69,7 @@ const textFuncArr = [
   translatePigLatinObj,
   convertToRomanObj,
   rot13Obj,
-  spinalCaseObj
+  spinalCaseObj,
 ];
 
 const sortFuncArr = [
@@ -78,7 +78,7 @@ const sortFuncArr = [
   towerOfHanoiObj,
   passwordVerifyObj,
   telephoneCheckObj,
-  checkCashRegisterObj
+  checkCashRegisterObj,
 ];
 
 interface CategoryDetails {
@@ -96,23 +96,23 @@ const CATEGORIES: CategoryDetails[] = [
   {
     funcArr: mathFuncArr,
     icon: faSquareRootVariable,
-    title: 'Math & Numbers'
+    title: 'Math & Numbers',
   },
   {
     funcArr: convFuncArr,
     icon: faDiceFive,
-    title: 'Conversion & Randomization'
+    title: 'Conversion & Randomization',
   },
   {
     funcArr: textFuncArr,
     icon: faComment,
-    title: 'Text Operations & Analysis'
+    title: 'Text Operations & Analysis',
   },
   {
     funcArr: sortFuncArr,
     icon: faDatabase,
-    title: 'Sorting & Data Validation'
-  }
+    title: 'Sorting & Data Validation',
+  },
 ];
 
 const kebabize = (title: string): string =>

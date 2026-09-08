@@ -18,5 +18,5 @@ export const areAnagramsObj = {
        .join('');
   
   return cleanAndSort(strA) === cleanAndSort(strB);
-}`
+}`,
 };

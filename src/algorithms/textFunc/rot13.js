@@ -10,5 +10,5 @@ export const rot13Obj = {
   raw: `const rot13 = str =>
   str.toUpperCase().replace(/[A-Z]/g, rotStr =>
     String.fromCharCode(rotStr.charCodeAt(0) % 26 + 65)
-  );`
+  );`,
 };

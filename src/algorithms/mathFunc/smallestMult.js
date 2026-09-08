@@ -46,5 +46,5 @@ const smallestMult = n => {
   for (let i = 2; i <= n; i++)
     mult = lcm(mult, i);
   return mult;
-}`
+}`,
 };

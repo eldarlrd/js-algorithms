@@ -21,5 +21,5 @@ export const multiplesOf3and5Obj = {
 
   for (let i of arr) sum += i;
   return sum;
-}`
+}`,
 };

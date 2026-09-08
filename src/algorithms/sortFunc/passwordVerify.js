@@ -14,5 +14,5 @@ export const passwordVerifyObj = {
     .join('')
   );
   return check.test(str);
-}`
+}`,
 };

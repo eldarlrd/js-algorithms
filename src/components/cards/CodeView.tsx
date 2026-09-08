@@ -14,7 +14,7 @@ import {
   VStack,
   useBoolean,
   useClipboard,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react';
 import {
   faCircleExclamation,
@@ -23,10 +23,10 @@ import {
   faEye,
   faEyeSlash,
   faHandHolding,
-  faPlay
+  faPlay,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type TargetedInputEvent, type TargetedKeyboardEvent, type VNode } from 'preact';
+import type { TargetedInputEvent, TargetedKeyboardEvent, VNode } from 'preact';
 import { type StateUpdater, useEffect, useRef, useState } from 'preact/hooks';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { gml } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -123,7 +123,7 @@ const CodeView = (props: CodeProps): VNode => {
           setIsHovered(false);
         }}>
         {props.name}{' '}
-        {isHovered && (
+        {isHovered ? (
           <Link
             _focusVisible={{ ring: 3, ringColor: 'yellow.300' }}
             borderRadius='6'
@@ -135,7 +135,7 @@ const CodeView = (props: CodeProps): VNode => {
             userSelect={'none'}>
             #
           </Link>
-        )}
+        ) : null}
       </CardHeader>
 
       <CardBody fontSize={[9.4, 12.8, 16]} my='-6'>
@@ -162,7 +162,7 @@ const CodeView = (props: CodeProps): VNode => {
                 colorScheme='yellow'
                 fontSize={{ base: 14, md: 16 }}
                 onClick={handleCopyCode}>
-                <FontAwesomeIcon icon={clipboardIcon} />
+                <FontAwesomeIcon icon={clipboardIcon} widthAuto />
               </Button>
             </Tooltip>
           </Box>
@@ -170,7 +170,7 @@ const CodeView = (props: CodeProps): VNode => {
           <Collapse in={isVisible}>
             <SyntaxHighlighter
               codeTagProps={{
-                style: { fontFamily: 'Ubuntu Mono, monospace' }
+                style: { fontFamily: 'Ubuntu Mono, monospace' },
               }}
               customStyle={{ borderRadius: 6, paddingLeft: 16 }}
               language='javascript'
@@ -205,7 +205,7 @@ const CodeView = (props: CodeProps): VNode => {
                 colorScheme='yellow'
                 isLoading={isSpinner}
                 onClick={runCode}>
-                <FontAwesomeIcon icon={faPlay} />
+                <FontAwesomeIcon icon={faPlay} widthAuto />
               </Button>
             </Tooltip>
           </HStack>
@@ -226,7 +226,11 @@ const CodeView = (props: CodeProps): VNode => {
                   py='2.5'
                   verticalAlign='middle'
                   whiteSpace='pre-wrap'>
-                  <FontAwesomeIcon icon={isError ? faCircleExclamation : faHandHolding} />{' '}
+                  <FontAwesomeIcon
+                    icon={isError ? faCircleExclamation : faHandHolding}
+                    style={{ marginInlineEnd: 6 }}
+                    widthAuto
+                  />
                   {result.toString().replace('ERROR:', '')}
                 </Button>
               </Tooltip>
@@ -238,4 +242,5 @@ const CodeView = (props: CodeProps): VNode => {
   );
 };
 
-export default CodeView; // eslint-disable-line import/no-default-export
+// biome-ignore lint/style/noDefaultExport: needed for lazy loading
+export default CodeView;

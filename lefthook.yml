@@ -1,14 +1,15 @@
-parallel: true
-piped: true
 commit-msg:
+  piped: true
   commands:
     commitlint:
       run: pnpm commitlint -e -s
 pre-commit:
+  piped: true
   commands:
     fix:
       run: pnpm fix && git update-index -g
 pre-push:
+  parallel: true
   commands:
     orphans:
       run: pnpm orphans

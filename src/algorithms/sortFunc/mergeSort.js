@@ -42,5 +42,5 @@ const mergeSort = arr => {
       mergeSort(arr.slice(halfPoint))
     );
   }
-}`
+}`,
 };

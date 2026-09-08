@@ -1,7 +1,7 @@
 import { Highlight, Link, Stack, Text, Tooltip } from '@chakra-ui/react';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type VNode } from 'preact';
+import type { VNode } from 'preact';
 
 export const Footer = (): VNode => (
   <Stack
@@ -21,7 +21,15 @@ export const Footer = (): VNode => (
     <Text fontWeight='bold'>
       <Highlight
         query='JS'
-        styles={{ bg: 'yellow.300', borderRadius: '6', pb: '0.5', pe: '0.5', ps: '3', pt: '2.5' }}>
+        styles={{
+          bg: 'yellow.300',
+          borderRadius: '6',
+          me: '1',
+          pb: '0.5',
+          pe: '0.5',
+          ps: '3',
+          pt: '2.5',
+        }}>
         JS Algorithms
       </Highlight>{' '}
       © 2022 - 2026

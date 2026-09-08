@@ -1,16 +1,15 @@
 import { Box, Heading, Spinner, VStack, VisuallyHidden } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type VNode } from 'preact';
+import type { VNode } from 'preact';
 import { Suspense, lazy } from 'preact/compat';
 
-import { type CategoryDetails } from '@/algorithms/categories.ts';
+import type { CategoryDetails } from '@/algorithms/categories.ts';
 
 const CodeView = lazy(() => import('@/components/cards/CodeView.tsx'));
 
 const CategoryView = ({ category }: { category: CategoryDetails }): VNode => {
   const categoryCards = category.funcArr.map((func) => (
     <CodeView
-      // eslint-disable-next-line @typescript-eslint/unbound-method
       code={func.myFunc}
       key={func.name}
       name={func.name}
@@ -32,7 +31,7 @@ const CategoryView = ({ category }: { category: CategoryDetails }): VNode => {
         textDecoration='3px underline'
         textDecorationColor='yellow.400'
         userSelect='none'>
-        <FontAwesomeIcon fixedWidth icon={category.icon} />
+        <FontAwesomeIcon icon={category.icon} />
         {category.title}
       </Heading>
       <VStack

@@ -11,5 +11,5 @@ export const convertCtoFObj = {
   raw: `const convertCtoF = celsius => {
   const fahrenheit = celsius * 1.8 + 32;
   return Math.round(fahrenheit * 100) / 100;
-}`
+}`,
 };

@@ -2,37 +2,37 @@ allowBuilds:
   esbuild: true
 catalogs:
   build:
-    '@babel/core': ^7.29.7
+    '@babel/core': ^8.0.1
     '@preact/preset-vite': ^2.10.6
-    typescript: ^5.9.3
-    vite: ^6.4.3
+    typescript: ^7.0.2
+    vite: ^8.2.2
   frontend:
     '@chakra-ui/react': ^2.10.10
     '@emotion/react': ^11.14.0
     '@emotion/styled': ^11.14.1
     '@fontsource/ubuntu': ^5.3.0
     '@fontsource/ubuntu-mono': ^5.3.0
-    '@fortawesome/fontawesome-svg-core': ^6.7.2
-    '@fortawesome/free-brands-svg-icons': ^6.7.2
-    '@fortawesome/free-solid-svg-icons': ^6.7.2
-    '@fortawesome/react-fontawesome': ^0.2.6
-    framer-motion: ^11.18.2
+    '@fortawesome/fontawesome-svg-core': ^7.3.1
+    '@fortawesome/free-brands-svg-icons': ^7.3.1
+    '@fortawesome/free-solid-svg-icons': ^7.3.1
+    '@fortawesome/react-fontawesome': ^3.5.0
+    framer-motion: ^13.2.0
     preact: ^10.29.8
     react: npm:@preact/compat@^18.3.2
     react-dom: npm:@preact/compat@^18.3.2
-    react-router: ^7.18.2
-    react-syntax-highlighter: ^15.6.6
+    react-router: ^7.18.3
+    react-syntax-highlighter: ^16.1.1
   lint:
-    '@biomejs/biome': ^2.5.8
+    '@biomejs/biome': ^2.5.12
     '@commitlint/cli': ^21.2.2
     '@commitlint/config-conventional': ^21.2.2
-    knip: ^5.88.1
+    knip: ^6.34.0
     lefthook: ^2.1.10
   script:
     gh-pages: ^6.3.0
   types:
     '@types/eslint-plugin-jsx-a11y': ^6.10.1
-    '@types/node': ^22.20.1
-    '@types/react': ^18.3.31
-    '@types/react-dom': ^18.3.7
+    '@types/node': ^26.4.1
+    '@types/react': ^19.2.18
+    '@types/react-dom': ^19.2.7
     '@types/react-syntax-highlighter': ^15.5.13

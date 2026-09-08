@@ -27,5 +27,5 @@ export const fiboEvenSumObj = {
   let evenSum = 0;
   for (let i of evenCount) evenSum += i;
   return evenSum;
-}`
+}`,
 };

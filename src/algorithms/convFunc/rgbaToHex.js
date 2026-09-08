@@ -15,5 +15,5 @@ export const rgbaToHexObj = {
 
   return '#' + colors.map(
     c => c.toString(16).padStart(2, '0')).join('');
-}`
+}`,
 };

@@ -5,7 +5,7 @@ export const towerOfHanoiObj = {
     return [
       ...towerOfHanoiObj.getMoves(n - 1, src, aux, tgt),
       [src, tgt],
-      ...towerOfHanoiObj.getMoves(n - 1, aux, tgt, src)
+      ...towerOfHanoiObj.getMoves(n - 1, aux, tgt, src),
     ];
   },
   myFunc(n) {
@@ -42,5 +42,5 @@ const getMoves = (n, src, tgt, aux) => {
     [src, tgt],
     ...getMoves(n - 1, aux, tgt, src)
   ];
-}`
+}`,
 };

@@ -10,11 +10,11 @@ import {
   HStack,
   Highlight,
   Text,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react';
 import { type IconDefinition, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { type VNode } from 'preact';
+import type { VNode } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { Link as ReactRouterLink, useLocation } from 'react-router';
 
@@ -45,7 +45,15 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }): VNode => (
     <Text mt='2'>
       <Highlight
         query='JS'
-        styles={{ bg: 'yellow.300', borderRadius: '6', pb: '0.5', pe: '0.5', ps: '3', pt: '2.5' }}>
+        styles={{
+          bg: 'yellow.300',
+          borderRadius: '6',
+          me: '1',
+          pb: '0.5',
+          pe: '0.5',
+          ps: '3',
+          pt: '2.5',
+        }}>
         JS Algorithms
       </Highlight>
     </Text>
@@ -68,10 +76,11 @@ const Sidebar = ({ onClose, ...rest }: { onClose: () => void } & BoxProps): VNod
           styles={{
             bg: 'yellow.300',
             borderRadius: '6',
+            me: '1',
             pb: '0.5',
             pe: '0.5',
             ps: '3',
-            pt: '2.5'
+            pt: '2.5',
           }}>
           JS Algorithms
         </Highlight>
@@ -119,7 +128,7 @@ const NavItem = ({ onClose, icon, title, id }: NavItemProps): VNode => {
       <Flex
         _hover={{
           bg: 'yellow.400',
-          color: 'gray.900'
+          color: 'gray.900',
         }}
         align='center'
         bg={pathname === id ? 'yellow.400' : ''}
@@ -134,7 +143,7 @@ const NavItem = ({ onClose, icon, title, id }: NavItemProps): VNode => {
         p='4'
         role='group'
         transition='background 200ms'>
-        <FontAwesomeIcon fixedWidth icon={icon} />
+        <FontAwesomeIcon icon={icon} />
         {title}
       </Flex>
     </ChakraLink>

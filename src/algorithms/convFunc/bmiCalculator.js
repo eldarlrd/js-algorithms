@@ -19,5 +19,5 @@ export const bmiCalculatorObj = {
   const state = bmi < 18.5 ? 'Underweight' : bmi <= 25
     ? 'Healthy' : bmi <= 30 ? 'Overweight' : 'Obese';
   return \`\${bmi} \${state}\`;
-}`
+}`,
 };
